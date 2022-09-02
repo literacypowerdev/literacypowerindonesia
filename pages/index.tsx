@@ -1,4 +1,6 @@
 import type { NextPage } from "next";
+import Link from "next/link";
+import Button from "../components/atoms/Button/button";
 
 const Home: NextPage = () => {
   return (
@@ -25,6 +27,20 @@ const Home: NextPage = () => {
         Distinctio, deserunt voluptatibus. Facere eum maiores corporis unde
         nihil temporibus itaque! Modi velit animi eligendi nobis vel?
       </p>
+      <div className="w-32">
+        <Button href="" text="Apply" border="full" size="normal" />
+      </div>
+      <Link href="/test">
+        <div className="w-32">
+          <Button
+            link
+            href="/test"
+            text="Apply"
+            border="rectangle"
+            size="large"
+          />
+        </div>
+      </Link>
     </>
   );
 };
