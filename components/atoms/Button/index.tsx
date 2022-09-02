@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React from "react";
 
 interface ButtonProps {
@@ -7,12 +6,11 @@ interface ButtonProps {
   border: "full" | "rectangle";
   link?: boolean;
   disable?: boolean;
-  href: string;
   runOnClick?: () => void;
 }
 
 export default function Button(props: ButtonProps) {
-  const { text, disable, link, href, runOnClick, border, size } = props;
+  const { text, disable, link, runOnClick, border, size } = props;
   const style = {
     normal: "py-1",
     large: "py-2",
