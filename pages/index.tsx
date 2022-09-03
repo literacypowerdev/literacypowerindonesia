@@ -3,6 +3,7 @@ import Link from "next/link";
 import Button from "../components/atoms/Button";
 import Footer from "../components/organisms/Footer";
 import Navbar from "../components/organisms/Navbar";
+import Newsletter from "../components/organisms/Newsletter";
 
 const Home: NextPage = () => {
   return (
@@ -38,7 +39,7 @@ const Home: NextPage = () => {
           <Button link text="Apply" border="rectangle" size="large" />
         </div>
       </Link>
-      <div className="w-full h-32 bg-main-orange"></div>
+      <Newsletter />
       <Footer />
     </>
   );

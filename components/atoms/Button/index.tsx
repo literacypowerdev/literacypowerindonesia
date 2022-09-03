@@ -18,7 +18,13 @@ export default function Button(props: ButtonProps) {
     rectangle: "rounded-md",
   };
 
-  const styles = `bg-main-green ${style[size]} h-fit w-full ${style[border]} flex justify-center items-center transition-colors duration-150 ease-in-out hover:bg-[#596E67] active:bg-[#42524C]`;
+  const styles = `${
+    disable
+      ? "opacity-70 cursor-default hover:bg-main-green active:bg-main-green"
+      : ""
+  } bg-main-green ${style[size]} h-fit w-full ${
+    style[border]
+  } flex justify-center items-center transition-colors duration-150 ease-in-out hover:bg-[#596E67] active:bg-[#42524C]`;
 
   //   Button as link
   //   Bungkus componenya pake tag Link
