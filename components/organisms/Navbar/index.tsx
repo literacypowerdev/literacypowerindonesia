@@ -7,7 +7,7 @@ import MobileMenu from "./MobileMenu";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(isOpen);
+  const [isProgramsOpen, setIsProgramsOpen] = useState(false);
 
   return (
     <nav className="z-30">
@@ -24,9 +24,54 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <ul className="w-fit h-full gap-4 lg:gap-16 xl:gap-28 hidden md:flex items-center">
-            <li>
-              <p className="text-white font-ptserif cursor-pointer">Programs</p>
+          <ul
+            onMouseLeave={() => setIsProgramsOpen(false)}
+            className="w-fit h-full gap-4 lg:gap-16 xl:gap-28 hidden md:flex items-center"
+          >
+            <li className="relative">
+              <p
+                onMouseEnter={() => setIsProgramsOpen(true)}
+                className="text-white font-ptserif cursor-pointer"
+              >
+                Programs
+              </p>
+
+              <ul
+                onMouseEnter={() => setIsProgramsOpen(true)}
+                onMouseLeave={() => setIsProgramsOpen(false)}
+                className={`${
+                  isProgramsOpen ? "" : "hidden"
+                } w-[150px] h-fit bg-white absolute rounded-md overflow-hidden top-8`}
+              >
+                <li>
+                  <Link href="/programs/kesehatan">
+                    <a className="text-main-orange block w-full px-4 py-2 font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange hover:text-white">
+                      Kesehatan
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/programs/kesehatan">
+                    <a className="text-main-orange block w-full px-4 py-2 font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange hover:text-white">
+                      Pendidikan
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/programs/kesehatan">
+                    <a className="text-main-orange block w-full px-4 py-2 font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange hover:text-white">
+                      Lingkungan
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/programs/kesehatan">
+                    <a className="text-main-orange block w-full px-4 py-2 font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange hover:text-white">
+                      Ekonomi
+                    </a>
+                  </Link>
+                </li>
+              </ul>
             </li>
             <li>
               <Link href="/projects">
