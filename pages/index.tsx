@@ -1,10 +1,12 @@
 import type { NextPage } from "next";
 import Link from "next/link";
 import Button from "../components/atoms/Button";
+import Navbar from "../components/organisms/Navbar";
 
 const Home: NextPage = () => {
   return (
     <>
+      <Navbar />
       <p className="text-title1 font-bold text-main-green font-ptserif">
         OUR PROJECTS
       </p>
