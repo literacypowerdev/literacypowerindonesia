@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Button from "../../atoms/Button";
+import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,8 +10,8 @@ export default function Navbar() {
   console.log(isOpen);
 
   return (
-    <nav>
-      <div className="w-full h-[90px] md:h-[100px] bg-main-orange flex justify-center z-30">
+    <nav className="z-30">
+      <div className="w-full h-[90px] md:h-[100px] bg-main-orange flex justify-center relative z-20">
         <div className="w-11/12 md:w-10/12 h-full flex justify-between items-center">
           <div className="w-[72px] md:w-[82px] h-full py-2 cursor-pointer">
             <Link href="/">
@@ -28,19 +29,19 @@ export default function Navbar() {
               <p className="text-white font-ptserif cursor-pointer">Programs</p>
             </li>
             <li>
-              <a href="/projects" className="text-white font-ptserif">
-                Projects
-              </a>
+              <Link href="/projects">
+                <a className="text-white font-ptserif">Projects</a>
+              </Link>
             </li>
             <li>
-              <a href="/reviews" className="text-white font-ptserif">
-                Reviews
-              </a>
+              <Link href="/reviews">
+                <a className="text-white font-ptserif">Reviews</a>
+              </Link>
             </li>
             <li>
-              <a href="/allaboutbooks" className="text-white font-ptserif">
-                All About Books
-              </a>
+              <Link href="/allaboutbooks">
+                <a className="text-white font-ptserif">All About Books</a>
+              </Link>
             </li>
           </ul>
 
@@ -57,14 +58,27 @@ export default function Navbar() {
             className="w-[28px] h-[24px] flex flex-col justify-between md:hidden"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <span className="w-full h-[2px] bg-white"></span>
-            <span className="w-full h-[2px] bg-white"></span>
-            <span className="w-full h-[2px] bg-white"></span>
+            <span
+              className={`w-full h-[2px] bg-white transition duration-300 ease-in-out ${
+                isOpen ? "rotate-45 translate-y-[11px]" : ""
+              }`}
+            ></span>
+            <span
+              className={`w-full h-[2px] bg-white transition duration-300 ease-in-out ${
+                isOpen ? "scale-0 opacity-0" : ""
+              }`}
+            ></span>
+            <span
+              className={`w-full h-[2px] bg-white transition duration-300 ease-in-out ${
+                isOpen ? "-rotate-45 translate-y-[-11px]" : ""
+              }`}
+            ></span>
           </div>
         </div>
       </div>
 
       {/* Mobile Popup */}
+      <MobileMenu toggleOpen={isOpen} />
     </nav>
   );
 }
