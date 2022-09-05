@@ -1,5 +1,15 @@
-import React from "react";
+import React from 'react'
+import CarouselDocumentation from '../components/organisms/CarouselDocumentation'
 
-export default function test() {
-  return <div>test</div>;
+
+
+
+const test = () => {
+  return (
+    <div>
+      <CarouselDocumentation />
+    </div>
+  )
 }
+
+export default test
