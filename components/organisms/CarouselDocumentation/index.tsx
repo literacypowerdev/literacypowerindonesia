@@ -16,14 +16,14 @@ export default function SimpleSlider() {
   const images = imageList
     
   return (
-    <div className="w-[80%] m-auto">
-      <Slider {...settings} className='relative'>
+    <div className="w-[80%] m-auto mt-10">
+      <Slider {...settings} className=''>
 
         {images.map((each: any) => {
           return (
-            <div className="px-16">
+            <div className="py-2 text-center">
               <Image
-                className=''
+                className='rounded-lg relative'
                 width={400}
                 height={250}
                 src={each}
