@@ -3,8 +3,7 @@ import Button from '../../atoms/Button'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { ReviewSlider } from './Slider';
-
+import { ReviewSlider } from './slider';
 
 
 const Reviews = () => {
@@ -27,7 +26,7 @@ const Reviews = () => {
                 </div>
             </div>
             <div className='Slider text-justify p-5'>
-                <div className='lg:w-[480px] md:w-[300px] w-[400px] bg-white rounded-lg py-5 px-8 '>
+                <div className='lg:w-[400px] md:w-[300px] w-[400px] bg-white rounded-lg py-5 px-8 '>
                     <Slider {...settings}>
                     {data.map((item) => {
                         return(
