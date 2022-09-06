@@ -52,10 +52,7 @@ const Pagination = () => {
 
     return (
         <div className="App">
-            
-
-
-
+            {currentPageData}
             <ReactPaginate
                 breakLabel="..."
                 nextLabel=">"

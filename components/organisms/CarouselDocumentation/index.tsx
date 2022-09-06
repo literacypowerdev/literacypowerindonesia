@@ -4,9 +4,9 @@ import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-// react-slick
 import { settingsSlick } from "./settings";
 import { imageList } from "./imageList";
+// react-slick
 
 
 
