@@ -32,7 +32,7 @@ const Pagination = () => {
         setCurrentPage(selectedPage);
     }
     const offset = currentPage * PER_PAGE;
-    const currentPageData = Array.from(data).slice(offset, offset + PER_PAGE).map((result, index) =>
+    const currentPageData = Array.from(data).slice(offset, offset + PER_PAGE).map((result: any, index) =>
         <div key={index} className='font-bold text-center'  >
             <h1>{result.title}</h1>
         </div>)

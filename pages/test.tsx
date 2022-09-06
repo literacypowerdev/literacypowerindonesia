@@ -1,6 +1,7 @@
 import React from 'react'
 import CarouselDocumentation from '../components/organisms/CarouselDocumentation'
 import Pagination from '../components/organisms/Pagination'
+import Yes from '../components/organisms/Pagination/yes'
 import Reviews from '../components/organisms/Reviews'
 
 
@@ -24,6 +25,7 @@ const test = () => {
       <br />
       <br />
       <Pagination />
+      <Yes />
     </div>
 
 
