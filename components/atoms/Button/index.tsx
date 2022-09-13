@@ -31,7 +31,7 @@ export default function Button(props: ButtonProps) {
   if (link) {
     return (
       <div className={`${styles} cursor-pointer`}>
-        <p className="text-white">{text}</p>
+        <p className="text-white font-ptserif">{text}</p>
       </div>
     );
   }
@@ -43,7 +43,7 @@ export default function Button(props: ButtonProps) {
       onClick={runOnClick ?? (() => null)}
       className={styles}
     >
-      <p className="text-white">{text}</p>
+      <p className="text-white font-ptserif">{text}</p>
     </button>
   );
 }
