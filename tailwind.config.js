@@ -30,6 +30,9 @@ module.exports = {
         title3: "2rem",
         base: "1.4rem",
       },
+      backgroundImage: {
+        hero: "url('/images/hero.png')",
+      },
     },
   },
   plugins: [],
