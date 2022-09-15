@@ -32,6 +32,7 @@ module.exports = {
       },
       backgroundImage: {
         hero: "url('/images/hero.png')",
+        "body-doodle": "url('/images/body.png')",
       },
     },
   },
