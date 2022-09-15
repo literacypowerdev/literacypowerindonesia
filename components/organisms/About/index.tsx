@@ -1,5 +1,6 @@
 import React from "react";
 import AboutContent from "./AboutContent";
+import Benefit from "./Benefit";
 
 export default function About() {
   const contents = {
@@ -37,6 +38,7 @@ export default function About() {
           content={contents.misi.content}
         />
       </div>
+      <Benefit />
     </div>
   );
 }
