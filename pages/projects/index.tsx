@@ -18,7 +18,7 @@ export default function Projects() {
       <Navbar />
       <div className="w-full bg-body-doodle bg-contain py-7">
         <div className="w-11/12 md:w-10/12 mx-auto">
-          <h1 className="text-title3 font-bold font-ptserif text-center text-main-green">
+          <h1 className="text-title3 my-12 font-bold font-ptserif text-center text-main-green">
             OUR PROJECTS
           </h1>
           <div>
