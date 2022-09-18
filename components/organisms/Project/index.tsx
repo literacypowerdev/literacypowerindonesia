@@ -134,7 +134,7 @@ export default function Projects() {
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
         onPageChange={handlePageClick}
-        containerClassName={"flex gap-2 justify-center"}
+        containerClassName={"flex gap-2 mt-2 lg:mt-12 justify-center"}
         activeClassName={"underline bg-main-orange "}
         pageClassName={
           "w-7 h-7 bg-very-light-orange rounded-lg hover:bg-main-orange"

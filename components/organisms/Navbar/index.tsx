@@ -4,7 +4,13 @@ import React, { useEffect, useState } from "react";
 import Button from "../../atoms/Button";
 import MobileMenu from "./MobileMenu";
 
-export default function Navbar() {
+export interface NavbarProps {
+  active?: "Programs" | "Projects" | "Reviews" | "All About Books";
+}
+
+export default function Navbar(props: NavbarProps) {
+  const { active } = props;
+
   const [isOpen, setIsOpen] = useState(false);
 
   const [isProgramsOpen, setIsProgramsOpen] = useState(false);
@@ -31,7 +37,9 @@ export default function Navbar() {
             <li className="relative">
               <p
                 onMouseEnter={() => setIsProgramsOpen(true)}
-                className="text-white font-ptserif cursor-pointer"
+                className={`text-white font-ptserif cursor-pointer ${
+                  active == "Programs" ? "underline" : ""
+                }`}
               >
                 Programs
               </p>
@@ -75,17 +83,35 @@ export default function Navbar() {
             </li>
             <li>
               <Link href="/projects">
-                <a className="text-white font-ptserif">Projects</a>
+                <a
+                  className={`text-white font-ptserif ${
+                    active == "Projects" ? "underline" : ""
+                  }`}
+                >
+                  Projects
+                </a>
               </Link>
             </li>
             <li>
               <Link href="/reviews">
-                <a className="text-white font-ptserif">Reviews</a>
+                <a
+                  className={`text-white font-ptserif ${
+                    active == "Reviews" ? "underline" : ""
+                  }`}
+                >
+                  Reviews
+                </a>
               </Link>
             </li>
             <li>
               <Link href="/allaboutbooks">
-                <a className="text-white font-ptserif">All About Books</a>
+                <a
+                  className={`text-white font-ptserif ${
+                    active == "All About Books" ? "underline" : ""
+                  }`}
+                >
+                  All About Books
+                </a>
               </Link>
             </li>
           </ul>
