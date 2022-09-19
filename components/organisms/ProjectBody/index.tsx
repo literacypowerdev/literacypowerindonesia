@@ -12,13 +12,17 @@ export default function ProjectBody(props: ProjectBodyProps) {
 
   return (
     <div className="w-full">
-      <img
-        className={`rounded-[10px] w-full md:w-[300px] md:h-[300px] object-cover ${
-          type == "Sebelum" ? "float-left" : "float-right"
-        } ${type == "Sebelum" ? "mr-4" : "ml-4"} mb-1`}
-        src={dokumentasi}
-        alt="Project Documentation"
-      />
+      {dokumentasi == "" ? (
+        ""
+      ) : (
+        <img
+          className={`rounded-[10px] w-full md:w-[300px] md:h-[300px] object-cover ${
+            type == "Sebelum" ? "float-left" : "float-right"
+          } ${type == "Sebelum" ? "mr-4" : "ml-4"} mb-1`}
+          src={dokumentasi}
+          alt="Project Documentation"
+        />
+      )}
       <h2 className="font-ptserif font-bold text-base text-main-orange">
         {type ? type : name}
       </h2>
