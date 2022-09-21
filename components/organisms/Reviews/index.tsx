@@ -6,8 +6,15 @@ import "slick-carousel/slick/slick-theme.css";
 import { ReviewSlider } from "./slider";
 import Image from "next/image";
 import Kutip from "/public/icon/quotes.svg";
+import Link from "next/link";
 
-const Reviews = () => {
+export interface ReviewsProps {
+  isReview?: boolean;
+}
+
+const Reviews = (props: ReviewsProps) => {
+  const { isReview } = props;
+
   const settings = {
     dots: false,
     infinite: true,
@@ -22,14 +29,23 @@ const Reviews = () => {
         <div className="Left flex flex-col gap-4">
           <div className="Bergabung text-white font-bold text-title2 text-center md:text-left font-ptserif">
             <h1>
-              Apa
+              {isReview ? "Bergabung" : "Apa"}
               <br />
-              Kata Mereka?
+              {isReview ? "Dengan Kami!" : "Kata Mereka?"}
             </h1>
           </div>
-          <div className="Button font-bold max-w-[400px] min-w-[200px]">
-            <Button text="See More Reviews" size="normal" border="full" />
-          </div>
+          {isReview ? (
+            <Link href="/apply">
+              <div className="Button font-bold max-w-[400px] min-w-[200px]">
+                <Button text="Apply" link size="normal" border="full" />
+              </div>
+            </Link>
+          ) : (
+            <div className="Button font-bold max-w-[400px] min-w-[200px]">
+              <Button text="See More Reviews" size="normal" border="full" />
+            </div>
+          )}
+          {/* <Button text="See More Reviews" size="normal" border="full" /> */}
         </div>
         <div className="Slider w-full md:w-fit text-left md:text-justify p-5">
           <div className="bg-white mx-auto rounded-lg py-5 px-8 w-full max-w-[500px] md:w-[400px]">
