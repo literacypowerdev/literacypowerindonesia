@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React from "react";
 import Footer from "../../components/organisms/Footer";
 import Navbar from "../../components/organisms/Navbar";
@@ -32,6 +33,9 @@ export default function ProjectSinglePage() {
 
   return (
     <>
+      <Head>
+        <title>Literacy Power | {data.name}</title>
+      </Head>
       <Navbar active="Projects" />
 
       {/* Hero */}
