@@ -59,21 +59,21 @@ export default function Navbar(props: NavbarProps) {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/programs/kesehatan">
+                  <Link href="/programs/pendidikan">
                     <a className="text-main-orange block w-full px-4 py-2 font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange hover:text-white">
                       Pendidikan
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/programs/kesehatan">
+                  <Link href="/programs/lingkungan">
                     <a className="text-main-orange block w-full px-4 py-2 font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange hover:text-white">
                       Lingkungan
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/programs/kesehatan">
+                  <Link href="/programs/ekonomi">
                     <a className="text-main-orange block w-full px-4 py-2 font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange hover:text-white">
                       Ekonomi
                     </a>

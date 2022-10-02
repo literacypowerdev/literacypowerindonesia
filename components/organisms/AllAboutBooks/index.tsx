@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ReactPaginate from "react-paginate";
 import AllAboutBooksCard from '../../molecules/AllAboutBooksCard';
 import ProjectCard from '../../molecules/ProjectCard';
-
-
+import Link from 'next/link'
 
 
 
@@ -88,14 +87,16 @@ const AllAboutBook = () => {
         <>
             {items?.map((item: any) => {
                 return (
-                    <AllAboutBooksCard
-                        key={item.id}
-                        id={item.id}
-                        title={item.title}
-                        content={item.content}
-                        email={item.email}
-                        gender={item.gender}
-                    />
+                    
+                        <AllAboutBooksCard
+
+                            key={item.id}
+                            id={item.id}
+                            title={item.title}
+                            content={item.content}
+                            email={item.email}
+                            gender={item.gender}
+                        />
                 );
             })}
 

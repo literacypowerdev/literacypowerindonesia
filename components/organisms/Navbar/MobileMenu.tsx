@@ -39,7 +39,7 @@ export default function MobileMenu(props: MobileMenuProps) {
           </Link>
         </li>
         <li>
-          <Link href="/programs/kesehatan">
+          <Link href="/programs/pendidikan">
             <a
               className={`${
                 isProgramsOpen ? "block" : "hidden"
@@ -50,7 +50,7 @@ export default function MobileMenu(props: MobileMenuProps) {
           </Link>
         </li>
         <li>
-          <Link href="/programs/kesehatan">
+          <Link href="/programs/lingkungan">
             <a
               className={`${
                 isProgramsOpen ? "block" : "hidden"
@@ -61,7 +61,7 @@ export default function MobileMenu(props: MobileMenuProps) {
           </Link>
         </li>
         <li>
-          <Link href="/programs/kesehatan">
+          <Link href="/programs/ekonomi">
             <a
               className={`${
                 isProgramsOpen ? "block" : "hidden"
