@@ -5,7 +5,7 @@ import DampakModel from '../../utils/type'
 
 export const getDampak = createAsyncThunk("dampak/getDampak", async (data, thunkApi) => {
     try {
-        const response = await axios.get<DampakModel[]>("https://jsonplaceholder.typicode.com/posts?_limit=10");
+        const response = await axios.get<DampakModel[]>("https://literacy-power.herokuapp.com/dampak");
         return response.data
     } catch (error: any) {
         const message = error.message;
