@@ -126,7 +126,7 @@ export default function Navbar(props: NavbarProps) {
 
           {/* Mobile Hamburger */}
           <div
-            className="w-[28px] h-[24px] flex flex-col justify-between md:hidden"
+            className="w-[28px] h-[24px] flex flex-col justify-between md:hidden cursor-pointer"
             onClick={() => setIsOpen(!isOpen)}
           >
             <span

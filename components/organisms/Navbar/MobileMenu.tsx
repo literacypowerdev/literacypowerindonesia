@@ -18,7 +18,7 @@ export default function MobileMenu(props: MobileMenuProps) {
       } md:hidden w-full h-fit bg-white absolute z-10 transition duration-300 ease-in-out`}
     >
       <ul>
-        <li>
+      <li>
           <p
             onClick={() => setIsProgramsOpen(!isProgramsOpen)}
             className="w-100 py-4 px-6 text-main-orange hover:text-white font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange"

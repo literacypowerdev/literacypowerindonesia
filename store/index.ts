@@ -4,7 +4,7 @@ import dampakReducer from './dampakData/dampakSlice'
 
 export const store = configureStore({
     reducer: {
-        dampak: dampakReducer
+        dampak: dampakReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
 });
