@@ -43,7 +43,7 @@ export default function apply() {
           <img
             src="/icon/doodle-top-left.svg"
             alt=""
-            className="absoulute top-0 left-0"
+            className="absolute top-0 left-0"
           />
           <img
             src="/icon/doodle-top-right.svg"
