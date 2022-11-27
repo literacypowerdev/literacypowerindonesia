@@ -89,7 +89,6 @@ const AllAboutBook = () => {
                 return (
                     
                         <AllAboutBooksCard
-
                             key={item.id}
                             id={item.id}
                             title={item.title}

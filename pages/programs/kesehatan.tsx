@@ -13,6 +13,8 @@ import Newsletter from '../../components/organisms/Newsletter'
 import Review from '../reviews'
 import Reviews from '../../components/organisms/Reviews'
 import Modal from '../../components/molecules/Modal'
+import DocumentationSlider from '../../components/molecules/DocumetationSlider'
+import DocSlider from '../../components/organisms/Documentation/Slider'
 
 
 const kesehatan = () => {
@@ -65,7 +67,7 @@ const kesehatan = () => {
                         <h1 className='text-2xl font-bold'>
                             Program Kesehatan
                         </h1>
-                        <p className='text-justify text-xl'>
+                        <p className='text-justify text:sm md:text-xl'>
                             {headingContent}
                         </p>
                         <div className='button w-full md:w-80 font-semibold'>
@@ -115,12 +117,12 @@ const kesehatan = () => {
 
 
 
-                    <div className='literacyFAQ container m-auto pt-16'>
+                    <div className='literacyFAQ container m-auto pt-16  '>
                         <div className='flex flex-col gap-3'>
                             <h1 className='text-xl font-semibold z-10'>
                                 Literacy Power F.A.Q
                             </h1>
-                            
+
                             <p className='text-justify w-full'>
                                 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
                                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est a neque ratione?
@@ -134,16 +136,22 @@ const kesehatan = () => {
                             </div>
 
 
-
+                        </div>
+                    </div>
+                    <div className="w-[280px] md:w-[540px] xl:w-[800px] mx-auto -mt-[120px] rounded-[18px] overflow-hidden shadow-xl">
+                        <div className="w-full py-5 md:px-10 h-[280px] md:h-[200px] xl:h-[290px]">
+                            <div className="w-full">
+                                <DocSlider />
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                
             </div>
             <Reviews />
             <Footer />
-            <Modal active='Kesehatan'/>
+            <Modal active='Kesehatan' />
+
 
 
 

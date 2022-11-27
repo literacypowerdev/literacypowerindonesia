@@ -13,7 +13,7 @@ interface UserData {
 
 const AllAboutBooksCard = ({ id, title, content, email, gender }: UserData) => {
     return (
-        <Link href={`/allaboutbooks/single/${id}`}>
+        <Link href={`/allaboutbooks/${id}`}>
             <div className='container p-3 flex flex-col md:flex-row mb-5 font-ptserif gap-4 rounded-md max-w-[771px] m-auto shadow-md bg-white hover:bg-main-green hover:text-white transition-all duration-150 ease-in-out cursor-pointer'>
                 <div className='image w-full md:w-[512px] bg-slate-300 rounded-md'>
                     {/* image */}
