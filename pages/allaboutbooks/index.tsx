@@ -1,11 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import SearchFilter from '../../components/atoms/SearchFilter'
 import AllAboutBook from '../../components/organisms/AllAboutBooks'
 import Footer from '../../components/organisms/Footer'
 import Navbar from '../../components/organisms/Navbar'
 import Reviews from '../../components/organisms/Reviews'
+import axios from 'axios'
+import { useAppDispatch, useAppSelector } from '../../utils/hooks'
+import { getBuku } from '../../store/features/bukuSlice'
+
+
+
+
 
 const AllAboutBooks = () => {
+    const dataBuku = useAppSelector((state) => state.buku.data)
+    const dispatch = useAppDispatch()
+    useEffect(() => {
+        dispatch(getBuku());
+    }, [])
+    
     return (
         <>
             <Navbar active='All About Books' />
@@ -22,7 +35,7 @@ const AllAboutBooks = () => {
                     <br />
                     <br />
                     <div>
-                        <AllAboutBook />
+                        <AllAboutBook dataBuku={dataBuku} />
                     </div>
                     <br />
                     <br />

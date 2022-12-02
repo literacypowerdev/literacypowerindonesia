@@ -1,10 +1,12 @@
 import React from 'react'
 import { configureStore } from '@reduxjs/toolkit'
 import proyekSlice from './features/proyekSlice';
+import bukuSlice from './features/bukuSlice';
 
 export const store = configureStore({
     reducer: {
-        proyek: proyekSlice
+        proyek: proyekSlice,
+        buku: bukuSlice
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
 });
