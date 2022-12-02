@@ -17,7 +17,8 @@ module.exports = {
             penerbit: req.penerbit,
             tahun: req.tahun,
             halaman: req.halaman,
-            ringkasan: req.ringkasan
+            ringkasan: req.ringkasan,
+            review: req.review
         }).then(() => {
             return cb(null, "success submit");
         }).catch((error) => {
@@ -37,7 +38,8 @@ module.exports = {
             penerbit: req.penerbit,
             tahun: req.tahun,
             halaman: req.halaman,
-            ringkasan: req.ringkasan
+            ringkasan: req.ringkasan,
+            review: req.review
         }).then(() => {
             return cb(null, "success update");
         }).catch((error) => {
@@ -47,7 +49,7 @@ module.exports = {
     deleteBuku: (req, cb) => {
         db(`${tablename}`).where(`id`, req.id)
         .del()
-        .then((result) => {
+        .then(() => {
             return cb(null, "success delete");
         }).catch((error) => {
             return cb(error);

@@ -37,7 +37,8 @@ module.exports = {
         penerbit: joi.string().max(150).optional().allow(null),
         tahun: joi.number().optional().allow(null),
         halaman: joi.number().required(),
-        ringkasan: joi.string().optional().allow(null)
+        ringkasan: joi.string().optional().allow(null),
+        review: joi.string().optional().allow(null)
     }),
     donasiSchema: joi.object({
         judul: joi.string().min(3).max(150).required(),
@@ -48,6 +49,7 @@ module.exports = {
     }),
     galerySchema: joi.object({
         filename: joi.string().min(5).max(150).required(),
-        type: joi.string().min(3).max(10).required()
+        type: joi.string().min(3).max(10).required(),
+        show_on_page: joi.bool().required()
     })
 }

@@ -8,7 +8,7 @@
         table.integer('thumbnail')
           .unsigned()
           .index('foreign_key_proyek_galery')
-          .references('id')
+          .references('id_galery')
           .inTable('galery');
         table.string('nama', 150).notNullable();
         table.string('lokasi', 150);

@@ -14,6 +14,7 @@ module.exports = {
         upload(req, res, async (error) => {
             if(error) return ERROR(res, 500, error);
 
+            if(req.body.show_on_page == null) req.body.show_on_page = false;
             req.body.filename = req.file.filename;
             req.body.type = req.file.mimetype.split('/')[0];
 
@@ -35,7 +36,7 @@ module.exports = {
             if(error) return ERROR(res, 500, error);
             if(result.length == 0) return ERROR(res, 404, "Data not found");
             
-            await fs.remove(`storage/${result[0].filename}`);
+            await fs.remove(`public/images/${result[0].filename}`);
             deleteGalery(req.body, (errors, results) => {
                 if(errors) return ERROR(res, 500, errors);
                 

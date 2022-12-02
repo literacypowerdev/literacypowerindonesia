@@ -15,6 +15,7 @@ exports.up = function(knex) {
         table.bigInteger('tahun');
         table.integer('halaman').notNullable();
         table.text('ringkasan');
+        table.text('review');
         table.timestamp('createdAt').notNullable().defaultTo(knex.fn.now());
     });
 };

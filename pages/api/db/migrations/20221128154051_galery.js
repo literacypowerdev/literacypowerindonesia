@@ -4,9 +4,10 @@
  */
 exports.up = function(knex) {
     return knex.schema.createTable('galery', (table) => {
-        table.increments('id').primary();
+        table.increments('id_galery').primary();
         table.string('filename', 150).notNullable();
         table.string('type', 50).notNullable();
+        table.boolean('show_on_page').notNullable();
     });
 };
 
