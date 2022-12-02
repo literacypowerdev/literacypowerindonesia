@@ -3,7 +3,6 @@ import Button from '../../components/atoms/Button'
 import Navbar from '../../components/organisms/Navbar'
 import { useAppDispatch, useAppSelector } from '../../utils/hooks'
 import type { AppDispatch, RootState } from '../../store'
-import { getDampak } from '../../store/dampakData/dampakSlice'
 import VerticalSlider from '../../components/molecules/VerticalSlider'
 import LiteractFAQ from '../../components/organisms/LiteracyFAQ'
 import Logo from '../../public/icon/logo.svg'
@@ -117,7 +116,7 @@ const kesehatan = () => {
 
 
 
-                    <div className='literacyFAQ container m-auto pt-16  '>
+                    <div className='literacyFAQ container m-auto pt-16 pb-16  '>
                         <div className='flex flex-col gap-3'>
                             <h1 className='text-xl font-semibold z-10'>
                                 Literacy Power F.A.Q
@@ -127,7 +126,7 @@ const kesehatan = () => {
                                 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
                                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est a neque ratione?
                             </p>
-                            <div className='literacyfAQ mb-[50vh] mt-4'>
+                            <div className='literacyfAQ py-5'>
                                 <LiteractFAQ title={FAQContent[0].title} details={FAQContent[0].details} />
                                 <LiteractFAQ title={FAQContent[1].title} details={FAQContent[1].details} />
                                 <LiteractFAQ title={FAQContent[2].title} details={FAQContent[2].details} />
@@ -138,13 +137,13 @@ const kesehatan = () => {
 
                         </div>
                     </div>
-                    <div className="w-[280px] md:w-[540px] xl:w-[800px] mx-auto -mt-[120px] rounded-[18px] overflow-hidden shadow-xl">
+                    {/* <div className="w-[280px] md:w-[540px] xl:w-[800px] mx-auto -mt-[120px] rounded-[18px] overflow-hidden shadow-xl">
                         <div className="w-full py-5 md:px-10 h-[280px] md:h-[200px] xl:h-[290px]">
                             <div className="w-full">
                                 <DocSlider />
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
             </div>

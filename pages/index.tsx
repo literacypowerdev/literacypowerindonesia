@@ -23,6 +23,7 @@ const Home: NextPage = () => {
       <About />
       <Newsletter />
       <Footer />
+      
     </>
   );
 };
