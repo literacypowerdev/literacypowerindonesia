@@ -1,13 +1,11 @@
-import React from 'react'
-import Link from 'next/dist/client/link'
-import ProyekForm from '../../components/admin/proyekForm'
-
+import React, { useEffect } from 'react'
+import Router from 'next/router'
 const index = () => {
-  return (
-    <div>
-      <Link href='/'>form upload proyek</Link>
-    </div>
-  )
+
+    useEffect(() => {
+        Router.push('/admin/login')
+    }, [])
+
 }
 
 export default index

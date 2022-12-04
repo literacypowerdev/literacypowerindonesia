@@ -1,6 +1,11 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
+interface initialStateProps {
+    loading: boolean,
+    data: [],
+    error: any
+}
 
 
 export const getBuku = createAsyncThunk('buku/getBuku', async () => {
@@ -23,18 +28,29 @@ export const getBukuById = createAsyncThunk('buku/getBukuById', async (id) => {
     }
 })
 
+export const postBuku = createAsyncThunk('buku/postBuku', async (bookData, token) => {
+    try {
+        const response = await fetch('http://localhost:4500/api/buku', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+        })
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+
+
 // type initialStateProps
-interface initialStateProps {
-    loading: boolean,
-    data: [],
-    error: any
-}
+
 const bukuSlice = createSlice({
     name: 'buku',
     initialState: {
         loading: false,
         data: [],
-        error: null
+        error: null,
     } as initialStateProps,
     reducers: {},
     extraReducers(builder) {
@@ -60,7 +76,7 @@ const bukuSlice = createSlice({
             state.loading = false,
             state.error = action.payload
         })
-    },
+    }
 })
 
 

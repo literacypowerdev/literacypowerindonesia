@@ -1,6 +1,8 @@
 import React, { SyntheticEvent, useState } from 'react'
 import cookies from 'next-cookies'
 import Router from 'next/router'
+import { useAppDispatch } from '../../utils/hooks'
+import { loginSetToken } from '../../store/features/loginSlice'
 const Cookie = require('js-cookie')
 
 
@@ -18,7 +20,7 @@ export const getServerSideProps = async (context: any) => {
 
 
 const login = () => {
-
+  const dispatch = useAppDispatch()
   const [user, setUser] = useState({
     firstName: '',
     lastName: '',
@@ -40,6 +42,7 @@ const login = () => {
       })
       if (!response.ok) return setStatus('error ' + response.status)
       const loginRes = await response.json()
+      dispatch(loginSetToken(loginRes.data.token))
       Cookie.set('token', loginRes.data.token)
       setStatus('success');
       Router.push('/admin/dashboard')

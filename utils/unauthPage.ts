@@ -1,6 +1,6 @@
 import cookies from 'next-cookies'
 
-export function unauthPage(context) {
+export function unauthPage(context: any) {
 
     return new Promise(resolve => {
         const allCookies = cookies(context);

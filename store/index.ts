@@ -2,11 +2,13 @@ import React from 'react'
 import { configureStore } from '@reduxjs/toolkit'
 import proyekSlice from './features/proyekSlice';
 import bukuSlice from './features/bukuSlice';
+import loginSlice from './features/loginSlice';
 
 export const store = configureStore({
     reducer: {
         proyek: proyekSlice,
-        buku: bukuSlice
+        buku: bukuSlice,
+        login: loginSlice
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
 });

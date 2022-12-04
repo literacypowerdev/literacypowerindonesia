@@ -1,11 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction, CreateSliceOptions } from "@reduxjs/toolkit";
 import axios from "axios";
-import { ReactNode } from "react";
-
-
-
-// asyncThunk
-// type
 
 
 
