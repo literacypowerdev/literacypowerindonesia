@@ -12,13 +12,14 @@ import { getBuku } from '../../store/features/bukuSlice'
 
 
 
-const AllAboutBooks = () => {
+const AllAboutBooks = ({ buku }: any) => {
+    console.log(buku)
     const dataBuku = useAppSelector((state) => state.buku.data)
     const dispatch = useAppDispatch()
     useEffect(() => {
         dispatch(getBuku());
     }, [])
-    
+
     return (
         <>
             <Navbar active='All About Books' />
@@ -50,5 +51,18 @@ const AllAboutBooks = () => {
         </>
     )
 }
+
+// kalau mau pake getStaticProps
+export const getStaticProps = async () => {
+    const response = await fetch('http://localhost:4500/api/buku')
+    const data = await response.json();
+    const datas = data.data
+    return {
+        props: {
+            buku: datas
+        }
+    }
+}
+
 
 export default AllAboutBooks

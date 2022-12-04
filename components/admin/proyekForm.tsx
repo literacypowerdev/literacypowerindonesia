@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import React, { ReactNode, useState, useEffect } from 'react'
 import { getProyek, postProyek } from '../../store/features/proyekSlice'
 import { useAppDispatch, useAppSelector } from '../../utils/hooks'
@@ -21,40 +21,18 @@ const ProyekForm = () => {
     dampak_sesudah: '',
     dokumentasi: ''
   })
-  const [data, setData] = useState([])
-
-  useEffect(() => {
-    axios.get('http://localhost:4500/api/buku').then(res => {
-      console.log("ini res ", res.data)
-      setData(res.data.data)
-
-      
-    }).catch(err => console.log(err))
-  }, [])
-
-
-  console.log("isi data:  ", data)
-
-
-
-
-
-
-
   const dispatch = useAppDispatch()
-  const dataProyek = useAppSelector((state) => state.proyek)
+  const dataProyek = useAppSelector((state) => state.proyek.proyek)
 
 
   const handleSubmit = async (e: any) => {
     e.preventDefault()
     try {
       const result = await axios.post("http://localhost:4500/api/proyek", values);
-      console.log(result.response.data);
-    } catch (error) {
-      console.error(error.response.data);
+      console.log(result.response.data)
+    } catch (error: any) {
+      console.error(error.response.data)
     }
-
-
   }
 
   const handleChange = (e: any) => {
@@ -114,19 +92,6 @@ const ProyekForm = () => {
       <div>
         <h1>get proyek</h1>
         <button onClick={handleSubmit} className='bg-slate-400 p-4'>get proyek here!</button>
-        <div>
-
-          {data.map((item: any, index) => {
-            return (
-              <div key={index}>
-                <h1>{item.judul}</h1>
-              </div>
-            )
-          })}
-
-
-
-        </div>
       </div>
     </div>
   )

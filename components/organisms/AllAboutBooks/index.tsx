@@ -13,20 +13,20 @@ const AllAboutBook = ({ dataBuku }: any) => {
     return (
         <>
             <div>
-               {
-                dataBuku.map((item: any, index: any) => {
-                    return (
-                        <div key={index}>
-                            <AllAboutBooksCard 
-                            id={item.id}
-                            title={item.judul}
-                            content={item.ringkasan}
-                            image={item.coverUrl}
+                {
+                    dataBuku.map((item: any, index: any) => {
+                        return (
+
+                            <AllAboutBooksCard
+                                id={item.id}
+                                title={item.judul}
+                                content={item.ringkasan}
+                                image={item.coverUrl}
                             />
-                        </div>
-                    )
-                })
-               }
+
+                        )
+                    })
+                }
             </div>
 
 

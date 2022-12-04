@@ -8,14 +8,12 @@ import { ReactNode } from "react";
 // type
 
 
-interface myData {
 
-}
 export const getProyek = createAsyncThunk('proyek/getAllProyek', async () => {
     try {
         const response = await fetch('http://localhost:4500/api/proyek')
         const data = await response.json();
-        return data;
+        return data
 
     } catch (err) {
         console.log(err)
@@ -66,7 +64,7 @@ const proyekSlice = createSlice({
             }),
             builder.addCase(postProyek.fulfilled, (state, action) => {
                 state.loading = false
-                state.proyek = [action.payload]
+                state.proyek = action.payload
             }),
             builder.addCase(postProyek.rejected, (state, action) => {
                 state.loading = false

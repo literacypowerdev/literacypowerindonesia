@@ -7,13 +7,12 @@ export const getBuku = createAsyncThunk('buku/getBuku', async () => {
     try {
         const response = await axios.get('http://localhost:4500/api/buku')
         const data = await response.data.data
-       
         return data
     }catch (err) {
         console.error(err)
     }
 })
-
+// optional
 export const getBukuById = createAsyncThunk('buku/getBukuById', async (id) => {
     try {
         const response = await axios.get(`http://localhost:4500/api/buku/${id}`);
@@ -23,7 +22,6 @@ export const getBukuById = createAsyncThunk('buku/getBukuById', async (id) => {
         console.log(err)
     }
 })
-
 
 // type initialStateProps
 interface initialStateProps {
