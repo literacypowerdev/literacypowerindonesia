@@ -5,11 +5,12 @@ const Sidebar = () => {
 
 
     const menuItems = [
-        { id: 1, label: "Manage Buku", link: '/admin/dashboard/buku' },
-        { id: 2, label: "Manage Review", link: '/admin/dashboard/review' },
-        { id: 3, label: "Manage Proyek", link: '/admin/dashboard/proyek' },
-        { id: 4, label: "Manage Galery", link: '/admin/dashboard/galery' },
-        { id: 4, label: "Manage Subscribe", link: '/admin/dashboard/subscribe' },
+        { id: 1, label: "Homepage", link: '/' },
+        { id: 2, label: "Manage Buku", link: '/admin/dashboard/buku' },
+        { id: 3, label: "Manage Review", link: '/admin/dashboard/review' },
+        { id: 4, label: "Manage Proyek", link: '/admin/dashboard/proyek' },
+        { id: 5, label: "Manage Galery", link: '/admin/dashboard/galery' },
+        { id: 6, label: "Manage Subscribe", link: '/admin/dashboard/subscribe' },
     ]
 
     return (

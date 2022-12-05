@@ -9,4 +9,19 @@ const Review = () => {
   )
 }
 
+export const getServerSideProps = async () => {
+  try {
+
+
+  } catch (err) {
+    console.log(err)
+  }
+
+
+
+  return {
+    props: {}
+  }
+}
+
 export default Review

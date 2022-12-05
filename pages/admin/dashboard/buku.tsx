@@ -19,34 +19,27 @@ const Buku = ({ allBuku }: any) => {
     setShowForm(!showForm);
   }
 
-  const handleDelete = async (id: any) => {
-    try {
-      const deleteReq = await fetch(`http://localhost:4500/api/buku/${id}`, {
-        method: "DELETE",
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + cookieToken
-        },
-      })
-      const response = await deleteReq.json();
-      console.log(response)
-    } catch (err) {
-      console.log(err)
-    }
-    window.location.reload();
-  }
+  // const handleDelete = async (id: any) => {
+  //   try {
+  //     const deleteReq = await fetch(`http://localhost:4500/api/buku/${id}`, {
+  //       method: "DELETE",
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Authorization': 'Bearer ' + cookieToken
+  //       },
+  //     })
+  //     const response = await deleteReq.json();
+  //     console.log(response)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  //   window.location.reload();
+  // }
 
   return (
     <Layout>
-      <div className='flex gap-2 md:gap-10'>
-        <div className='w-fit h-fit'>
-          <div onClick={handleAdd} className='font-bold text-white rounded-lg bg-main-green px-5 py-3 w-fit mb-2 cursor-pointer'>
-            <button >Add</button>
-          </div>
-          <div className='w-fit'>
-            {showForm ? (<BukuForm />) : ''}
-          </div>
-        </div>
+      <div className='flex gap-2 md:gap-3'>
+
         <div>
           {allBuku.map((item: any) => {
             const { id, judul, ringkasan, coverUrl } = item
@@ -69,13 +62,21 @@ const Buku = ({ allBuku }: any) => {
                     </div>
                   </div>
                 </div>
-                <div onClick={() => dispatch(deleteBuku(id))} className='bg-red-500 hover:bg-red-300 h-fit px-3 py-1 rounded-sm text-white'>
+                <div onClick={() => dispatch(deleteBuku(id))} className='bg-red-500 hover:bg-red-300 h-fit px-3 py-1 rounded-sm text-white self-end'>
                   <button>delete</button>
                 </div>
               </div>
 
             )
           })}
+        </div>
+        <div className='w-fit h-fit flex gap-2'>
+          <div onClick={handleAdd} className='font-bold h-fit text-white rounded-lg bg-main-green px-5 py-3 w-fit mb-2 cursor-pointer shadow-md'>
+            <button >Add</button>
+          </div>
+          <div className='w-fit'>
+            {showForm ? (<BukuForm />) : ''}
+          </div>
         </div>
       </div>
     </Layout>
