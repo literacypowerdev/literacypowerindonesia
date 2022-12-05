@@ -3,21 +3,14 @@ import cookies from 'next-cookies'
 import Router from 'next/router'
 import { useAppDispatch } from '../../utils/hooks'
 import { loginSetToken } from '../../store/features/loginSlice'
+import { unauthPage } from '../../utils/unauthPage'
 const Cookie = require('js-cookie')
 
 
 export const getServerSideProps = async (context: any) => {
-  const allCookies = cookies(context);
-  if (allCookies.token)
-      return {
-          redirect: {
-              permanent: true,
-              destination: '/admin/dashboard'
-          }
-      }
+  unauthPage(context)
   return { props: {} }
 }
-
 
 const login = () => {
   const dispatch = useAppDispatch()

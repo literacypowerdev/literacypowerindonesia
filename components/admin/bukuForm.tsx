@@ -1,13 +1,8 @@
 import React, { SyntheticEvent, useState } from 'react'
 const Cookie = require('js-cookie')
 
-
-
-
-
-
 const BukuForm = () => {
-
+  
   interface bookDataProps {
     coverUrl: string
     judul: string
@@ -39,7 +34,6 @@ const BukuForm = () => {
 
   const cookieToken = Cookie.get('token')
   const handleSubmit = async (e: SyntheticEvent) => {
-    e.preventDefault();
     try {
       const create = await fetch('http://localhost:4500/api/buku', {
         method: "POST",
@@ -75,7 +69,7 @@ const BukuForm = () => {
         <input type="text" placeholder='halaman' name='halaman' onChange={handleChange} />
         <textarea placeholder='ringkasan' name='ringkasan' onChange={handleChange} />
         <textarea placeholder='review' name='review' onChange={handleChange} />
-        <button type='submit' className='px-4 py-2 bg-main-orange'>Add</button>
+        <button type='submit' className='px-4 py-2 bg-main-orange text-white'>Add</button>
       </form>
     </div>
   )

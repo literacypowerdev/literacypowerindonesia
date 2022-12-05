@@ -8,8 +8,6 @@ import Link from 'next/link'
 
 
 const AllAboutBook = ({ dataBuku }: any) => {
-    console.log(dataBuku)
-
     return (
         <>
             <div>

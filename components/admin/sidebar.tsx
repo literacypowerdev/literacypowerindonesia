@@ -12,7 +12,6 @@ const Sidebar = () => {
         { id: 4, label: "Manage Subscribe", link: '/admin/dashboard/subscribe' },
     ]
 
-
     return (
         <div className='w-fit bg-very-light-orange h-fit p-6'>
             <div className=''>
@@ -23,7 +22,7 @@ const Sidebar = () => {
                     return (
                         <ul key={index} >
                             <Link href={item.link}>
-                                <li className='cursor-pointer hover:bg-slate-200 p-2'>{item.label}</li>
+                                <li className='cursor-pointer hover:bg-main-green hover:text-white p-2 font-medium'>{item.label}</li>
                             </Link>
                         </ul>
                     )

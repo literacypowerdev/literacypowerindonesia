@@ -12,8 +12,7 @@ import { getBuku } from '../../store/features/bukuSlice'
 
 
 
-const AllAboutBooks = ({ buku }: any) => {
-    console.log(buku)
+const AllAboutBooks = ({ allBuku }: any) => {
     const dataBuku = useAppSelector((state) => state.buku.data)
     const dispatch = useAppDispatch()
     useEffect(() => {
@@ -36,7 +35,7 @@ const AllAboutBooks = ({ buku }: any) => {
                     <br />
                     <br />
                     <div>
-                        <AllAboutBook dataBuku={dataBuku} />
+                        <AllAboutBook dataBuku={allBuku} />
                     </div>
                     <br />
                     <br />
@@ -54,14 +53,17 @@ const AllAboutBooks = ({ buku }: any) => {
 
 // kalau mau pake getStaticProps
 export const getStaticProps = async () => {
-    const response = await fetch('http://localhost:4500/api/buku')
-    const data = await response.json();
-    const datas = data.data
-    return {
-        props: {
-            buku: datas
-        }
+    const bukuReq = await fetch('http://localhost:4500/api/buku', {
+    headers: {
+      "Content-Type": "application/json"
     }
+  });
+  const buku = await bukuReq.json();
+  return {
+    props: {
+      allBuku: buku.data
+    }
+  }
 }
 
 
