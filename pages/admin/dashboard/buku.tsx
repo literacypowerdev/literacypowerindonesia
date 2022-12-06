@@ -35,7 +35,6 @@ const Buku = ({ allBuku }: any) => {
       console.log("dinwandowa", err)
       console.log('tes')
     }
-   
   }
 
   const handleDelete2 = async (id: any) => {

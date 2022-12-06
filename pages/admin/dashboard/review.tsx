@@ -13,12 +13,11 @@ const Review = () => {
   const url = "http://localhost:4500/api/review"
   const fetcher = async (url: string) => await axios.get(url).then((res) => res.data.data)
   const { data, error } = useSWR(url, fetcher)
-  console.log(data)
 
   return (
     <Layout>
       <div className='flex gap-5'>
-        <div className='flex flex-col gap-5'>
+        <div className='flex flex-col gap-5 mb-5'>
           {data && data.map((item: any) => {
             return (
               <div key={item.id} className="w-full max-w-[1100px] text-center ml-5 h-fit bg-white shadow-lg  rounded-[20px] overflow-hidden p-4 pb-6 flex flex-col md:gap-2 transition-all duration-150 ease-in-out">
