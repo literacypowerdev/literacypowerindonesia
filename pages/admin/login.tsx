@@ -38,7 +38,7 @@ const login = () => {
       dispatch(loginSetToken(loginRes.data.token))
       Cookie.set('token', loginRes.data.token)
       setStatus('success');
-      Router.push('/admin/dashboard')
+      Router.push('/admin/dashboard/buku')
 
     } catch (err) {
       console.log(err)

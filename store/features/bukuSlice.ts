@@ -59,7 +59,8 @@ export const deleteBuku = createAsyncThunk('buku/deleteBuku', async (id: number)
         const response = await deleteReq.json();
         console.log(response)
     } catch (err) {
-        console.log(err)
+        console.log("dwuahdwuia", err)
+        Cookie.remove('token')
     }
 })
 
@@ -100,7 +101,12 @@ const bukuSlice = createSlice({
             }),
             builder.addCase(deleteBuku.fulfilled, (state, action) => {
                 state.loading = false
-                window.location.reload();
+                console.log('doiwjadioawj')
+                // window.location.reload();
+            }),
+            builder.addCase(deleteBuku.rejected, (state, action ) => {
+                state.error = action.payload
+                console.log(state.error)
             })
     }
 })
