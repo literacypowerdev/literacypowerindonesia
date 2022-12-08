@@ -10,6 +10,7 @@ const {
 } = require('../controller/review.controller');
 
 router.get('/', allReview);
+router.get('/admin/', tokenValidation, allReview);
 router.post('/', postReview);
 router.get('/:id', detailReview);
 router.put('/:id', tokenValidation, updateReview);

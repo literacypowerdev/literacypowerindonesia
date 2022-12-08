@@ -8,6 +8,7 @@ const {
 } = require('../controller/donasi.controller');
 
 router.get('/', allDonasi);
+router.get('/admin/', tokenValidation, allDonasi);
 router.post('/', postDonasi);
 router.delete('/:id', tokenValidation, deleteDonasi);
 

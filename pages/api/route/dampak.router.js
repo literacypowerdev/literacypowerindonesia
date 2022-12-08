@@ -10,6 +10,7 @@ const {
 } = require('../controller/dampak.controller');
 
 router.get('/', allDampak);
+router.get('/admin/', tokenValidation, allDampak);
 router.post('/', tokenValidation, postDampak);
 router.get('/:id', detailDampak);
 router.put('/:id', tokenValidation, updateDampak);

@@ -10,6 +10,7 @@ const {
 } = require('../controller/buku.controller');
 
 router.get('/', allBuku);
+router.get('/admin/', tokenValidation, allBuku);
 router.post('/', tokenValidation, postBuku);
 router.get('/:id', detailBuku)
 router.put('/:id', tokenValidation, updateBuku);

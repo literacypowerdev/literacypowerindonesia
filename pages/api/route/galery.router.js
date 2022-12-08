@@ -9,6 +9,7 @@ const {
 } = require('../controller/galery.controller');
 
 router.get('/', allGalery);
+router.get('/admin/', tokenValidation, allGalery);
 router.post('/', tokenValidation, uploadToGalery);
 router.get('/:id', tokenValidation, detailGalery);
 router.delete('/:id', tokenValidation, deleteFromGalery);
