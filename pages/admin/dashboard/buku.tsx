@@ -13,7 +13,6 @@ import axios from 'axios'
 const Buku = ({ allBuku }: any) => {
   const dispatch = useAppDispatch()
   const cookieToken = Cookie.get('token')
-  console.log(cookieToken)
 
   const [showForm, setShowForm] = useState(false)
   const handleAdd = () => {

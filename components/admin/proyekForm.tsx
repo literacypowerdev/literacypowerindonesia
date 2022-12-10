@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import React, { ReactNode, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { getProyek, postProyek } from '../../store/features/proyekSlice'
 import { useAppDispatch, useAppSelector } from '../../utils/hooks'
 
@@ -26,13 +26,7 @@ const ProyekForm = () => {
 
 
   const handleSubmit = async (e: any) => {
-    e.preventDefault()
-    try {
-      const result = await axios.post("http://localhost:4500/api/proyek", values);
-      console.log(result.response.data)
-    } catch (error: any) {
-      console.error(error.response.data)
-    }
+    
   }
 
   const handleChange = (e: any) => {

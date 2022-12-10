@@ -3,8 +3,12 @@ import useSWR from 'swr'
 import axios from 'axios'
 import Layout from '../../../components/admin/layout'
 import ReviewForm from '../../../components/admin/reviewForm'
+import { useAppDispatch } from '../../../utils/hooks'
+import { deleteReq } from '../../../store/features/reviewSlice'
+
 
 const Review = () => {
+  const dispatch = useAppDispatch()
   const [showForm, setShowForm] = useState(false)
   const handleAdd = () => {
     setShowForm(!showForm)
@@ -13,6 +17,11 @@ const Review = () => {
   const url = "http://localhost:4500/api/review"
   const fetcher = async (url: string) => await axios.get(url).then((res) => res.data.data)
   const { data, error } = useSWR(url, fetcher)
+  
+  const handleDelete = (id: any) => {
+    dispatch(deleteReq(id))
+  }
+
 
   return (
     <Layout>
@@ -28,7 +37,7 @@ const Review = () => {
                 </h2>
                 <p className="font-ptserif text-main-blue">“{item.testimoni}”</p>
                 <div className='bg-red-500 hover:bg-red-300 h-fit px-3 py-1 rounded-sm text-white self-end'>
-                  <button>delete</button>
+                  <button onClick={() => handleDelete(item.id)}>delete</button>
                 </div>
               </div>
             )
