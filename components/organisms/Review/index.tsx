@@ -3,6 +3,11 @@ import ReactPaginate from "react-paginate";
 import ProjectCard from "../../molecules/ProjectCard";
 import ReviewCard from "../../molecules/ReviewCard";
 
+
+
+
+
+
 export default function ReviewList() {
   const reviewData = [
     [
@@ -65,6 +70,20 @@ export default function ReviewList() {
 
     getData();
   }, []);
+
+  // const [contoh, setContoh] = useState([])
+  // useEffect(() =>  {
+  //   const fetchKocak = async () => {
+  //     const data = await fetch('http://localhost:4500/api/review')
+  //     const lawak = await data.json();
+  //     setContoh(lawak.data)
+  //   }
+  //   fetchKocak()
+  // },[])
+
+  // console.log("data useEffect: ", contoh)
+
+
 
   const fetchData = async (currentPage) => {
     const data = reviewData[currentPage - 1];
@@ -129,3 +148,4 @@ export default function ReviewList() {
     </>
   );
 }
+

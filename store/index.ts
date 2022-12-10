@@ -1,10 +1,16 @@
 import React from 'react'
 import { configureStore } from '@reduxjs/toolkit'
-import dampakReducer from './dampakData/dampakSlice'
+import proyekSlice from './features/proyekSlice';
+import bukuSlice from './features/bukuSlice';
+import loginSlice from './features/loginSlice';
+import reviewSlice from './features/reviewSlice';
 
 export const store = configureStore({
     reducer: {
-        dampak: dampakReducer,
+        proyek: proyekSlice,
+        buku: bukuSlice,
+        login: loginSlice,
+        review: reviewSlice
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
 });
