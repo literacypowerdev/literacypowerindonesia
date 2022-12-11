@@ -12,7 +12,7 @@ const AllAboutBook = ({ dataBuku }: any) => {
         <>
             <div>
                 {
-                    dataBuku.map((item: any, index: any) => {
+                    dataBuku && dataBuku.map((item: any, index: any) => {
                         return (
 
                             <AllAboutBooksCard

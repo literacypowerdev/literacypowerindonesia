@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import React, { useState, useEffect } from 'react'
-import { getProyek, postProyek } from '../../store/features/proyekSlice'
+import { postProyek } from '../../store/features/proyekSlice'
 import { useAppDispatch, useAppSelector } from '../../utils/hooks'
 
 interface valuesProps {
@@ -13,6 +13,7 @@ interface valuesProps {
 }
 
 const ProyekForm = () => {
+  const dispatch = useAppDispatch()
   const [values, setValues] = useState<valuesProps>({
     nama: '',
     lokasi: '',
@@ -21,12 +22,12 @@ const ProyekForm = () => {
     dampak_sesudah: '',
     dokumentasi: ''
   })
-  const dispatch = useAppDispatch()
-  const dataProyek = useAppSelector((state) => state.proyek.proyek)
-
+  
 
   const handleSubmit = async (e: any) => {
-    
+    e.preventDefault();
+    console.log('gas')
+    dispatch(postProyek(values))
   }
 
   const handleChange = (e: any) => {
@@ -34,16 +35,11 @@ const ProyekForm = () => {
   }
 
 
-  const handleGetProyek = () => {
-    console.log('berhasil')
-    dispatch(getProyek())
-  }
-
   return (
     <div className='p-5 flex'>
       <div>
         <h1>post proyek</h1>
-        <form onSubmit={handleSubmit} className='flex flex-col gap-3 w-52'>
+        <form onSubmit={handleSubmit} className='flex flex-col gap-3 w-52 text-black'>
           <input
             type="text"
             placeholder="isi nama"
@@ -80,12 +76,8 @@ const ProyekForm = () => {
             name="dokumentasi"
             onChange={handleChange}
           />
-          <button type='submit'>post</button>
+          <button className='bg-red-500' type='submit'>post</button>
         </form>
-      </div>
-      <div>
-        <h1>get proyek</h1>
-        <button onClick={handleSubmit} className='bg-slate-400 p-4'>get proyek here!</button>
       </div>
     </div>
   )
