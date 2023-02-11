@@ -31,8 +31,7 @@ const Buku = ({ allBuku }: any) => {
       const response = await deleteReq.json();
       console.log(response)
     } catch (err) {
-      console.log("dinwandowa", err)
-      console.log('tes')
+      console.log(err)
     }
   }
 
@@ -43,7 +42,7 @@ const Buku = ({ allBuku }: any) => {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + cookieToken
         },
-        
+
       })
 
 
@@ -52,12 +51,11 @@ const Buku = ({ allBuku }: any) => {
       Cookie.remove('token')
     }
   }
-
   return (
     <Layout>
       <div className='flex gap-2 md:gap-3'>
         <div>
-          {allBuku.map((item: any) => {
+           {allBuku.map((item: any) => {
             const { id, judul, ringkasan, coverUrl } = item
             return (
 

@@ -4,6 +4,7 @@ import { postProyek } from '../../store/features/proyekSlice'
 import { useAppDispatch, useAppSelector } from '../../utils/hooks'
 
 interface valuesProps {
+  thumbnail: any;
   nama: string;
   lokasi: string;
   content: string;
@@ -15,6 +16,7 @@ interface valuesProps {
 const ProyekForm = () => {
   const dispatch = useAppDispatch()
   const [values, setValues] = useState<valuesProps>({
+    thumbnail: '',
     nama: '',
     lokasi: '',
     content: '',
@@ -34,12 +36,16 @@ const ProyekForm = () => {
     setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-
   return (
-    <div className='p-5 flex'>
+    <div className='p-5 flex text-black'>
       <div>
-        <h1>post proyek</h1>
         <form onSubmit={handleSubmit} className='flex flex-col gap-3 w-52 text-black'>
+        <input
+            type="text"
+            placeholder="thumbnail"
+            name="thumbnail"
+            onChange={handleChange}
+          />
           <input
             type="text"
             placeholder="isi nama"
@@ -54,19 +60,19 @@ const ProyekForm = () => {
           />
           <textarea
             rows={5}
-            placeholder="Book desc"
+            placeholder="konten"
             name="content"
             onChange={handleChange}
           />
           <textarea
             rows={5}
-            placeholder="Book desc"
+            placeholder="dampak sebelum"
             name="dampak_sebelum"
             onChange={handleChange}
           />
           <textarea
             rows={5}
-            placeholder="Book desc"
+            placeholder="dampak sesudah"
             name="dampak_sesudah"
             onChange={handleChange}
           />

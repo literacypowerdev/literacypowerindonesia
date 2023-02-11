@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react'
+import React, { ReactComponentElement, ReactNode } from 'react'
 import Sidebar from './sidebar';
 
-const Layout = ({ children }: any) => {
+const Layout = ({ children }: React.PropsWithChildren) => {
   return (
     <div className=''>
       <div className="h-screen flex flex-row justify-start">

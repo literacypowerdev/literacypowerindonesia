@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react'
 import Layout from '../../../components/admin/layout'
 import useSWR from 'swr'
 import ProyekForm from '../../../components/admin/proyekForm'
+import { useAppDispatch } from '../../../utils/hooks'
+import { deleteReq } from '../../../store/features/proyekSlice'
+import { token } from '../../../utils/getCookie'
+import Router from 'next/router'
 const Cookie = require('js-cookie')
 
 
 const Proyek = () => {
-
+  const dispatch = useAppDispatch();
   // fetch with useSWR =============================================
   const CookieToken = Cookie.get('token');
   const url = "http://localhost:4500/api/proyek/admin"
@@ -16,8 +20,13 @@ const Proyek = () => {
         'Authorization': 'Bearer ' + CookieToken
       }
     })
-    const res = await response.json();
-    return res.data
+    const res = await response.json()
+    if (res.success == false) {
+      Cookie.remove('token')
+      Router.push('/')      
+    } else {
+      return res.data
+    }
   }
   const { data, error } = useSWR([url, CookieToken], fetcher)
   console.log(data)
@@ -26,6 +35,10 @@ const Proyek = () => {
   const [showForm, setShowForm] = useState(false)
   const handleAdd = () => {
     setShowForm(!showForm);
+  }
+
+  const handleDelete = async (id: any) => {
+    dispatch(deleteReq(id))
   }
 
 
@@ -55,6 +68,9 @@ const Proyek = () => {
                   <p className="font-ptserif text-justify text-main-blue group-hover:text-white transition-all duration-150 ease-in-out">
                     {item.content}
                   </p>
+                </div>
+                <div onClick={() => handleDelete(item.id)} className={`${item.id % 2 != 0 ? "self-end" : ""} bg-red-500 hover:bg-red-300 h-fit px-3 py-1 rounded-sm text-white `}>
+                  <button>delete</button>
                 </div>
               </div>
             )
