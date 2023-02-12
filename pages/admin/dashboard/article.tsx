@@ -1,32 +1,53 @@
 import React, { useState } from 'react'
 import Layout from '../../../components/admin/layout'
 const Cookie = require('js-cookie')
-import useSWR from 'swr'
+import useSWR, { useSWRConfig } from "swr";
 import Link from 'next/link'
+import axios from 'axios';
+import withTokenValidation from '../../../utils/tokenValidation';
 
 const Article = () => {
+    const CookieToken = Cookie.get('token');
+    const [showForm, setShowForm] = useState(false)
 
     // fetch with useSWR =============================================
-    const CookieToken = Cookie.get('token');
-    const url = "http://localhost:4500/api/article"
+    const { mutate } = useSWRConfig();
+    const endpoint = "http://localhost:4500/api/article/admin"
     const fetcher = async (url: string) => {
-        const response = await fetch(url, {
+        const response = await fetch(endpoint, {
             headers: {
                 'Authorization': 'Bearer ' + CookieToken
             }
         })
         const res = await response.json();
         return res.data
-    }
-    const { data, error } = useSWR([url, CookieToken], fetcher)
-    console.log(data)
-    // ===============================================================
 
-    const [showForm, setShowForm] = useState(false)
+    }
+    const { data } = useSWR("article", fetcher);
+    if (!data) return <h2>Loading...</h2>;
+    // fetch with useSWR =============================================
+
+    // handleDelete ==================================================
+    const handleDelete = async (id: any) => {
+        try {
+            await axios.delete(`http://localhost:4500/api/article/${id}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + CookieToken
+                }
+
+            })
+            mutate('article')
+
+        } catch (err) {
+            Cookie.remove('token')
+        }
+    }
+    // handleDelete ==================================================
+
     const handleAdd = () => {
         setShowForm(!showForm);
     }
-
 
 
     const imageUrl = 'http://localhost:4500/images/'
@@ -41,7 +62,7 @@ const Article = () => {
                         const content = item.content
                         return (
                             <div
-                                key={index}
+                                key={item.id}
                                 className={`w-full max-w-[1100px] mx-auto h-fit md:h-fit bg-white shadow-lg my-5 rounded-[20px] overflow-hidden p-4 flex flex-col ${justifyClass} flex gap-3 md:gap-5 transition-all duration-150 ease-in-out group hover:bg-main-green cursor-pointer`}
                             >
                                 <img
@@ -57,6 +78,9 @@ const Article = () => {
                                         {item.author}
                                     </p>
                                     <div className="font-ptserif text-justify text-main-blue group-hover:text-white transition-all duration-150 ease-in-out" dangerouslySetInnerHTML={{ __html: content }} />
+                                </div>
+                                <div onClick={() => handleDelete(item.id)} className='bg-red-500 hover:bg-red-300 h-fit px-3 py-1 rounded-sm text-white self-end'>
+                                    <button>delete</button>
                                 </div>
                             </div>
                         )
@@ -75,4 +99,4 @@ const Article = () => {
     )
 }
 
-export default Article
+export default withTokenValidation(Article);

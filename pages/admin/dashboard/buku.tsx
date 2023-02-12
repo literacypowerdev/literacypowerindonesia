@@ -33,7 +33,6 @@ const Buku = ({ allBuku }: any) => {
       window.location.reload();
 
     } catch (err) {
-      console.log("err bangetr", err)
       Cookie.remove('token')
     }
   }

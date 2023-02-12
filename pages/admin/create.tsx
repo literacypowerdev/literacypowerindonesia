@@ -4,7 +4,7 @@ import 'react-quill/dist/quill.snow.css';
 const Cookie = require('js-cookie')
 import axios from 'axios';
 import { useRouter } from 'next/router'
-
+import withTokenValidation from '../../utils/tokenValidation';
 
 const modules = {
     toolbar: [
@@ -71,4 +71,4 @@ const Create = () => {
   )
 }
 
-export default Create
+export default withTokenValidation(Create);
