@@ -25,14 +25,15 @@ const ProyekForm = () => {
   
 
   const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    console.log('gas')
+    e.preventDefault()
     dispatch(postProyek(values))
   }
 
   const handleChange = (e: any) => {
     setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
+
+
 
 
   return (

@@ -19,40 +19,25 @@ const Buku = ({ allBuku }: any) => {
     setShowForm(!showForm);
   }
 
+  
+
   const handleDelete = async (id: any) => {
     try {
-      const deleteReq = await fetch(`http://localhost:4500/api/buku/${id}`, {
-        method: "DELETE",
+      await axios.delete(`http://localhost:4500/api/buku/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + cookieToken
-        },
-      })
-      const response = await deleteReq.json();
-      console.log(response)
-    } catch (err) {
-      console.log("dinwandowa", err)
-      console.log('tes')
-    }
-  }
-
-  const handleDelete2 = async (id: any) => {
-    try {
-      const deleteRequest = await axios.delete(`http://localhost:4500/api/buku/${id}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + cookieToken
-        },
+        }
         
       })
-
+      window.location.reload();
 
     } catch (err) {
       console.log("err bangetr", err)
       Cookie.remove('token')
     }
   }
-
+  const imageUrl = 'http://localhost:4500/images/'
   return (
     <Layout>
       <div className='flex gap-2 md:gap-3'>
@@ -64,7 +49,7 @@ const Buku = ({ allBuku }: any) => {
               <div key={id} className='container p-3 flex flex-col md:flex-row mb-5 font-ptserif gap-4 rounded-md max-w-[771px] m-auto shadow-lg bg-white hover:bg-main-green hover:text-white transition-all duration-150 ease-in-out  text-black'>
                 <Link href={`/allaboutbooks/${id}`}>
                   <a className='image w-full md:w-[512px] bg-slate-300 rounded-md'>
-                    <img className='object-cover bg-contain' src={coverUrl} alt="" />
+                    <img className='object-cover bg-contain' src={`${imageUrl}${coverUrl}`} alt="" />
                   </a>
                 </Link>
 
@@ -80,7 +65,7 @@ const Buku = ({ allBuku }: any) => {
                     </div>
                   </div>
                 </div>
-                <div onClick={() => handleDelete2(id)} className='bg-red-500 hover:bg-red-300 h-fit px-3 py-1 rounded-sm text-white self-end'>
+                <div onClick={() => handleDelete(id)} className='bg-red-500 hover:bg-red-300 h-fit px-3 py-1 rounded-sm text-white self-end'>
                   <button>delete</button>
                 </div>
               </div>
@@ -106,7 +91,7 @@ export const getServerSideProps = async (context: any) => {
   const allCookies = cookies(context);
   unauthPageReverse(context);
 
-  const bukuReq = await fetch('http://localhost:4500/api/buku', {
+  const bukuReq = await fetch('http://localhost:4500/api/buku/', {
     headers: {
       'Authorization': 'Bearer ' + allCookies.token
     }

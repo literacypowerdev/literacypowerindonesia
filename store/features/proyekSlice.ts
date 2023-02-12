@@ -15,7 +15,7 @@ export const postProyek = createAsyncThunk('proyek/postProyek', async (values: a
             body: JSON.stringify(values)
         })
         const res = await response.json();
-        console.log(res)
+        console.log("responsenya", res)
 
 
     } catch (err) {
