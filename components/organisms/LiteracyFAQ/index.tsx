@@ -7,10 +7,11 @@ import Arrow from '/icon/accordion-arrow.svg'
 interface Content {
     title: string
     details: string[]
+    name: string
 }
 
 
-const LiteractFAQ = ({title, details}: Content) => {
+const LiteractFAQ = ({ title, details, name }: Content) => {
     // state
     const [isOpen, setIsOpen] = useState(false);
 
@@ -37,11 +38,28 @@ const LiteractFAQ = ({title, details}: Content) => {
 
                 <div className={`w-full flex flex-col gap-1 mb-2 ${isOpen ? "" : "hidden"}`}>
                     <div className='w-full m-auto bg-main-background mb-1 shadow-lg transition-all duration-150 ease-in-out cursor-pointer px-5 py-2 rounded-[20px] flex justify-start  gap-2'>
-                        <Image
-                            src={AccordionChild}
-                            width={20}
-                            height={20} />
-                        <h1>{details}</h1>
+                        <div className='flex flex-col'>
+
+                            <ul>
+                                <li className='flex flex-col gap-2'>{details.map((item) => {
+                                    return (
+                                        <div className='flex gap-2 items-center'>
+                                            <Image
+                                                src={AccordionChild}
+                                                width={20}
+                                                height={20}
+                                                
+                                            />
+                                            <p>{item}</p>
+
+                                        </div>
+                                    )
+                                })}</li>
+                            </ul>
+
+
+
+                        </div>
                     </div>
 
                 </div>

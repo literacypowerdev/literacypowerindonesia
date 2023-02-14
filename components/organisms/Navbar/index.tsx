@@ -119,7 +119,7 @@ export default function Navbar(props: NavbarProps) {
           <div className="hidden md:flex justify-center items-center rounded-full">
             <Link href="/apply">
               <div className="w-[100px] lg:w-[125px]">
-                <Button text="Apply" link border="full" size="large" />
+                <Button text="Apply" link border="full" size="large" animate={true} />
               </div>
             </Link>
           </div>

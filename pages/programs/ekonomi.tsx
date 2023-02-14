@@ -3,7 +3,6 @@ import Button from '../../components/atoms/Button'
 import Navbar from '../../components/organisms/Navbar'
 import { useAppDispatch, useAppSelector } from '../../utils/hooks'
 import type { AppDispatch, RootState } from '../../store'
-import { getDampak } from '../../store/dampakData/dampakSlice'
 import VerticalSlider from '../../components/molecules/VerticalSlider'
 import LiteractFAQ from '../../components/organisms/LiteracyFAQ'
 import Logo from '../../public/icon/logo.svg'
@@ -16,10 +15,6 @@ import Reviews from '../../components/organisms/Reviews'
 
 const ekonomi = () => {
     const headingContent = 'Literacy Power memberikan ruang bagi generasi muda untuk mengimplementasikan program pendidikan sesuai keahlian yang dimiliki. Relawan akan memiliki pengalaman dalam mengajar anak-anak dan memberikan bantuan berupa edukasi maupun mentoring di daerah yang berkekurangan. Tidak hanya itu, kemampuan untuk mengembangkan karakter pribadi dan membuka perspektif baru bisa didapatkan melalui program kerelawanan ini.'
-    // const dispatch = useAppDispatch();
-    // useEffect(() => {
-    //     dispatch(getDampak());
-    // },[])
 
     let siapayangcocok =
         'Literacy Power membutuhkan pribadi yang berjiwa sosial dan memiliki passion untuk membantu sesama. Selain itu, seseorang yang bisa beradaptasi, menyukai anak-anak, dan memiliki keahlian di bidang tertentu (mengajar bahasa inggris, matematika, atau keterampilan hidup, dll).'
@@ -27,13 +22,24 @@ const ekonomi = () => {
         {
             title: "Bagaimana Kamu Bisa Berdampak",
             details: [
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, error.'
+                'Membantu masyarakat lokal',
+                'Mengajar di sekolah alam',
+                'Melakukan pengajaran dengan modul buku yang dibuat Tim Literacy Power',
+                'Menjadi asisten guru',
+                'Mengajar bahasa inggris dan keterampilan lainnya',
+                'Webinar pendidikan',
+                'Membangun perpustakaan',
+                'Memberikan tutor atau mentoring, dsbnya.'
             ],
         },
         {
             title: "Apa Saja Syarat Menjadi Relawan",
             details: [
-                'Lorem ipsum dolor sit amet consectetur'
+                'Relawan memiliki umur 17-30 tahun',
+                'Memiliki fisik dan mental yang sehat',
+                'Memiliki ide program untuk diimplementasikan',
+                'Dapat bekerja sama dalam tim dan bertanggung jawab terhadap tugas yang diberikan',
+                'Dapat mengikuti protokol yang ditetapkan',
             ],
         },
         {
@@ -45,13 +51,20 @@ const ekonomi = () => {
         {
             title: "Berapa Biaya Mengikuti Kegiatan Relawan?",
             details: [
-                'Lorem ipsum dolor sit amet consectetur'
+                'Tergantung lokasi pengabdian.'
             ],
         },
         {
             title: "Apa Saja Benefit Yang Didapat?",
             details: [
-                'Lorem ipsum dolor sit amet consectetur'
+                'Tempat tinggal di rumah warga',
+                'Makan (sesuai durasi kegiatan relawan, 3x/hari)',
+                'Pendampingan program per divisi',
+                'Pendampingan fasilitator',
+                'Sertifikat',
+                'Transportasi PP untuk proyek luar Jawa (menggunakan kapal)',
+                'Asuransi perjalanan selama kegiatan'
+
             ],
         },
     ];
@@ -112,23 +125,23 @@ const ekonomi = () => {
                         alt=""
                         className='hidden md:block top-0 right-0 absolute w-40'
                     />
-                    <div className='literacyFAQ container m-auto pt-16'>
+                     <div className='literacyFAQ container m-auto pt-16 pb-16  '>
                         <div className='flex flex-col gap-3'>
                             <h1 className='text-xl font-semibold z-10'>
                                 Literacy Power F.A.Q
                             </h1>
+
                             <p className='text-justify w-full'>
                                 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
                                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est a neque ratione?
                             </p>
-                            <div className='literacyfAQ mb-[50vh] mt-4'>
-                                <LiteractFAQ title={FAQContent[0].title} details={FAQContent[0].details} />
-                                <LiteractFAQ title={FAQContent[1].title} details={FAQContent[1].details} />
-                                <LiteractFAQ title={FAQContent[2].title} details={FAQContent[2].details} />
-                                <LiteractFAQ title={FAQContent[3].title} details={FAQContent[3].details} />
-                                <LiteractFAQ title={FAQContent[4].title} details={FAQContent[4].details} />
+                            <div className='literacyfAQ py-5'>
+                                <LiteractFAQ title={FAQContent[0].title} details={FAQContent[0].details} name='bagaimana' />
+                                <LiteractFAQ title={FAQContent[1].title} details={FAQContent[1].details} name='syarat' />
+                                <LiteractFAQ title={FAQContent[2].title} details={FAQContent[2].details} name='jadwal' />
+                                <LiteractFAQ title={FAQContent[3].title} details={FAQContent[3].details} name='biaya' />
+                                <LiteractFAQ title={FAQContent[4].title} details={FAQContent[4].details} name='benefit' />
                             </div>
-
 
 
                         </div>
