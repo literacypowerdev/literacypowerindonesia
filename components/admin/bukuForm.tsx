@@ -49,7 +49,6 @@ const BukuForm = () => {
     } catch (err) {
       console.log(err)
     }
-    console.log(bookData)
     window.location.reload();
   }
 

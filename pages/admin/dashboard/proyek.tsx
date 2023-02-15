@@ -3,6 +3,7 @@ import Layout from '../../../components/admin/layout'
 import useSWR, { useSWRConfig } from "swr";
 import ProyekForm from '../../../components/admin/proyekForm'
 import axios from 'axios';
+import withTokenValidation from '../../../utils/tokenValidation';
 const Cookie = require('js-cookie')
 
 
@@ -101,4 +102,4 @@ const Proyek = () => {
   )
 }
 
-export default Proyek
+export default withTokenValidation(Proyek)

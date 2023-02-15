@@ -16,7 +16,6 @@ export const getServerSideProps = async (context: any) => {
         }
     });
     const buku = await bukuReq.json();
-    console.log(allCookies)
     return {
         props: {
             allBuku: buku.data,

@@ -100,7 +100,7 @@ export default function ReviewList() {
 
   return (
     <>
-      {items.map((item) => {
+      {items.map((item: any) => {
         return (
           <ReviewCard
             key={reviewData.id}

@@ -5,6 +5,7 @@ import Layout from '../../../components/admin/layout'
 import ReviewForm from '../../../components/admin/reviewForm'
 import { useAppDispatch } from '../../../utils/hooks'
 import { deleteReq } from '../../../store/features/reviewSlice'
+import withTokenValidation from '../../../utils/tokenValidation'
 
 
 const Review = () => {
@@ -57,4 +58,4 @@ const Review = () => {
 }
 
 
-export default Review
+export default withTokenValidation(Review)
