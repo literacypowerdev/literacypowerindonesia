@@ -25,6 +25,7 @@ const GaleryForm = () => {
             })
             const res = await response.json;
             console.log(res);
+            window.location.reload();
         } catch (err: any) {
             console.log('ERROR: ', err)
         }

@@ -22,7 +22,7 @@ export default function ProjectCard(props: ProjectCardProps) {
       >
         <img
           className="w-full md:w-[250px] h-[200px] md:h-[170px] object-cover rounded-t-[10px] md:rounded-[10px]"
-          src={thumbnail}
+          src={`http://localhost:4500/images/${thumbnail}`}
           alt="Thumbnail"
         />
         <div className="h-[258px] md:h-[170px] flex flex-col gap-2 md:gap-0 overflow-hidden">

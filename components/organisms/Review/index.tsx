@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import ProjectCard from "../../molecules/ProjectCard";
@@ -56,58 +57,28 @@ export default function ReviewList() {
     ],
   ];
 
-  const [items, setItems] = useState([]);
-
-  const [pageCount, setPageCount] = useState(0);
-
-  useEffect(() => {
-    const getData = async () => {
-      const total = reviewData.length;
-      setPageCount(total / 5 + 1);
-
-      setItems(reviewData[0]);
+  const [data, setData] = useState([]);
+    const [pageNumber, setPageNumber] = useState(0);
+    const fetchData = async () => {
+        const response = await axios.get(`http://localhost:4500/api/review`);
+        const data = await response.data.data
+        setData(data);
     };
-
-    getData();
-  }, []);
-
-  // const [contoh, setContoh] = useState([])
-  // useEffect(() =>  {
-  //   const fetchKocak = async () => {
-  //     const data = await fetch('http://localhost:4500/api/review')
-  //     const lawak = await data.json();
-  //     setContoh(lawak.data)
-  //   }
-  //   fetchKocak()
-  // },[])
-
-  // console.log("data useEffect: ", contoh)
-
-
-
-  const fetchData = async (currentPage) => {
-    const data = reviewData[currentPage - 1];
-    return data;
-  };
-
-  const handlePageClick = async (data: any) => {
-    console.log(data.selected);
-
-    let currentPage = data.selected + 1;
-    const dataFromServer = await fetchData(currentPage);
-    setItems(dataFromServer);
-  };
+    useEffect(() => {
+        fetchData();
+        console.log(data)
+    }, [pageNumber]);
 
   return (
     <>
-      {items.map((item: any) => {
+      {data.map((item: any) => {
         return (
           <ReviewCard
-            key={reviewData.id}
-            name={item.name}
-            occupation={item.occupation}
-            title={item.title}
-            content={item.content}
+            key={item.id}
+            name={item.username}
+            occupation={item.userProfession}
+            title="Good job for the team!"
+            content={item.testimoni}
           />
         );
       })}
@@ -116,10 +87,12 @@ export default function ReviewList() {
         previousLabel={"<"}
         nextLabel={">"}
         breakLabel={"..."}
-        pageCount={pageCount}
+        pageCount={3}
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
-        onPageChange={handlePageClick}
+        onPageChange={(data) => {
+          setPageNumber(data.selected);
+      }}
         containerClassName={"flex gap-2 mt-2 lg:mt-12 justify-center"}
         activeClassName={"underline bg-main-orange "}
         pageClassName={

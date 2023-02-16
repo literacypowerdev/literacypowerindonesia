@@ -164,7 +164,6 @@ const kesehatan = () => {
             </div>
             <Reviews />
             <Footer />
-            <Modal active='Kesehatan' />
 
 
 

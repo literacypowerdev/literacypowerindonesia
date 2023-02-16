@@ -1,13 +1,13 @@
-import React from 'react'
-
+import React, { SyntheticEvent } from 'react'
+import { useAppDispatch, useAppSelector } from '../../../utils/hooks'
+import { setQuery } from '../../../store/features/bukuSlice';
 
 const SearchFilter = () => {
-
-    
-
-
-
-
+const dispatch = useAppDispatch();    
+const handleQuery = (e: SyntheticEvent) => {
+    const target = e.target as HTMLInputElement;;
+    dispatch(setQuery(target.value))
+}
 
 
     return (
@@ -29,7 +29,11 @@ const SearchFilter = () => {
                     name="search-form"
                     id="search-form"
                     className="search-input w-full focus:outline-none"
-                    placeholder="Search" />
+                    placeholder="Search" 
+                    onChange={handleQuery}
+                    />
+                    
+                    
             </div>
         </div>
     )

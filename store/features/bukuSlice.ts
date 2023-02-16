@@ -6,6 +6,7 @@ const Cookie = require('js-cookie')
 interface initialStateProps {
     loading: boolean,
     data: [],
+    query: string,
     error: any
 }
 export const getBuku = createAsyncThunk('buku/getBuku', async () => {
@@ -71,9 +72,14 @@ const bukuSlice = createSlice({
     initialState: {
         loading: false,
         data: [],
+        query: '',
         error: null,
     } as initialStateProps,
-    reducers: {},
+    reducers: {
+        setQuery(state, action) {
+            state.query = action.payload
+        }
+    },
     extraReducers(builder) {
         builder.addCase(getBuku.pending, (state) => {
             state.loading = true;
@@ -111,5 +117,5 @@ const bukuSlice = createSlice({
 
 
 
-
+export const { setQuery } = bukuSlice.actions
 export default bukuSlice.reducer
