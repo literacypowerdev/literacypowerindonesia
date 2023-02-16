@@ -23,7 +23,12 @@ const AllAboutBook = ({ dataBuku }: any) => {
     }, [pageNumber]);
 
     const filteredData = data.filter((item: any) => {
-        return item.judul.toLowerCase().includes(query.toLowerCase());
+        if (query === '') {
+            return item.judul.toLowerCase().includes(query.toLowerCase());
+        } else {
+            return item.judul.toLowerCase().includes(query.toLowerCase());
+        }
+        
     });
 
     return (
@@ -31,7 +36,6 @@ const AllAboutBook = ({ dataBuku }: any) => {
             <div>
                 {filteredData.length > 0 ? (
                     filteredData.map((item: any, index: any) => {
-
                         return (
                             <AllAboutBooksCard
                                 id={item.id}
