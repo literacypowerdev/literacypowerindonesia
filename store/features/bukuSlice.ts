@@ -58,7 +58,7 @@ export const deleteBuku = createAsyncThunk('buku/deleteBuku', async (id: number)
         const response = await deleteReq.json();
         console.log(response)
     } catch (err) {
-        console.log("dwuahdwuia", err)
+        console.log(err)
         Cookie.remove('token')
     }
 })

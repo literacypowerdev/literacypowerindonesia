@@ -22,6 +22,23 @@ export const postProyek = createAsyncThunk('proyek/postProyek', async (values: a
     }
 })
 
+export const deleteReq = createAsyncThunk('proyek/deleteReq', async (id: any) => {
+    try {
+        const deleteReq = await fetch('http://localhost:4500/api/proyek/' + id, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            }
+        })
+        const response = await deleteReq.json();
+        console.log(response)
+    } catch (err) {
+        console.log('error kocak')
+    }
+})
+
+
 // type
 interface initialStateProps {
     loading: boolean
@@ -48,7 +65,17 @@ const proyekSlice = createSlice({
             builder.addCase(postProyek.rejected, (state, action) => {
                 state.loading = false
                 state.error = action.payload
+            }),
+            builder.addCase(deleteReq.fulfilled, (state, action) => {
+                state.loading = false
+                console.log('delete success')
+                window.location.reload();
+            }),
+            builder.addCase(deleteReq.rejected, (state, action) => {
+                state.loading = false
+                state.error = action.payload
             })
+
     },
 })
 
