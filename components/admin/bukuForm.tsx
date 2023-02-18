@@ -34,8 +34,9 @@ const BukuForm = () => {
 
   const cookieToken = Cookie.get('token')
   const handleSubmit = async (e: SyntheticEvent) => {
+    e.preventDefault();
     try {
-      const create = await fetch('http://localhost:4500/api/buku', {
+      await fetch('http://localhost:4500/api/buku', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,12 +44,12 @@ const BukuForm = () => {
         },
         body: JSON.stringify(bookData)
       })
-      const response = await create.json();
-      console.log(response);
+      
+     
     } catch (err) {
       console.log(err)
     }
-    console.log(bookData)
+    window.location.reload();
   }
 
   const handleChange = (e: any) => {

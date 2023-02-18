@@ -15,8 +15,7 @@ export const postProyek = createAsyncThunk('proyek/postProyek', async (values: a
             body: JSON.stringify(values)
         })
         const res = await response.json();
-        console.log(res)
-
+        window.location.reload();
 
     } catch (err) {
         console.log("ini errornya: ", err)

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import SearchFilter from '../../components/atoms/SearchFilter'
 import AllAboutBook from '../../components/organisms/AllAboutBooks'
 import Footer from '../../components/organisms/Footer'
@@ -7,18 +7,20 @@ import Reviews from '../../components/organisms/Reviews'
 import axios from 'axios'
 import { useAppDispatch, useAppSelector } from '../../utils/hooks'
 import { getBuku } from '../../store/features/bukuSlice'
+import ReactPaginate from 'react-paginate';
 
 
 
 
 
 const AllAboutBooks = ({ allBuku }: any) => {
-    const dataBuku = useAppSelector((state) => state.buku.data)
-    const dispatch = useAppDispatch()
-    useEffect(() => {
-        dispatch(getBuku());
-    }, [])
-
+    // const dataBuku = useAppSelector((state) => state.buku.data)
+    // const dispatch = useAppDispatch()
+    // useEffect(() => {
+    //     dispatch(getBuku());
+    //     console.log(allBuku)
+    // }, [])
+    
     return (
         <>
             <Navbar active='All About Books' />
@@ -47,23 +49,25 @@ const AllAboutBooks = ({ allBuku }: any) => {
                     <Footer />
                 </div>
             </div>
+            
         </>
+
     )
 }
 
 // kalau mau pake getStaticProps
 export const getStaticProps = async () => {
     const bukuReq = await fetch('http://localhost:4500/api/buku', {
-    headers: {
-      "Content-Type": "application/json"
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    const buku = await bukuReq.json();
+    return {
+        props: {
+            allBuku: buku.data
+        }
     }
-  });
-  const buku = await bukuReq.json();
-  return {
-    props: {
-      allBuku: buku.data
-    }
-  }
 }
 
 

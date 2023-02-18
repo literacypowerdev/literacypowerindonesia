@@ -80,21 +80,21 @@ export default function MobileMenu(props: MobileMenuProps) {
           </Link>
         </li>
         <li>
-          <Link href="/projects">
+          <Link href="/reviews">
             <a className="block w-100 py-4 px-6 text-main-orange hover:text-white font-ptserif transition duration-150 ease-in-out hover:bg-light-orange">
               Reviews
             </a>
           </Link>
         </li>
         <li>
-          <Link href="/projects">
+          <Link href="/allaboutbooks">
             <a className="block w-100 py-4 px-6 text-main-orange hover:text-white font-ptserif transition duration-150 ease-in-out hover:bg-light-orange">
               All About Books
             </a>
           </Link>
         </li>
         <li>
-          <Link href="/projects">
+          <Link href="/apply">
             <div className="w-[100px] mx-5 mt-2 mb-5">
               <Button text="Apply" border="full" size="normal" />
             </div>

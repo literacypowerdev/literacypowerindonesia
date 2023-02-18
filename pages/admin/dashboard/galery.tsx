@@ -10,17 +10,19 @@ const Galery = ({ data }: any) => {
 
   return (
     <Layout>
+      <GaleryForm />
       <div className='flex w-fit gap-10'>
         {data && data.map((item: any, index: any) => {
           return (
             <div key={index} className='w-[200px]'>
-              <img src={`http://localhost:3000/images/${item.filename}`} alt="" />
+              <p className='text-red-500'>{item.filename}</p>
+              <img src={`http://localhost:4500/images/${item.filename}`} alt="" />
             </div>
           )
         })}
       </div>
 
-      <GaleryForm />
+      
     </Layout>
   )
 }

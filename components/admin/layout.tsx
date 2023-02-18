@@ -1,7 +1,11 @@
-import React, { ReactComponentElement, ReactNode } from 'react'
+import React from 'react';
 import Sidebar from './sidebar';
 
-const Layout = ({ children }: React.PropsWithChildren) => {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className=''>
       <div className="h-screen flex flex-row justify-start">
@@ -12,6 +16,6 @@ const Layout = ({ children }: React.PropsWithChildren) => {
       </div>
     </div>
   );
-}
+};
 
-export default Layout
+export default Layout;

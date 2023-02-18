@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import ProjectCard from "../../molecules/ProjectCard";
@@ -88,16 +89,29 @@ export default function Projects() {
 
   useEffect(() => {
     const getData = async () => {
-      const total = projectsData.length;
-      setPageCount(total / 5 + 1);
+      // const total = projectsData.length;
+      // setPageCount(total / 5 + 1);
 
-      setItems(projectsData[0]);
+      // setItems(projectsData[0]);
+      try {
+        const res = await axios.get('http://localhost:4500/api/proyek')
+        const data = res.data.data;
+        const total = data.length;
+        setPageCount(total / 5 + 1);
+        setItems(data);
+        console.log(data[0])
+        return data
+
+      } catch (err) {
+        console.log(err);
+      }
+
     };
 
     getData();
   }, []);
 
-  const fetchData = async (currentPage) => {
+  const fetchData = async (currentPage: number) => {
     const data = projectsData[currentPage - 1];
     return data;
   };
@@ -106,21 +120,30 @@ export default function Projects() {
     console.log(data.selected);
 
     let currentPage = data.selected + 1;
-    const dataFromServer = await fetchData(currentPage);
+    const dataFromServer: any = await fetchData(currentPage);
     setItems(dataFromServer);
   };
 
   return (
     <>
-      {items.map((item) => {
+
+      {items.map((item: any) => {
+        const dateStr = item.tanggal;
+        const date = new Date(dateStr);
+        const dayOfMonth = date.getDate();
+        const month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(date);
+        const year = date.getFullYear();
+        const formattedDate = `${dayOfMonth} ${month} ${year}`;
         return (
+
+
           <ProjectCard
             key={item.id}
             id={item.id}
-            thumbnail={item.thumbnail}
-            name={item.name}
-            location={item.location}
-            date={item.date}
+            thumbnail={item.dokumentasi}
+            name={item.nama}
+            location={item.lokasi}
+            date={formattedDate}
             content={item.content}
           />
         );

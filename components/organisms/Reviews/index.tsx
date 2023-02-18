@@ -60,7 +60,6 @@ const Reviews = (props: ReviewsProps) => {
                     <div className="flex items-center justify-between">
                       <p className="font-semibold">{item.reviewer}</p>
                       <Image
-                        className=""
                         src={Kutip}
                         width={80}
                         height={80}
