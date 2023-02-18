@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import Router from 'next/router'
 const Cookie = require('js-cookie')
 
-
 const index = () => {
 
     const allCookies = Cookie.get('token')

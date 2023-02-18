@@ -49,7 +49,7 @@ const Create = () => {
                 data,
                 {
                     headers: {
-                        'Content-Type':'application/json',
+                        'Content-Type': 'application/json',
                         Authorization: `Bearer ${CookieToken}`,
                     },
                 }
@@ -60,15 +60,18 @@ const Create = () => {
             console.log(err);
         }
     }
-  return (
-    <form onSubmit={handleSubmit}>
-            <input type="title" placeholder='title' onChange={(e) => setTitle(e.target.value)} />
-            <input type="author" placeholder='summary' onChange={(e) => setAuthor(e.target.value)} />
-            <input type="file" onChange={(e) => setFiles(e.target.files)} />
-            <QuillNoSSRWrapper theme="snow" value={content} onChange={setContent} modules={modules} />
-            <button>Publish</button>
-        </form>
-  )
+    return (
+        <div className='p-5'>
+            <form onSubmit={handleSubmit} className='flex flex-col gap-5'>
+                <input className='px-3 py-2 w-fit' type="title" placeholder='title' onChange={(e) => setTitle(e.target.value)} />
+                <input className='px-3 py-2 w-fit' type="author" placeholder='author' onChange={(e) => setAuthor(e.target.value)} />
+                <p className='text-red-600'>*Wajib Upload Foto</p>
+                <input type="file" onChange={(e) => setFiles(e.target.files)} />
+                <QuillNoSSRWrapper theme="snow" value={content} onChange={setContent} modules={modules} className='h-[500px] mb-10' />
+                <button className='px-3 py-2 bg-main-green text-white w-fit '>Publish</button>
+            </form>
+        </div>
+    )
 }
 
 export default withTokenValidation(Create);

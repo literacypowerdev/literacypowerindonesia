@@ -59,7 +59,7 @@ const Article = () => {
                 <div className='w-fit'>
                     {!data ? <div><h1>loading</h1></div> : data.map((item: any, index: any) => {
                         const justifyClass = `${item.id % 2 != 0 ? "md:flex-row" : "md:flex-row-reverse"}`;
-                        const content = item.content
+                        const content = item.content.slice(0, 350) + '...'
                         return (
                             <div
                                 key={item.id}

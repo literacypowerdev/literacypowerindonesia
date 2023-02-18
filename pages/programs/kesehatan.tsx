@@ -76,7 +76,7 @@ const kesehatan = () => {
         <>
             <Navbar active='Programs' />
             <div className='m-auto mt-16 xl:text-xl font-ptserif'>
-                <div className='container m-auto heading flex flex-col-reverse md:flex-row md:w-[1300px] lg:w-10/12'>
+                <div className='container m-auto heading flex flex-col-reverse md:flex-row md:w-[1300px] lg:w-10/12 px-8 '>
                     <div className='left lg:pr-44 md:pr-24  flex flex-col gap-3'>
                         <h1 className='text-2xl font-bold'>
                             Program Kesehatan
@@ -131,7 +131,7 @@ const kesehatan = () => {
 
 
 
-                    <div className='literacyFAQ container m-auto pt-16 pb-16  '>
+                    <div className='literacyFAQ container m-auto pt-16 pb-16 px-8  '>
                         <div className='flex flex-col gap-3'>
                             <h1 className='text-xl font-semibold z-10'>
                                 Literacy Power F.A.Q
