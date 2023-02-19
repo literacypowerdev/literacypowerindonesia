@@ -3,13 +3,18 @@ import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import ProjectCard from "../../molecules/ProjectCard";
 import ReviewCard from "../../molecules/ReviewCard";
-
+import { animateScroll as scroll } from 'react-scroll';
 
 
 
 
 
 export default function ReviewList() {
+  const handleScrollToTop = () => {
+    scroll.scrollToTop({
+      duration: 150
+    });
+  };
   const reviewData = [
     [
       {
@@ -58,20 +63,18 @@ export default function ReviewList() {
   ];
 
   const [data, setData] = useState([]);
-    const [pageNumber, setPageNumber] = useState(0);
-    const fetchData = async () => {
-        const response = await axios.get(`http://localhost:4500/api/review`);
-        const data = await response.data.data
-        setData(data);
-    };
-    useEffect(() => {
-        fetchData();
-        console.log(data)
-    }, [pageNumber]);
+  const [pageNumber, setPageNumber] = useState(0);
+  const fetchData = async () => {
+    const response = await axios.get(`http://localhost:4500/api/article/pagination?page=${pageNumber}&table=review&pageSize=3`);
+    setData(response.data);
+  };
+  useEffect(() => {
+    fetchData();
+  }, [pageNumber]);
 
   return (
     <>
-      {data.map((item: any) => {
+      {data.length > 0 ? (data.map((item: any) => {
         return (
           <ReviewCard
             key={item.id}
@@ -81,9 +84,16 @@ export default function ReviewList() {
             content={item.testimoni}
           />
         );
-      })}
+      })) : (
+        <div className='text-center'>
+          <h1>There is no data</h1>
+        </div>
+      )
+
+      }
 
       <ReactPaginate
+        onClick={handleScrollToTop}
         previousLabel={"<"}
         nextLabel={">"}
         breakLabel={"..."}
@@ -92,7 +102,7 @@ export default function ReviewList() {
         pageRangeDisplayed={3}
         onPageChange={(data) => {
           setPageNumber(data.selected);
-      }}
+        }}
         containerClassName={"flex gap-2 mt-2 lg:mt-12 justify-center"}
         activeClassName={"underline bg-main-orange "}
         pageClassName={
