@@ -7,8 +7,6 @@ import axios from 'axios'
 import { useAppSelector } from '../../../utils/hooks';
 
 
-
-
 const AllAboutBook = ({ handleScroll }: any) => {
     const query = useAppSelector((state) => state.buku.query)
     const [data, setData] = useState([]);
@@ -17,6 +15,8 @@ const AllAboutBook = ({ handleScroll }: any) => {
         const response = await axios.get(`http://localhost:4500/api/article/pagination?page=${pageNumber}&table=buku&pageSize=3`);
         setData(response.data);
     };
+
+    
     useEffect(() => {
         fetchData();
     }, [pageNumber]);
