@@ -6,11 +6,12 @@ import MobileMenu from "./MobileMenu";
 
 export interface NavbarProps {
   active?: "Programs" | "Projects" | "Reviews" | "All About Books";
+ 
 }
 
 export default function Navbar(props: NavbarProps) {
   const { active } = props;
-
+  
   const [isOpen, setIsOpen] = useState(false);
 
   const [isProgramsOpen, setIsProgramsOpen] = useState(false);

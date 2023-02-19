@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import SearchFilter from '../../components/atoms/SearchFilter'
 import AllAboutBook from '../../components/organisms/AllAboutBooks'
 import Footer from '../../components/organisms/Footer'
@@ -20,11 +20,17 @@ const AllAboutBooks = ({ allBuku }: any) => {
     //     dispatch(getBuku());
     //     console.log(allBuku)
     // }, [])
-    
+    const targetRef = useRef<any>(null);
+    const handleScroll = () => {
+        targetRef.current.scrollIntoView({ behavior: 'smooth' });
+    };
+
     return (
         <>
-            <Navbar active='All About Books' />
-            <div className='bg-body-doodle bg-contain bg-repeat w-full'>
+            <div ref={targetRef}>
+                <Navbar active='All About Books' />
+            </div>
+            <div className='bg-body-doodle bg-contain bg-repeat w-full' >
                 <div className='container w-[90%] m-auto'>
                     <div className='Heading text-center mt-20 mb-14 font-semibold font-ptserif text-4xl text-main-green'>
                         <h1>
@@ -37,7 +43,7 @@ const AllAboutBooks = ({ allBuku }: any) => {
                     <br />
                     <br />
                     <div>
-                        <AllAboutBook dataBuku={allBuku} />
+                        <AllAboutBook handleScroll={handleScroll} />
                     </div>
                     <br />
                     <br />
@@ -49,7 +55,7 @@ const AllAboutBooks = ({ allBuku }: any) => {
                     <Footer />
                 </div>
             </div>
-            
+
         </>
 
     )

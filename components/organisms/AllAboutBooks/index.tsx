@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, } from 'react'
 import ReactPaginate from "react-paginate";
 import AllAboutBooksCard from '../../molecules/AllAboutBooksCard';
 import ProjectCard from '../../molecules/ProjectCard';
@@ -9,32 +9,30 @@ import { useAppSelector } from '../../../utils/hooks';
 
 
 
-const AllAboutBook = ({ dataBuku }: any) => {
+const AllAboutBook = ({ handleScroll }: any) => {
     const query = useAppSelector((state) => state.buku.query)
     const [data, setData] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
     const fetchData = async () => {
-        const response = await axios.get(`http://localhost:4500/api/buku?page=${pageNumber}`);
-        const data = await response.data.data
-        setData(data);
+        const response = await axios.get(`http://localhost:4500/api/article/pagination?page=${pageNumber}&table=buku&pageSize=3`);
+        setData(response.data);
     };
     useEffect(() => {
         fetchData();
     }, [pageNumber]);
 
-    const filteredData = data.filter((item: any) => {
+    const filteredData = data && data.filter((item: any) => {
         if (query === '') {
             return item.judul.toLowerCase().includes(query.toLowerCase());
         } else {
             return item.judul.toLowerCase().includes(query.toLowerCase());
         }
-        
-    });
 
+    });
     return (
         <>
             <div>
-                {filteredData.length > 0 ? (
+                {filteredData?.length > 0 ? (
                     filteredData.map((item: any, index: any) => {
                         return (
                             <AllAboutBooksCard
@@ -55,15 +53,17 @@ const AllAboutBook = ({ dataBuku }: any) => {
 
             </div>
             <ReactPaginate
+                onClick={handleScroll}
                 previousLabel={"<"}
                 nextLabel={">"}
                 breakLabel={"..."}
-                pageCount={2}
+                pageCount={3}
                 marginPagesDisplayed={2}
                 pageRangeDisplayed={3}
                 onPageChange={(data) => {
                     setPageNumber(data.selected);
                 }}
+
                 containerClassName={"flex gap-2 mt-2 lg:mt-12 justify-center"}
                 activeClassName={"underline bg-main-orange "}
                 pageClassName={
