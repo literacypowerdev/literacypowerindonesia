@@ -5,9 +5,16 @@ import ProjectCard from '../../molecules/ProjectCard';
 import Link from 'next/link'
 import axios from 'axios'
 import { useAppSelector } from '../../../utils/hooks';
+import { animateScroll as scroll } from 'react-scroll';
 
 
-const AllAboutBook = ({ handleScroll }: any) => {
+
+const AllAboutBook = () => {
+    const handleScrollToTop = () => {
+        scroll.scrollToTop({
+          duration: 150
+        });
+      };
     const query = useAppSelector((state) => state.buku.query)
     const [data, setData] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
@@ -53,7 +60,7 @@ const AllAboutBook = ({ handleScroll }: any) => {
 
             </div>
             <ReactPaginate
-                onClick={handleScroll}
+                onClick={handleScrollToTop}
                 previousLabel={"<"}
                 nextLabel={">"}
                 breakLabel={"..."}

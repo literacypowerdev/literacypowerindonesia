@@ -20,16 +20,10 @@ const AllAboutBooks = ({ allBuku }: any) => {
     //     dispatch(getBuku());
     //     console.log(allBuku)
     // }, [])
-    const targetRef = useRef<any>(null);
-    const handleScroll = () => {
-        targetRef.current.scrollIntoView({ behavior: 'smooth' });
-    };
 
     return (
         <>
-            <div ref={targetRef}>
-                <Navbar active='All About Books' />
-            </div>
+            <Navbar active='All About Books' />
             <div className='bg-body-doodle bg-contain bg-repeat w-full' >
                 <div className='container w-[90%] m-auto'>
                     <div className='Heading text-center mt-20 mb-14 font-semibold font-ptserif text-4xl text-main-green'>
@@ -43,7 +37,7 @@ const AllAboutBooks = ({ allBuku }: any) => {
                     <br />
                     <br />
                     <div>
-                        <AllAboutBook handleScroll={handleScroll} />
+                        <AllAboutBook />
                     </div>
                     <br />
                     <br />

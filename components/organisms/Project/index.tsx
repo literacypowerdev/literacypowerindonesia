@@ -2,8 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import ProjectCard from "../../molecules/ProjectCard";
+import { animateScroll as scroll } from 'react-scroll';
 
 export default function Projects() {
+  const handleScrollToTop = () => {
+    scroll.scrollToTop({
+      duration: 150
+    });
+  };
+
   const projectsData = [
     [
       {
@@ -83,105 +90,82 @@ export default function Projects() {
     ],
   ];
 
-  const [items, setItems] = useState([]);
-
-  const [pageCount, setPageCount] = useState(0);
-
+  const [data, setData] = useState([]);
+  const [pageNumber, setPageNumber] = useState(0);
+  const fetchData = async () => {
+    const response = await axios.get(`http://localhost:4500/api/article/pagination?page=${pageNumber}&table=proyek&pageSize=3`);
+    setData(response.data);
+  };
   useEffect(() => {
-    const getData = async () => {
-      // const total = projectsData.length;
-      // setPageCount(total / 5 + 1);
-
-      // setItems(projectsData[0]);
-      try {
-        const res = await axios.get('http://localhost:4500/api/proyek')
-        const data = res.data.data;
-        const total = data.length;
-        setPageCount(total / 5 + 1);
-        setItems(data);
-        console.log(data[0])
-        return data
-
-      } catch (err) {
-        console.log(err);
-      }
-
-    };
-
-    getData();
-  }, []);
-
-  const fetchData = async (currentPage: number) => {
-    const data = projectsData[currentPage - 1];
-    return data;
-  };
-
-  const handlePageClick = async (data: any) => {
-    console.log(data.selected);
-
-    let currentPage = data.selected + 1;
-    const dataFromServer: any = await fetchData(currentPage);
-    setItems(dataFromServer);
-  };
+    fetchData();
+  }, [pageNumber]);
 
   return (
     <>
+      {data.length > 0 ? (
+        data.map((item: any) => {
+          const dateStr = item.tanggal;
+          const date = new Date(dateStr);
+          const dayOfMonth = date.getDate();
+          const month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(date);
+          const year = date.getFullYear();
+          const formattedDate = `${dayOfMonth} ${month} ${year}`;
+          return (
 
-      {items.map((item: any) => {
-        const dateStr = item.tanggal;
-        const date = new Date(dateStr);
-        const dayOfMonth = date.getDate();
-        const month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(date);
-        const year = date.getFullYear();
-        const formattedDate = `${dayOfMonth} ${month} ${year}`;
-        return (
 
-
-          <ProjectCard
-            key={item.id}
-            id={item.id}
-            thumbnail={item.dokumentasi}
-            name={item.nama}
-            location={item.lokasi}
-            date={formattedDate}
-            content={item.content}
-          />
-        );
-      })}
-
-      <ReactPaginate
-        previousLabel={"<"}
-        nextLabel={">"}
-        breakLabel={"..."}
-        pageCount={pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={3}
-        onPageChange={handlePageClick}
-        containerClassName={"flex gap-2 mt-2 lg:mt-12 justify-center"}
-        activeClassName={"underline bg-main-orange "}
-        pageClassName={
-          "w-7 h-7 bg-very-light-orange rounded-lg hover:bg-main-orange"
-        }
-        pageLinkClassName={
-          "text-white font-ptserif w-full h-full flex justify-center items-center"
-        }
-        previousClassName={
-          "w-7 h-7 bg-very-light-orange rounded-lg hover:bg-main-orange"
-        }
-        previousLinkClassName={
-          "text-white font-ptserif w-full h-full flex justify-center items-center"
-        }
-        nextClassName={
-          "w-7 h-7 bg-very-light-orange rounded-lg hover:bg-main-orange"
-        }
-        nextLinkClassName={
-          "text-white font-ptserif w-full h-full flex justify-center items-center"
-        }
-        breakClassName={"w-7 h-7"}
-        breakLinkClassName={
-          "text-very-light-orange font-ptserif w-full h-full flex justify-center items-center cursor-default"
-        }
-      />
+            <ProjectCard
+              key={item.id}
+              id={item.id}
+              thumbnail={item.dokumentasi}
+              name={item.nama}
+              location={item.lokasi}
+              date={formattedDate}
+              content={item.content}
+            />
+          );
+        })
+      ) : (
+        <div className='text-center'>
+          <h1>There is no data</h1>
+        </div>
+      )}
+      
+        <ReactPaginate
+        onClick={handleScrollToTop}
+          previousLabel={"<"}
+          nextLabel={">"}
+          breakLabel={"..."}
+          pageCount={3}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={3}
+          onPageChange={(data) => {
+            setPageNumber(data.selected);
+          }}
+          containerClassName={"flex gap-2 mt-2 lg:mt-12 justify-center"}
+          activeClassName={"underline bg-main-orange "}
+          pageClassName={
+            "w-7 h-7 bg-very-light-orange rounded-lg hover:bg-main-orange"
+          }
+          pageLinkClassName={
+            "text-white font-ptserif w-full h-full flex justify-center items-center"
+          }
+          previousClassName={
+            "w-7 h-7 bg-very-light-orange rounded-lg hover:bg-main-orange"
+          }
+          previousLinkClassName={
+            "text-white font-ptserif w-full h-full flex justify-center items-center"
+          }
+          nextClassName={
+            "w-7 h-7 bg-very-light-orange rounded-lg hover:bg-main-orange"
+          }
+          nextLinkClassName={
+            "text-white font-ptserif w-full h-full flex justify-center items-center"
+          }
+          breakClassName={"w-7 h-7"}
+          breakLinkClassName={
+            "text-very-light-orange font-ptserif w-full h-full flex justify-center items-center cursor-default"
+          }
+        />
     </>
   );
 }
