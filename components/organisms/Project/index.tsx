@@ -4,7 +4,7 @@ import ReactPaginate from "react-paginate";
 import ProjectCard from "../../molecules/ProjectCard";
 import { animateScroll as scroll } from 'react-scroll';
 
-export default function Projects() {
+export default function Projects({ children }: any) {
   const handleScrollToTop = () => {
     scroll.scrollToTop({
       duration: 150
@@ -96,12 +96,12 @@ export default function Projects() {
     const response = await axios.get(`http://localhost:4500/api/article/pagination?page=${pageNumber}&table=proyek&pageSize=3`);
     setData(response.data);
     setLoading(false)
-    
+
   };
   useEffect(() => {
     fetchData();
   }, [pageNumber]);
-
+  
   return (
     <>
       {loading ? (
@@ -118,15 +118,18 @@ export default function Projects() {
             const year = date.getFullYear();
             const formattedDate = `${dayOfMonth} ${month} ${year}`;
             return (
-              <ProjectCard
+              <><ProjectCard
                 key={item.id}
                 id={item.id}
                 thumbnail={item.dokumentasi}
                 name={item.nama}
                 location={item.lokasi}
                 date={formattedDate}
-                content={item.content}
-              />
+                content={item.content} />
+
+
+
+              </>
             );
           })
         ) : ''

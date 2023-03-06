@@ -7,6 +7,12 @@ import axios from 'axios'
 import { useAppSelector } from '../../../utils/hooks';
 import { animateScroll as scroll } from 'react-scroll';
 
+interface BookData {
+    id: number;
+    judul: string;
+    ringkasan: string;
+    coverUrl: string;
+  }
 
 
 const AllAboutBook = () => {
@@ -28,7 +34,7 @@ const AllAboutBook = () => {
         fetchData();
     }, [pageNumber]);
 
-    const filteredData = data && data.filter((item: any) => {
+    const filteredData = data && data.filter((item: BookData) => {
         if (query === '') {
             return item.judul.toLowerCase().includes(query.toLowerCase());
         } else {
@@ -40,7 +46,7 @@ const AllAboutBook = () => {
         <>
             <div>
                 {filteredData?.length > 0 ? (
-                    filteredData.map((item: any, index: any) => {
+                    filteredData.map((item: BookData, index: number) => {
                         return (
                             <AllAboutBooksCard
                                 id={item.id}

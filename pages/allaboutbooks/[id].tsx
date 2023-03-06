@@ -38,7 +38,7 @@ const AllAboutBooksSinglePages = ({ buku }: any) => {
           <div className='Heading-Image flex flex-col md:flex-row gap-5'>
             <div className='image'>
 
-              <div className='w-[257px] bg-slate-200 h-[257px] rounded-lg'><img src={buku.coverUrl} alt="" /></div>
+              <div className='w-[275px] h-fit bg-slate-200 rounded-lg'><img src={`http://localhost:4500/images/${buku.coverUrl}`} alt="" /></div>
             </div>
             <div className='identitas-buku flex flex-col'>
               <h1>Judul: {buku.judul}</h1>

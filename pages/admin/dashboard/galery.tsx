@@ -3,26 +3,52 @@ import Layout from '../../../components/admin/layout'
 import axios from 'axios'
 import cookies from 'next-cookies'
 import GaleryForm from '../../../components/admin/galeryForm'
+const Cookie = require('js-cookie')
 
-// {`http://localhost:3000/images/${item.filename}`}
 
 const Galery = ({ data }: any) => {
+  const cookieToken = Cookie.get('token')
+  const handleDelete = async (id: number) => {
+    try {
+      await axios.delete(`http://localhost:4500/api/galery/${id}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + cookieToken
+        }
+
+      })
+      window.location.reload();
+
+    } catch (err) {
+      Cookie.remove('token')
+    }
+  }
+
+
 
   return (
     <Layout>
-      <GaleryForm />
-      <div className='flex w-fit gap-10'>
-        {data && data.map((item: any, index: any) => {
-          return (
-            <div key={index} className='w-[200px]'>
-              <p className='text-red-500'>{item.filename}</p>
-              <img src={`http://localhost:4500/images/${item.filename}`} alt="" />
-            </div>
-          )
-        })}
+      <div className='w-full flex flex-col'>
+        <GaleryForm />
+        <div className='grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10'>
+          {data && data.map((item: any, index: any) => {
+            return (
+              <div className='max-w-[400px]' key={item.id_galery}>              
+                  <p className='text-red-500 break-words'>{item.filename}</p>
+                <div className='w-full h-auto'>
+                  <img src={`http://localhost:4500/images/${item.filename}`} alt="" />
+                </div>
+                <div onClick={() => handleDelete(item.id_galery)} className='bg-red-500 hover:bg-red-300 h-fit w-fit px-3 py-1 rounded-sm text-white self-end'>
+                  <button>delete</button>
+                </div>
+              </div>
+            )
+          })}
+        </div>
       </div>
 
-      
+
+
     </Layout>
   )
 }
@@ -56,8 +82,5 @@ export const getServerSideProps = async (context: any) => {
     }
   }
 }
-
-
-
 
 export default Galery

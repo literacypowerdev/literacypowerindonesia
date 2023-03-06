@@ -10,7 +10,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className=''>
       <div className="h-screen flex flex-row justify-start">
         <Sidebar />
-        <div className="bg-primary flex-1 p-4 text-white">
+        <div className="bg-primary flex flex-col p-4 text-white">
           {children}
         </div>
       </div>

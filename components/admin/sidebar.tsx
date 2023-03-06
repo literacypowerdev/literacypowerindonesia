@@ -15,8 +15,8 @@ const Sidebar = () => {
     ]
 
     return (
-        <div className='w-fit bg-very-light-orange h-fit p-6'>
-            <div className=''>
+        <div className='bg-very-light-orange h-fit p-6'>
+            <div className='min-w-[300px]'>
                 <div className='p-3 font-bold'>
                     <h1>Literacy Power Dashboard</h1>
                 </div>

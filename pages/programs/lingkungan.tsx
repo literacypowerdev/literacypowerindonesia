@@ -74,7 +74,7 @@ const lingkungan = () => {
         <>
             <Navbar active='Programs' />
             <div className='m-auto mt-16 xl:text-xl font-ptserif'>
-                <div className='container m-auto heading flex flex-col-reverse md:flex-row md:w-[1300px] lg:w-10/12 px-8 '>
+                <div className='container m-auto heading flex flex-col-reverse md:flex-row md:w-[1300px] lg:w-10/12 px-5 '>
                     <div className='left lg:pr-44 md:pr-24  flex flex-col gap-3'>
                         <h1 className='text-2xl font-bold'>
                             Program Lingkungan
@@ -84,7 +84,7 @@ const lingkungan = () => {
                         </p>
                         <div className='button w-full md:w-80 font-semibold'>
                             {/* button */}
-                            <Button text='Lihat Program lainnya' border='full' size='normal' />
+                            <Button text='Apply Program' border='full' size='normal' />
                         </div>
                     </div>
                     <div className='right'>
@@ -129,7 +129,7 @@ const lingkungan = () => {
 
 
 
-                    <div className='literacyFAQ container m-auto pt-16 pb-16 px-8  '>
+                    <div className='literacyFAQ container m-auto pt-16 pb-16 px-5  '>
                         <div className='flex flex-col gap-3'>
                             <h1 className='text-xl font-semibold z-10'>
                                 Literacy Power F.A.Q

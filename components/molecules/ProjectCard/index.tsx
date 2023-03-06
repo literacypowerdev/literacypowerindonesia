@@ -14,7 +14,7 @@ export default function ProjectCard(props: ProjectCardProps) {
   const { id, thumbnail, name, location, date, content } = props;
 
   const justifyClass = `${id % 2 != 0 ? "md:flex-row" : "md:flex-row-reverse"}`;
-
+  console.log(name)
   return (
     <Link href={`/projects/${id}`}>
       <div
@@ -25,7 +25,7 @@ export default function ProjectCard(props: ProjectCardProps) {
           src={`http://localhost:4500/images/${thumbnail}`}
           alt="Thumbnail"
         />
-        <div className="h-[258px] md:h-[170px] flex flex-col gap-2 md:gap-0 overflow-hidden">
+        <div className="h-[260px] md:h-[180px] flex flex-col gap-2 md:gap-0 overflow-hidden">
           <h2 className="font-ptserif text-base group-hover:text-white font-bold text-main-orange transition-all duration-150 ease-in-out">
             {name} - {location}
           </h2>
@@ -33,7 +33,7 @@ export default function ProjectCard(props: ProjectCardProps) {
             {date}
           </p>
           <p className="font-ptserif text-justify text-main-blue group-hover:text-white transition-all duration-150 ease-in-out">
-            {content}
+            {content.slice(0,530)}...
           </p>
         </div>
       </div>

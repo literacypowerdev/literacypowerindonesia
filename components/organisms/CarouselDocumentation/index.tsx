@@ -19,7 +19,7 @@ export default function SimpleSlider() {
     <div className="w-[80%] m-auto mt-10">
       <Slider {...settings} className=''>
 
-        {images.map((each: any, id: any) => {
+        {images.map((each: string, id: number) => {
           return (
             <div key={id} className="py-2 text-center">
               <Image

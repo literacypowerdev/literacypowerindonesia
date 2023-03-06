@@ -89,7 +89,7 @@ const Article = () => {
                 </div>
                 <div className='w-fit h-fit flex gap-2'>
                     <div onClick={handleAdd} className='font-bold h-fit text-white rounded-lg bg-main-green px-5 py-3 w-fit mb-2 cursor-pointer shadow-md'>
-                        <Link href="/admin/create"><button>Create Article</button></Link>
+                    <Link href="/admin/create"><button>Create Article</button></Link>
                     </div>
                 </div>
             </div>
