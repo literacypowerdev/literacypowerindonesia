@@ -14,14 +14,14 @@ export default function Documentation() {
   }
 
 
-  // useEffect(() => {
-  //   gsap.registerPlugin(Draggable);
-  //   Draggable.create(boxRef.current, {
-  //     bounds: "body",
-  //     inertia: true,
-  //     onDrag: () => setIsResetVisible(true)
-  //   });
-  // }, [])
+  useEffect(() => {
+    gsap.registerPlugin(Draggable);
+    Draggable.create(boxRef.current, {
+      bounds: "body",
+      inertia: true,
+      onDrag: () => setIsResetVisible(true)
+    });
+  }, [])
   const images = [
     "/images/fotoslider1.png",
     "/images/fotoslider2.png",
