@@ -93,7 +93,7 @@ export default function Projects({ children }: any) {
   const [data, setData] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const fetchData = async () => {
-    const response = await axios.get(`http://localhost:4500/api/article/pagination?page=${pageNumber}&table=proyek&pageSize=3`);
+    const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=proyek&pageSize=3`);
     setData(response.data);
     setLoading(false)
 
@@ -101,7 +101,7 @@ export default function Projects({ children }: any) {
   useEffect(() => {
     fetchData();
   }, [pageNumber]);
-  
+
   return (
     <>
       {loading ? (
@@ -118,6 +118,7 @@ export default function Projects({ children }: any) {
             const year = date.getFullYear();
             const formattedDate = `${dayOfMonth} ${month} ${year}`;
             return (
+
               <><ProjectCard
                 key={item.id}
                 id={item.id}

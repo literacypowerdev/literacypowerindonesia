@@ -10,7 +10,7 @@ export const getServerSideProps = async (context: any) => {
     const allCookies = cookies(context);
     unauthPageReverse(context);
 
-    const bukuReq = await fetch('http://localhost:4500/api/buku', {
+    const bukuReq = await fetch('https://api.literacypowerid.com/api/buku', {
         headers: {
             'Authorization': 'Bearer ' + allCookies.token
         }

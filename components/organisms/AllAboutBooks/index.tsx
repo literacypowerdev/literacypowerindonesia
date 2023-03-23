@@ -12,24 +12,24 @@ interface BookData {
     judul: string;
     ringkasan: string;
     coverUrl: string;
-  }
+}
 
 
 const AllAboutBook = () => {
     const handleScrollToTop = () => {
         scroll.scrollToTop({
-          duration: 150
+            duration: 150
         });
-      };
+    };
     const query = useAppSelector((state) => state.buku.query)
     const [data, setData] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
     const fetchData = async () => {
-        const response = await axios.get(`http://localhost:4500/api/article/pagination?page=${pageNumber}&table=buku&pageSize=3`);
+        const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=buku&pageSize=3`);
         setData(response.data);
     };
 
-    
+
     useEffect(() => {
         fetchData();
     }, [pageNumber]);
@@ -49,6 +49,7 @@ const AllAboutBook = () => {
                     filteredData.map((item: BookData, index: number) => {
                         return (
                             <AllAboutBooksCard
+                                key={index}
                                 id={item.id}
                                 title={item.judul}
                                 content={item.ringkasan}

@@ -14,21 +14,27 @@ export default function Documentation() {
   }
 
 
-  useEffect(() => {
-    gsap.registerPlugin(Draggable);
-    Draggable.create(boxRef.current, {
-      bounds: "body",
-      inertia: true,
-      onDrag: () => setIsResetVisible(true)
-    });
-  }, [])
-
-
-
+  // useEffect(() => {
+  //   gsap.registerPlugin(Draggable);
+  //   Draggable.create(boxRef.current, {
+  //     bounds: "body",
+  //     inertia: true,
+  //     onDrag: () => setIsResetVisible(true)
+  //   });
+  // }, [])
+  const images = [
+    "/images/fotoslider1.png",
+    "/images/fotoslider2.png",
+    "/images/fotoslider3.png",
+    "/images/fotoslider4.png",
+    "/images/fotoslider5.png",
+    "/images/fotoslider6.png",
+  ];
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [imageSelectedIndex, setImageSelectedIndex] = useState<number>(0)
+  console.log(imageSelectedIndex);
   return (
     <>
-
-
       <div ref={boxRef} className="w-[280px] md:w-[540px] xl:w-[800px] mx-auto -mt-[120px] rounded-[18px] overflow-hidden shadow-xl">
         {isResetVisible && <div onClick={handleReset} className="absolute bottom-0">
           <button className="p-2">
@@ -45,10 +51,23 @@ export default function Documentation() {
         </div>
         <div className="w-full py-5 md:px-10 h-[280px] md:h-[200px] xl:h-[290px] bg-white">
           <div className="w-full">
-            <DocSlider />
+            <DocSlider setImageSelectedIndex={setImageSelectedIndex} setShowModal={setShowModal} />
           </div>
         </div>
       </div>
+      {showModal && (<div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+          <div className="relative pb-2/3">
+            <img src={images[imageSelectedIndex]} alt="" className="w-[600px]" />
+          </div>
+          <button className="absolute top-0 right-0 m-4 p-2 bg-main-green text-white rounded-full" onClick={() => setShowModal(!showModal)}>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>)}
+
     </>
   );
 }

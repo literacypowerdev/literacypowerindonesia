@@ -45,7 +45,7 @@ const Create = () => {
         try {
             e.preventDefault();
             const res = await axios.post(
-                'http://localhost:4500/api/article',
+                'https://api.literacypowerid.com/api/article',
                 data,
                 {
                     headers: {

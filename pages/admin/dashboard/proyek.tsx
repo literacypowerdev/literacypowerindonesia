@@ -14,7 +14,7 @@ const Proyek = () => {
 
   // fetch with useSWR =============================================
   const { mutate } = useSWRConfig();
-  const endpoint = "http://localhost:4500/api/proyek/admin"
+  const endpoint = "https://api.literacypowerid.com/api/proyek/admin"
   const fetcher = async (url: string) => {
     const response = await fetch(endpoint, {
       headers: {
@@ -32,7 +32,7 @@ const Proyek = () => {
   // handleDelete ==================================================
   const handleDelete = async (id: any) => {
     try {
-      await axios.delete(`http://localhost:4500/api/proyek/${id}`, {
+      await axios.delete(`https://api.literacypowerid.com/api/proyek/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + CookieToken
@@ -51,7 +51,7 @@ const Proyek = () => {
     setShowForm(!showForm);
   }
 
-  const imageUrl = 'http://localhost:4500/images/'
+  const imageUrl = 'https://api.literacypowerid.com/images/'
 
 
   return (

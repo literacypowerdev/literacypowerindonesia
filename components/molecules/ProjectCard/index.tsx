@@ -22,7 +22,7 @@ export default function ProjectCard(props: ProjectCardProps) {
       >
         <img
           className="w-full md:w-[250px] h-[200px] md:h-[170px] object-cover rounded-t-[10px] md:rounded-[10px]"
-          src={`http://localhost:4500/images/${thumbnail}`}
+          src={`https://api.literacypowerid.com/images/${thumbnail}`}
           alt="Thumbnail"
         />
         <div className="h-[260px] md:h-[180px] flex flex-col gap-2 md:gap-0 overflow-hidden">

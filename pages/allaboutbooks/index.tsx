@@ -57,7 +57,7 @@ const AllAboutBooks = ({ allBuku }: any) => {
 
 // kalau mau pake getStaticProps
 export const getStaticProps = async () => {
-    const bukuReq = await fetch('http://localhost:4500/api/buku', {
+    const bukuReq = await fetch('https://api.literacypowerid.com/api/buku', {
         headers: {
             "Content-Type": "application/json"
         }

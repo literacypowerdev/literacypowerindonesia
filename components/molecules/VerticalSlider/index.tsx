@@ -33,9 +33,10 @@ const VerticalSlider = () => {
     return (
         <div className='w-72'>
             <Slider {...settings}>
-                {images.map((image) => (
+                {images.map((image, index) => (
                     <div className="">
                         <Image
+                            key={index}
                             className="object-cover z-10 rounded-lg"
                             width={300}
                             height={300}

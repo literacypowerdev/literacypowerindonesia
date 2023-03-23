@@ -15,7 +15,7 @@ const Review = () => {
     setShowForm(!showForm)
   }
 
-  const url = "http://localhost:4500/api/review"
+  const url = "https://api.literacypowerid.com/api/review"
   const fetcher = async (url: string) => await axios.get(url).then((res) => res.data.data)
   const { data, error } = useSWR(url, fetcher)
   

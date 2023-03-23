@@ -14,7 +14,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async (paths: number | any) => {
-  const response = await fetch(`http://localhost:4500/api/buku/${paths.params.id}`);
+  const response = await fetch(`https://api.literacypowerid.com/api/buku/${paths.params.id}`);
   const data = await response.json();
 
   return {
@@ -38,7 +38,7 @@ const AllAboutBooksSinglePages = ({ buku }: any) => {
           <div className='Heading-Image flex flex-col md:flex-row gap-5'>
             <div className='image'>
 
-              <div className='w-[275px] h-fit bg-slate-200 rounded-lg'><img src={`http://localhost:4500/images/${buku.coverUrl}`} alt="" /></div>
+              <div className='w-[275px] h-fit bg-slate-200 rounded-lg'><img src={`https://api.literacypowerid.com/images/${buku.coverUrl}`} alt="" /></div>
             </div>
             <div className='identitas-buku flex flex-col'>
               <h1>Judul: {buku.judul}</h1>

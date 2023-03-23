@@ -6,7 +6,7 @@ const token = Cookie.get('token')
 
 export const postProyek = createAsyncThunk('proyek/postProyek', async (values: any) => {
     try {
-        const response = await fetch('http://localhost:4500/api/proyek', {
+        const response = await fetch('https://api.literacypowerid.com/api/proyek', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ export const postProyek = createAsyncThunk('proyek/postProyek', async (values: a
 
 export const deleteReq = createAsyncThunk('proyek/deleteReq', async (id: any) => {
     try {
-        const deleteReq = await fetch('http://localhost:4500/api/proyek/' + id, {
+        const deleteReq = await fetch('https://api.literacypowerid.com/api/proyek/' + id, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

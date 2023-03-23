@@ -11,7 +11,7 @@ interface initialStateProps {
 }
 export const getBuku = createAsyncThunk('buku/getBuku', async () => {
     try {
-        const response = await axios.get('http://localhost:4500/api/buku')
+        const response = await axios.get('https://api.literacypowerid.com/api/buku')
         const data = await response.data.data
         return data
     } catch (err) {
@@ -21,7 +21,7 @@ export const getBuku = createAsyncThunk('buku/getBuku', async () => {
 // optional
 export const getBukuById = createAsyncThunk('buku/getBukuById', async (id) => {
     try {
-        const response = await axios.get(`http://localhost:4500/api/buku/${id}`);
+        const response = await axios.get(`https://api.literacypowerid.com/api/buku/${id}`);
         const data = await response.data.data
         return data
     } catch (err) {
@@ -31,7 +31,7 @@ export const getBukuById = createAsyncThunk('buku/getBukuById', async (id) => {
 // pr belum dirapihin
 export const postBuku = createAsyncThunk('buku/postBuku', async (bookData, token) => {
     try {
-        const create = await fetch('http://localhost:4500/api/buku', {
+        const create = await fetch('https://api.literacypowerid.com/api/buku', {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
@@ -48,7 +48,7 @@ export const postBuku = createAsyncThunk('buku/postBuku', async (bookData, token
 export const deleteBuku = createAsyncThunk('buku/deleteBuku', async (id: number) => {
     const cookieToken = Cookie.get('token') 
     try {
-        const deleteReq = await fetch(`http://localhost:4500/api/buku/${id}`, {
+        const deleteReq = await fetch(`https://api.literacypowerid.com/api/buku/${id}`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',

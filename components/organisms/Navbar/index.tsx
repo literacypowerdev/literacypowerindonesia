@@ -45,7 +45,7 @@ export default function Navbar(props: NavbarProps) {
                 className={`text-white font-ptserif cursor-pointer ${active == "Programs" ? "underline" : ""
                   }`}
               >
-                Programs
+                Divisions
               </p>
 
               <ul
@@ -55,33 +55,36 @@ export default function Navbar(props: NavbarProps) {
                   } w-[150px] h-fit bg-white absolute rounded-md overflow-hidden top-8`}
               >
                 <li>
-                  <Link href="/programs/kesehatan" passHref>
-                    <a className="text-main-orange block w-full px-4 py-2 font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange hover:text-white">
-                      Kesehatan
-                    </a>
-                  </Link>
-                </li>
-                <li>
                   <Link href="/programs/pendidikan" passHref>
                     <a className="text-main-orange block w-full px-4 py-2 font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange hover:text-white">
-                      Pendidikan
+                      Literasi Sekolah
                     </a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/programs/lingkungan" passHref>
                     <a className="text-main-orange block w-full px-4 py-2 font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange hover:text-white">
-                      Lingkungan
+                      Literasi Lingkungan
                     </a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/programs/ekonomi" passHref>
                     <a className="text-main-orange block w-full px-4 py-2 font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange hover:text-white">
-                      Ekonomi
+                      Literasi Ekonomi
                     </a>
                   </Link>
                 </li>
+                <li>
+                  <Link href="/programs/kesehatan" passHref>
+                    <a className="text-main-orange block w-full px-4 py-2 font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange hover:text-white">
+                      Literasi Kesehatan
+                    </a>
+                  </Link>
+                </li>
+
+
+
               </ul>
             </li>
             <li>
@@ -91,6 +94,16 @@ export default function Navbar(props: NavbarProps) {
                     }`}
                 >
                   Projects
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/projects" passHref>
+                <a
+                  className={`text-white font-ptserif ${active == "Projects" ? "underline" : ""
+                    }`}
+                >
+                  Programs
                 </a>
               </Link>
             </li>

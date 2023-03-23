@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 import Slider from "react-slick";
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 
-export default function DocSlider() {
+export default function DocSlider({setImageSelectedIndex, setShowModal}: any) {
   const settings = {
     dots: true,
     infinite: true,
@@ -38,19 +38,33 @@ export default function DocSlider() {
     "/images/fotoslider6.png",
   ];
 
+  const [imageSelected, setImageSelected] = useState<number>(0)
+
+  const handleZoom = (index: any) => {
+    setImageSelected(index)
+    setImageSelectedIndex(index)
+    setShowModal(true)
+  }
+
   return (
-    <Slider {...settings}>
-      {images.map((image) => (
-        <div key={"key"} className="px-5 md:px-2">
-          <Image
-            className="object-cover z-10 rounded-lg"
-            width={300}
-            height={300}
-            src={image}
-            alt="Dokumentasi"
-          />
-        </div>
-      ))}
-    </Slider>
+    <>
+      <Slider {...settings}>
+        {images.map((image, index) => (
+          <div key={"key"} className="px-5 md:px-2"  >
+            <Image
+              key={index}
+              id={`image${index}`}
+              onClick={() => handleZoom(index)}
+              className="object-cover z-10 rounded-lg"
+              width={300}
+              height={300}
+              src={image}
+              alt="Dokumentasi"
+            />
+          </div>
+        ))}
+      </Slider>
+      
+    </>
   );
 }

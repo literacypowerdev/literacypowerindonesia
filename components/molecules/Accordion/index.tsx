@@ -25,7 +25,7 @@ export default function Accordion(prop: AccordionProps) {
         {steps.map((item, index) => {
           return (
             <div
-              key=""
+              key={index}
               className="w-full bg-white px-5 py-2 rounded-[20px] shadow-md flex justify-center"
             >
               <h2 className="text-main-orange font-ptserif text-center">

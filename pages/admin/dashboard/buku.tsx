@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import BukuForm from '../../../components/admin/bukuForm'
 import Layout from '../../../components/admin/layout'
 import { unauthPageReverse } from '../../../utils/unauthPage'
 import cookies from 'next-cookies'
@@ -8,6 +7,8 @@ import { useAppDispatch } from '../../../utils/hooks'
 import { deleteBuku } from '../../../store/features/bukuSlice'
 const Cookie = require('js-cookie')
 import axios from 'axios'
+import BukuForm from '../../../components/admin/bukuForm'
+import ProyekForm from '../../../components/admin/proyekForm'
 
 
 const Buku = ({ allBuku }: any) => {
@@ -23,7 +24,7 @@ const Buku = ({ allBuku }: any) => {
 
   const handleDelete = async (id: any) => {
     try {
-      await axios.delete(`http://localhost:4500/api/buku/${id}`, {
+      await axios.delete(`https://api.literacypowerid.com/api/buku/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + cookieToken
@@ -36,7 +37,7 @@ const Buku = ({ allBuku }: any) => {
       Cookie.remove('token')
     }
   }
-  const imageUrl = 'http://localhost:4500/images/'
+  const imageUrl = 'https://api.literacypowerid.com/images/'
   return (
     <Layout>
       <div className='flex gap-2 md:gap-3'>
@@ -90,7 +91,7 @@ export const getServerSideProps = async (context: any) => {
   const allCookies = cookies(context);
   unauthPageReverse(context);
 
-  const bukuReq = await fetch('http://localhost:4500/api/buku/', {
+  const bukuReq = await fetch('https://api.literacypowerid.com/api/buku/', {
     headers: {
       'Authorization': 'Bearer ' + allCookies.token
     }

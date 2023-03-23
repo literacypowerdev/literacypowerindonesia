@@ -135,10 +135,10 @@ const lingkungan = () => {
                                 Literacy Power F.A.Q
                             </h1>
 
-                            <p className='text-justify w-full'>
+                            {/* <p className='text-justify w-full'>
                                 is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
                                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est a neque ratione?
-                            </p>
+                            </p> */}
                             <div className='literacyfAQ py-5'>
                                 <LiteractFAQ title={FAQContent[0].title} details={FAQContent[0].details} name='bagaimana' />
                                 <LiteractFAQ title={FAQContent[1].title} details={FAQContent[1].details} name='syarat' />

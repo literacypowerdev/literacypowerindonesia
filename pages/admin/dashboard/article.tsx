@@ -12,7 +12,7 @@ const Article = () => {
 
     // fetch with useSWR =============================================
     const { mutate } = useSWRConfig();
-    const endpoint = "http://localhost:4500/api/article/admin"
+    const endpoint = "https://api.literacypowerid.com/api/article/admin"
     const fetcher = async (url: string) => {
         const response = await fetch(endpoint, {
             headers: {
@@ -30,7 +30,7 @@ const Article = () => {
     // handleDelete ==================================================
     const handleDelete = async (id: any) => {
         try {
-            await axios.delete(`http://localhost:4500/api/article/${id}`, {
+            await axios.delete(`https://api.literacypowerid.com/api/article/${id}`, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + CookieToken
@@ -50,7 +50,7 @@ const Article = () => {
     }
 
 
-    const imageUrl = 'http://localhost:4500/images/'
+    const imageUrl = 'https://api.literacypowerid.com/images/'
 
 
     return (

@@ -13,7 +13,7 @@ const AllAboutBooksCard = ({ id, title, content, image }: bukuProps) => {
         <Link href={`/allaboutbooks/${id}`}>
             <div className='container p-3 flex flex-col md:flex-row mb-5 font-ptserif gap-4 rounded-md max-w-[771px] m-auto shadow-md bg-white hover:bg-main-green hover:text-white transition-all duration-150 ease-in-out cursor-pointer'>
                 <div className='image md:w-[512px] bg-slate-300 rounded-md'>
-                    <img className='h-full' src={`http://localhost:4500/images/${image}`} alt="" />
+                    <img className='h-full' src={`https://api.literacypowerid.com/images/${image}`} alt="" />
                 </div>
                 <div className='content flex flex-col gap-2 text-justify'>
                     <p className='font-bold text-main-orange'>{title}</p>

@@ -10,7 +10,7 @@ const Galery = ({ data }: any) => {
   const cookieToken = Cookie.get('token')
   const handleDelete = async (id: number) => {
     try {
-      await axios.delete(`http://localhost:4500/api/galery/${id}`, {
+      await axios.delete(`https://api.literacypowerid.com/api/galery/${id}`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + cookieToken
@@ -36,7 +36,7 @@ const Galery = ({ data }: any) => {
               <div className='max-w-[400px]' key={item.id_galery}>              
                   <p className='text-red-500 break-words'>{item.filename}</p>
                 <div className='w-full h-auto'>
-                  <img src={`http://localhost:4500/images/${item.filename}`} alt="" />
+                  <img src={`https://api.literacypowerid.com/images/${item.filename}`} alt="" />
                 </div>
                 <div onClick={() => handleDelete(item.id_galery)} className='bg-red-500 hover:bg-red-300 h-fit w-fit px-3 py-1 rounded-sm text-white self-end'>
                   <button>delete</button>
@@ -58,7 +58,7 @@ export const getServerSideProps = async (context: any) => {
   const token = allCookies.token
   console.log(token);
   try {
-    const res = await axios.get('http://localhost:4500/api/galery/admin', {
+    const res = await axios.get('https://api.literacypowerid.com/api/galery/admin', {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token

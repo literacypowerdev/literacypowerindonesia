@@ -4,7 +4,7 @@ const Cookie = require('js-cookie')
 
 const GaleryForm = () => {
     const token = Cookie.get("token");
-    const [image, setImage] = useState('https://fakeimg.pl/350x200/')
+    const [image, setImage] = useState('https://fakeimg.pl/1280x720/')
     const [saveImage, setSaveImage] = useState<any>(null)
     const handleUploadImage = (e: SyntheticEvent | any) => {
         let uploaded = e.target.files[0];
@@ -16,7 +16,7 @@ const GaleryForm = () => {
         let formData = new FormData();
         formData.append("file", saveImage)
         try {
-            const response = await fetch('http://localhost:4500/api/galery', {
+            const response = await fetch('https://api.literacypowerid.com/api/galery', {
                 method: "POST",
                 headers: {
                     'Authorization': 'Bearer ' + token
