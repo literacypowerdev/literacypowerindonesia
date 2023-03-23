@@ -19,11 +19,11 @@ export default function Navbar(props: NavbarProps) {
   return (
     <nav className="z-30">
       <div className="w-full h-[90px] md:h-[100px] bg-main-orange flex justify-center relative z-20">
-        <div className="w-11/12 md:w-10/12 h-full flex justify-between items-center">
+        <div className="w-11/12 md:w-11/12 h-full flex justify-between items-center">
           <div className="w-[72px] md:w-[82px] h-full py-2 cursor-pointer">
 
             <Link href="/" passHref>
-              <a href="">
+              <a href="" >
                 <Image
                   src="/icon/logo.svg"
                   alt="Logo"
@@ -37,7 +37,7 @@ export default function Navbar(props: NavbarProps) {
 
           <ul
             onMouseLeave={() => setIsProgramsOpen(false)}
-            className="w-fit h-full gap-4 lg:gap-16 xl:gap-28 hidden md:flex items-center"
+            className="w-fit h-full sm:gap-5 md:gap-8 lg:gap-16 xl:gap-28 hidden md:flex  items-center"
           >
             <li className="relative">
               <p
