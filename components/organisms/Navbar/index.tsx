@@ -57,7 +57,7 @@ export default function Navbar(props: NavbarProps) {
                 <li>
                   <Link href="/programs/pendidikan" passHref>
                     <a className="text-main-orange block w-full px-4 py-2 font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange hover:text-white">
-                      Literasi Sekolah
+                      Literasi <br /> Sekolah
                     </a>
                   </Link>
                 </li>
