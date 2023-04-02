@@ -22,8 +22,8 @@ export default function About() {
   };
 
   return (
-    <div className="w-full py-16 lg:py-[120px] bg-body-doodle bg-contain">
-      <div className="flex flex-col gap-8 md:gap-10 lg:gap-16">
+    <div className="w-full py-16 lg:py-[120px] bg-body-doodle bg-contain ">
+      <div className="flex flex-col gap-8 py-20 md:gap-10 lg:gap-16 lg:py-32">
         <AboutContent
           emphasize
           title={contents.tentang.title}

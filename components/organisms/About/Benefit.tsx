@@ -23,7 +23,10 @@ export default function Benefit() {
 
   return (
     <div className="w-11/12 mx-auto mt-10 md:mt-12 lg:mt-16 flex flex-col items-center">
-      <h2 className="w-fit px-2 text-base lg:text-title3 font-ptserif font-bold text-main-background bg-main-green text-center">
+      <h2
+        className="w-fit px-2 text-base lg:text-title3 font-ptserif font-bold text-main-background bg-main-green text-center"
+        data-aos="fade-up"
+      >
         Kenapa harus menjadi Relawan Literacy Power
       </h2>
       <div className="w-full mt-7 lg:mt-10 flex flex-col gap-4 items-center">
