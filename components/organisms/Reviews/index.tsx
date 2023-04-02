@@ -41,9 +41,11 @@ const Reviews = (props: ReviewsProps) => {
               </div>
             </Link>
           ) : (
-            <div className="Button font-bold max-w-[400px] min-w-[200px]">
-              <Button text="See More Reviews" size="normal" border="full" />
-            </div>
+            <Link href="/reviews">
+              <div className="Button font-bold max-w-[400px] min-w-[200px]">
+                <Button text="See More Reviews" size="normal" border="full" />
+              </div>
+            </Link>
           )}
           {/* <Button text="See More Reviews" size="normal" border="full" /> */}
         </div>
@@ -59,12 +61,7 @@ const Reviews = (props: ReviewsProps) => {
                     </p>
                     <div className="flex items-center justify-between">
                       <p className="font-semibold">{item.reviewer}</p>
-                      <Image
-                        src={Kutip}
-                        width={80}
-                        height={80}
-                        alt="Quote"
-                      />
+                      <Image src={Kutip} width={80} height={80} alt="Quote" />
                     </div>
                   </div>
                 );
