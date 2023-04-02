@@ -3,16 +3,12 @@ import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import ProjectCard from "../../molecules/ProjectCard";
 import ReviewCard from "../../molecules/ReviewCard";
-import { animateScroll as scroll } from 'react-scroll';
-
-
-
-
+import { animateScroll as scroll } from "react-scroll";
 
 export default function ReviewList() {
   const handleScrollToTop = () => {
     scroll.scrollToTop({
-      duration: 150
+      duration: 150,
     });
   };
   const reviewData = [
@@ -65,7 +61,9 @@ export default function ReviewList() {
   const [data, setData] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const fetchData = async () => {
-    const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=review&pageSize=3`);
+    const response = await axios.get(
+      `https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=review&pageSize=3`
+    );
     setData(response.data);
   };
   useEffect(() => {
@@ -74,23 +72,23 @@ export default function ReviewList() {
 
   return (
     <>
-      {data.length > 0 ? (data.map((item: any) => {
-        return (
-          <ReviewCard
-            key={item.id}
-            name={item.username}
-            occupation={item.userProfession}
-            title="Good job for the team!"
-            content={item.testimoni}
-          />
-        );
-      })) : (
-        <div className='text-center'>
-          <h1>There is no data</h1>
+      {data.length > 0 ? (
+        data.map((item: any) => {
+          return (
+            <ReviewCard
+              key={item.id}
+              name={item.username}
+              occupation={item.userProfession}
+              title="Good job for the team!"
+              content={item.testimoni}
+            />
+          );
+        })
+      ) : (
+        <div className="text-center">
+          <h1>No review yet</h1>
         </div>
-      )
-
-      }
+      )}
 
       <ReactPaginate
         onClick={handleScrollToTop}
@@ -131,4 +129,3 @@ export default function ReviewList() {
     </>
   );
 }
-
