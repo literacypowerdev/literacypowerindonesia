@@ -6,7 +6,6 @@ import MobileMenu from "./MobileMenu";
 
 export interface NavbarProps {
   active?: "Programs" | "Projects" | "Reviews" | "Article" | "All About Books";
-
 }
 
 export default function Navbar(props: NavbarProps) {
@@ -21,9 +20,8 @@ export default function Navbar(props: NavbarProps) {
       <div className="w-full h-[90px] md:h-[100px] bg-main-orange flex justify-center relative z-20">
         <div className="w-11/12 md:w-11/12 h-full flex justify-between items-center">
           <div className="w-[72px] md:w-[82px] h-full py-2 cursor-pointer">
-
             <Link href="/" passHref>
-              <a href="" >
+              <a href="">
                 <Image
                   src="/icon/logo.svg"
                   alt="Logo"
@@ -32,7 +30,6 @@ export default function Navbar(props: NavbarProps) {
                 />
               </a>
             </Link>
-
           </div>
 
           <ul
@@ -42,8 +39,9 @@ export default function Navbar(props: NavbarProps) {
             <li className="relative">
               <p
                 onMouseEnter={() => setIsProgramsOpen(true)}
-                className={`text-white font-ptserif cursor-pointer ${active == "Programs" ? "underline" : ""
-                  }`}
+                className={`text-white font-ptserif cursor-pointer ${
+                  active == "Programs" ? "underline" : ""
+                }`}
               >
                 Divisions
               </p>
@@ -51,8 +49,9 @@ export default function Navbar(props: NavbarProps) {
               <ul
                 onMouseEnter={() => setIsProgramsOpen(true)}
                 onMouseLeave={() => setIsProgramsOpen(false)}
-                className={`${isProgramsOpen ? "" : "hidden"
-                  } w-[150px] h-fit bg-white absolute rounded-md overflow-hidden top-8`}
+                className={`${
+                  isProgramsOpen ? "" : "hidden"
+                } w-[150px] h-fit bg-white absolute rounded-md overflow-hidden top-8`}
               >
                 <li>
                   <Link href="/programs/pendidikan" passHref>
@@ -82,22 +81,20 @@ export default function Navbar(props: NavbarProps) {
                     </a>
                   </Link>
                 </li>
-
-
-
               </ul>
             </li>
             <li>
               <Link href="/projects" passHref>
                 <a
-                  className={`text-white font-ptserif ${active == "Projects" ? "underline" : ""
-                    }`}
+                  className={`text-white font-ptserif ${
+                    active == "Projects" ? "underline" : ""
+                  }`}
                 >
                   Projects
                 </a>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/projects" passHref>
                 <a
                   className={`text-white font-ptserif ${active == "Projects" ? "underline" : ""
@@ -106,12 +103,13 @@ export default function Navbar(props: NavbarProps) {
                   Programs
                 </a>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link href="/reviews" passHref>
                 <a
-                  className={`text-white font-ptserif ${active == "Reviews" ? "underline" : ""
-                    }`}
+                  className={`text-white font-ptserif ${
+                    active == "Reviews" ? "underline" : ""
+                  }`}
                 >
                   Reviews
                 </a>
@@ -120,8 +118,9 @@ export default function Navbar(props: NavbarProps) {
             <li>
               <Link href="/article" passHref>
                 <a
-                  className={`text-white font-ptserif ${active == "Article" ? "underline" : ""
-                    }`}
+                  className={`text-white font-ptserif ${
+                    active == "Article" ? "underline" : ""
+                  }`}
                 >
                   Article
                 </a>
@@ -130,8 +129,9 @@ export default function Navbar(props: NavbarProps) {
             <li>
               <Link href="/allaboutbooks" passHref>
                 <a
-                  className={`text-white font-ptserif ${active == "All About Books" ? "underline" : ""
-                    }`}
+                  className={`text-white font-ptserif ${
+                    active == "All About Books" ? "underline" : ""
+                  }`}
                 >
                   All About Books
                 </a>
@@ -142,7 +142,13 @@ export default function Navbar(props: NavbarProps) {
           <div className="hidden md:flex justify-center items-center rounded-full">
             <Link href="/apply" passHref>
               <div className="w-[100px] lg:w-[125px]">
-                <Button text="Apply" link border="full" size="large" animate={true} />
+                <Button
+                  text="Apply"
+                  link
+                  border="full"
+                  size="large"
+                  animate={true}
+                />
               </div>
             </Link>
           </div>
@@ -153,16 +159,19 @@ export default function Navbar(props: NavbarProps) {
             onClick={() => setIsOpen(!isOpen)}
           >
             <span
-              className={`w-full h-[2px] bg-white transition duration-300 ease-in-out ${isOpen ? "rotate-45 translate-y-[11px]" : ""
-                }`}
+              className={`w-full h-[2px] bg-white transition duration-300 ease-in-out ${
+                isOpen ? "rotate-45 translate-y-[11px]" : ""
+              }`}
             ></span>
             <span
-              className={`w-full h-[2px] bg-white transition duration-300 ease-in-out ${isOpen ? "scale-0 opacity-0" : ""
-                }`}
+              className={`w-full h-[2px] bg-white transition duration-300 ease-in-out ${
+                isOpen ? "scale-0 opacity-0" : ""
+              }`}
             ></span>
             <span
-              className={`w-full h-[2px] bg-white transition duration-300 ease-in-out ${isOpen ? "-rotate-45 translate-y-[-11px]" : ""
-                }`}
+              className={`w-full h-[2px] bg-white transition duration-300 ease-in-out ${
+                isOpen ? "-rotate-45 translate-y-[-11px]" : ""
+              }`}
             ></span>
           </div>
         </div>
