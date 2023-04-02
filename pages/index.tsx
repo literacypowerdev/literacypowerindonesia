@@ -1,4 +1,6 @@
 import type { NextPage } from "next";
+import { useEffect } from "react";
+import AOS from "aos";
 import About from "../components/organisms/About";
 import Footer from "../components/organisms/Footer";
 import Hero from "../components/organisms/Hero";
@@ -8,6 +10,10 @@ import Documentation from "../components/organisms/Documentation";
 import Head from "next/head";
 
 const Home: NextPage = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <>
       <Head>
@@ -23,7 +29,6 @@ const Home: NextPage = () => {
       <About />
       <Newsletter />
       <Footer />
-      
     </>
   );
 };
