@@ -69,7 +69,7 @@ const kesehatan = () => {
 
   return (
     <>
-      <Navbar active="Programs" />
+      <Navbar active="Divisions" />
       <div className="m-auto mt-16 xl:text-xl font-ptserif">
         <div
           className="container m-auto heading flex flex-col-reverse md:flex-row md:w-[1300px] lg:w-10/12 px-5 "
