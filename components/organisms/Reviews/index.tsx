@@ -47,14 +47,13 @@ const Reviews = (props: ReviewsProps) => {
               </div>
             </Link>
           )}
-          {/* <Button text="See More Reviews" size="normal" border="full" /> */}
         </div>
         <div className="Slider w-full md:w-fit text-left md:text-justify p-5">
-          <div className="bg-white mx-auto rounded-lg py-5 px-8 w-full max-w-[500px] md:w-[400px]">
+          <div className="bg-white mx-auto rounded-lg py-5 w-full max-w-[500px] md:w-[400px]">
             <Slider {...settings}>
               {data.map((item) => {
                 return (
-                  <div key={item.id} className="!flex flex-col gap-2">
+                  <div key={item.id} className="!flex flex-col gap-2 px-8">
                     <p className="font-semibold">{item.reviews}</p>
                     <p className="font-semibold text-orange-500 text-xl">
                       Good job for the team!

@@ -18,17 +18,17 @@ export default function MobileMenu(props: MobileMenuProps) {
       } md:hidden w-full h-fit bg-white absolute z-10 transition duration-300 ease-in-out`}
     >
       <ul>
-      <li>
+        <li>
           <p
             onClick={() => setIsProgramsOpen(!isProgramsOpen)}
             className="w-100 py-4 px-6 text-main-orange hover:text-white font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange"
           >
-            Programs
+            Divisions
           </p>
         </li>
 
         <li>
-          <Link href="/programs/kesehatan">
+          <Link href="/divisions/kesehatan">
             <a
               className={`${
                 isProgramsOpen ? "block" : "hidden"
@@ -39,7 +39,7 @@ export default function MobileMenu(props: MobileMenuProps) {
           </Link>
         </li>
         <li>
-          <Link href="/programs/pendidikan">
+          <Link href="/divisions/pendidikan">
             <a
               className={`${
                 isProgramsOpen ? "block" : "hidden"
@@ -50,7 +50,7 @@ export default function MobileMenu(props: MobileMenuProps) {
           </Link>
         </li>
         <li>
-          <Link href="/programs/lingkungan">
+          <Link href="/divisions/lingkungan">
             <a
               className={`${
                 isProgramsOpen ? "block" : "hidden"
@@ -61,7 +61,7 @@ export default function MobileMenu(props: MobileMenuProps) {
           </Link>
         </li>
         <li>
-          <Link href="/programs/ekonomi">
+          <Link href="/divisions/ekonomi">
             <a
               className={`${
                 isProgramsOpen ? "block" : "hidden"
@@ -71,7 +71,13 @@ export default function MobileMenu(props: MobileMenuProps) {
             </a>
           </Link>
         </li>
-
+        <li>
+          <Link href="/programs">
+            <a className="block w-100 py-4 px-6 text-main-orange hover:text-white font-ptserif transition duration-150 ease-in-out hover:bg-light-orange">
+              Programs
+            </a>
+          </Link>
+        </li>
         <li>
           <Link href="/projects">
             <a className="block w-100 py-4 px-6 text-main-orange hover:text-white font-ptserif transition duration-150 ease-in-out hover:bg-light-orange">
