@@ -8,14 +8,17 @@ export default function Newsletter() {
   const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEmailEmpty, setIsEmailEmpty] = useState(true);
   const regex = /.+@.+\..+/;
   const onEmailChange = (e: {
     target: { value: React.SetStateAction<string> };
   }) => {
     setEmail(e.target.value);
+    setIsEmailEmpty(false);
 
     if (email.length === 0) {
       setIsEmailValid(false);
+      setIsEmailEmpty(true);
     } else if (email.match(regex)) {
       setIsEmailValid(true);
     } else {
@@ -64,7 +67,9 @@ export default function Newsletter() {
               </div>
             </div>
             <span
-              className={`${isEmailValid ? "hidden" : ""} text-white -mt-2`}
+              className={`${
+                isEmailValid || isEmailEmpty ? "hidden" : ""
+              } text-white -mt-2`}
             >
               Email not valid
             </span>
