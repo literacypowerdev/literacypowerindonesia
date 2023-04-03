@@ -35,7 +35,7 @@ const LiteractFAQ = ({ title, details, name }: Content) => {
             isOpen ? "" : "hidden"
           }`}
         >
-          <div className="w-full m-auto bg-main-background mb-1 shadow-lg transition-all duration-150 ease-in-out cursor-pointer px-5 py-2 rounded-[20px] flex justify-start  gap-2">
+          <div className="w-full m-auto bg-main-background mb-1 shadow-lg transition-all duration-150 ease-in-out cursor-pointer px-5 py-5 rounded-[20px] flex justify-start  gap-2">
             <div className="flex flex-col">
               {name != "jadwal" ? (
                 <ul>
