@@ -12,9 +12,10 @@ import Newsletter from "../../components/organisms/Newsletter";
 import Review from "../reviews";
 import Reviews from "../../components/organisms/Reviews";
 
-const pendidikan = () => {
+const ekonomi = () => {
   const headingContent =
     "Literacy Power memberikan ruang bagi generasi muda untuk mengimplementasikan program pendidikan sesuai keahlian yang dimiliki. Relawan akan memiliki pengalaman dalam mengajar anak-anak dan memberikan bantuan berupa edukasi maupun mentoring di daerah yang berkekurangan. Tidak hanya itu, kemampuan untuk mengembangkan karakter pribadi dan membuka perspektif baru bisa didapatkan melalui program kerelawanan ini.";
+
   let siapayangcocok =
     "Literacy Power membutuhkan pribadi yang berjiwa sosial dan memiliki passion untuk membantu sesama. Selain itu, seseorang yang bisa beradaptasi, menyukai anak-anak, dan memiliki keahlian di bidang tertentu (mengajar bahasa inggris, matematika, atau keterampilan hidup, dll).";
   const FAQContent = [
@@ -62,16 +63,17 @@ const pendidikan = () => {
       ],
     },
   ];
+
   return (
     <>
-      <Navbar active="Programs" />
+      <Navbar active="Divisions" />
       <div className="m-auto mt-16 xl:text-xl font-ptserif">
         <div
-          className="container m-auto heading flex flex-col-reverse md:flex-row md:w-[1300px] lg:w-10/12 px-5 "
+          className="container m-auto heading flex flex-col-reverse md:flex-row md:w-[1300px] lg:w-10/12 px-5"
           data-aos="fade-up"
         >
           <div className="left lg:pr-44 md:pr-24  flex flex-col gap-3">
-            <h1 className="text-2xl font-bold">Program Pendidikan</h1>
+            <h1 className="text-2xl font-bold">Program Ekonomi</h1>
             <p className="text-justify text-xl">{headingContent}</p>
             <div className="button w-full md:w-80 font-semibold">
               {/* button */}
@@ -122,9 +124,9 @@ const pendidikan = () => {
             alt=""
             className="hidden md:block top-0 right-0 absolute w-40"
           />
-          <div className="literacyFAQ container m-auto pt-16 pb-16 px-5  ">
+          <div className="literacyFAQ container m-auto pt-16 pb-16 px-5 ">
             <div className="flex flex-col gap-3">
-              <h1 className="text-xl font-semibold z-10" data-aos="fade-up">
+              <h1 className="text-xl font-semibold z-10">
                 Literacy Power F.A.Q
               </h1>
 
@@ -169,4 +171,4 @@ const pendidikan = () => {
   );
 };
 
-export default pendidikan;
+export default ekonomi;

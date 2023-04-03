@@ -5,7 +5,13 @@ import Button from "../../atoms/Button";
 import MobileMenu from "./MobileMenu";
 
 export interface NavbarProps {
-  active?: "Programs" | "Projects" | "Reviews" | "Article" | "All About Books";
+  active?:
+    | "Divisions"
+    | "Programs"
+    | "Projects"
+    | "Reviews"
+    | "Article"
+    | "All About Books";
 }
 
 export default function Navbar(props: NavbarProps) {
@@ -40,7 +46,7 @@ export default function Navbar(props: NavbarProps) {
               <p
                 onMouseEnter={() => setIsProgramsOpen(true)}
                 className={`text-white font-ptserif cursor-pointer ${
-                  active == "Programs" ? "underline" : ""
+                  active == "Divisions" ? "underline" : ""
                 }`}
               >
                 Divisions
@@ -54,34 +60,45 @@ export default function Navbar(props: NavbarProps) {
                 } w-[150px] h-fit bg-white absolute rounded-md overflow-hidden top-8`}
               >
                 <li>
-                  <Link href="/programs/pendidikan" passHref>
+                  <Link href="/divisions/pendidikan" passHref>
                     <a className="text-main-orange block w-full px-4 py-2 font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange hover:text-white">
                       Literasi <br /> Sekolah
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/programs/lingkungan" passHref>
+                  <Link href="/divisions/lingkungan" passHref>
                     <a className="text-main-orange block w-full px-4 py-2 font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange hover:text-white">
                       Literasi Lingkungan
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/programs/ekonomi" passHref>
+                  <Link href="/divisions/ekonomi" passHref>
                     <a className="text-main-orange block w-full px-4 py-2 font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange hover:text-white">
                       Literasi Ekonomi
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/programs/kesehatan" passHref>
+                  <Link href="/divisions/kesehatan" passHref>
                     <a className="text-main-orange block w-full px-4 py-2 font-ptserif cursor-pointer transition duration-150 ease-in-out hover:bg-light-orange hover:text-white">
                       Literasi Kesehatan
                     </a>
                   </Link>
                 </li>
               </ul>
+            </li>
+            <li>
+              <Link href="/programs" passHref>
+                <a
+                  className={`text-white font-ptserif ${
+                    active == "Programs" ? "underline" : ""
+                  }`}
+                >
+                  Programs
+                </a>
+              </Link>
             </li>
             <li>
               <Link href="/projects" passHref>
@@ -94,16 +111,6 @@ export default function Navbar(props: NavbarProps) {
                 </a>
               </Link>
             </li>
-            {/* <li>
-              <Link href="/projects" passHref>
-                <a
-                  className={`text-white font-ptserif ${active == "Projects" ? "underline" : ""
-                    }`}
-                >
-                  Programs
-                </a>
-              </Link>
-            </li> */}
             <li>
               <Link href="/reviews" passHref>
                 <a
