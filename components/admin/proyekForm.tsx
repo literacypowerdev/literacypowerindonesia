@@ -24,13 +24,13 @@ const ProyekForm = () => {
     dampak_sesudah: '',
     dokumentasi: ''
   })
-  
+
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     dispatch(postProyek(values))
   }
-  
+
 
   const handleChange = (e: any) => {
     setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -43,12 +43,42 @@ const ProyekForm = () => {
     <div className='p-5 flex text-black'>
       <div>
         <form onSubmit={handleSubmit} className='flex flex-col gap-3 w-52 text-black'>
-        <input
+          <input
             type="text"
             placeholder="thumbnail"
             name="thumbnail"
             onChange={handleChange}
           />
+
+          <div>
+            <p>*Thumbnail</p>
+            <input
+              type="file"
+              placeholder="thumbnail"
+              name="thumbnail"
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <p>*dampak_sebelum</p>
+            <input
+              type="file"
+              placeholder="thumbnail"
+              name="thumbnail"
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <p>*dampak_sesudah</p>
+            <input
+              type="file"
+              placeholder="thumbnail"
+              name="thumbnail"
+              onChange={handleChange}
+            />
+          </div>
+
+
           <input
             type="text"
             placeholder="isi nama"

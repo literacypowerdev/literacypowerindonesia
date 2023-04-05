@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import DocSlider from "./Slider";
 import { gsap } from "gsap/dist/gsap";
 import Draggable from "gsap/dist/Draggable";
@@ -12,13 +12,19 @@ export default function Documentation() {
   };
 
   useEffect(() => {
-    gsap.registerPlugin(Draggable);
-    Draggable.create(boxRef.current, {
-      bounds: "body",
-      inertia: true,
-      onDrag: () => setIsResetVisible(true),
-    });
+    let screenWidth = window.innerWidth
+    console.log(screenWidth);
+    if (screenWidth > 768) {
+      gsap.registerPlugin(Draggable);
+      Draggable.create(boxRef.current, {
+        bounds: "body",
+        inertia: true,
+        onDrag: () => setIsResetVisible(true),
+      });
+    }
   }, []);
+
+  
   const images = [
     "/images/fotoslider1.png",
     "/images/fotoslider2.png",
@@ -29,7 +35,6 @@ export default function Documentation() {
   ];
   const [showModal, setShowModal] = useState<boolean>(false);
   const [imageSelectedIndex, setImageSelectedIndex] = useState<number>(0);
-  console.log(imageSelectedIndex);
   return (
     <>
       <div
