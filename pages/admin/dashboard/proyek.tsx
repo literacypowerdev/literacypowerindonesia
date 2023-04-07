@@ -14,7 +14,7 @@ const Proyek = () => {
 
   // fetch with useSWR =============================================
   const { mutate } = useSWRConfig();
-  const endpoint = "https://api.literacypowerid.com/api/proyek/admin"
+  const endpoint = "http://localhost:4500/api/proyek/"
   const fetcher = async (url: string) => {
     const response = await fetch(endpoint, {
       headers: {

@@ -4,19 +4,19 @@ const token = Cookie.get('token')
 
 
 
-export const postProyek = createAsyncThunk('proyek/postProyek', async (values: any) => {
+export const postProyek = createAsyncThunk('proyek/postProyek', async (data: FormData) => {
     try {
-        const response = await fetch('https://api.literacypowerid.com/api/proyek', {
+        
+        const response = await fetch('http://localhost:4500/api/proyek/', {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
             },
-            body: JSON.stringify(values)
+            body: data
             
         })
         const res = await response.json()
-        console.log(values)
+        console.log(data)
         console.log(res)
         
 
@@ -24,6 +24,8 @@ export const postProyek = createAsyncThunk('proyek/postProyek', async (values: a
         console.log("ini errornya: ", err)
     }
 })
+
+
 
 export const deleteReq = createAsyncThunk('proyek/deleteReq', async (id: any) => {
     try {

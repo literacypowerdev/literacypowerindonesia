@@ -4,9 +4,9 @@ import { postProyek } from '../../store/features/proyekSlice'
 import { useAppDispatch, useAppSelector } from '../../utils/hooks'
 
 interface valuesProps {
-  thumbnail: any;
   nama: string;
   lokasi: string;
+  tanggal: any;
   content: string;
   dampak_sebelum: string;
   dampak_sesudah: string;
@@ -15,25 +15,40 @@ interface valuesProps {
 
 const ProyekForm = () => {
   const dispatch = useAppDispatch()
+  const [coverFiles, setCoverFiles] = useState<any>([]);
   const [values, setValues] = useState<valuesProps>({
-    thumbnail: '',
     nama: '',
     lokasi: '',
+    tanggal: '',
     content: '',
     dampak_sebelum: '',
     dampak_sesudah: '',
     dokumentasi: ''
   })
-
+  console.log(coverFiles);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    dispatch(postProyek(values))
+    e.preventDefault();
+    const data = new FormData();
+    for (let i = 0; i < coverFiles.length; i++) {
+      data.append('file', coverFiles[i]);
+    }
+    Object.entries(values).forEach(([key, value]) => {
+      data.append(key, value);
+    });
+    console.log(data);
+    dispatch(postProyek(data))
   }
 
 
   const handleChange = (e: any) => {
     setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const handleUploadImage = (e: any) => {
+    let uploaded = e.target.files[0];
+    setCoverFiles([...coverFiles, uploaded])
+    console.log(uploaded)
   }
 
 
@@ -56,7 +71,7 @@ const ProyekForm = () => {
               type="file"
               placeholder="thumbnail"
               name="thumbnail"
-              onChange={handleChange}
+              onChange={handleUploadImage}
             />
           </div>
           <div>
@@ -65,7 +80,7 @@ const ProyekForm = () => {
               type="file"
               placeholder="thumbnail"
               name="thumbnail"
-              onChange={handleChange}
+              onChange={handleUploadImage}
             />
           </div>
           <div>
@@ -74,7 +89,7 @@ const ProyekForm = () => {
               type="file"
               placeholder="thumbnail"
               name="thumbnail"
-              onChange={handleChange}
+              onChange={handleUploadImage}
             />
           </div>
 
@@ -89,6 +104,12 @@ const ProyekForm = () => {
             type="text"
             placeholder="isi lokasi"
             name="lokasi"
+            onChange={handleChange}
+          />
+          <input
+            type="tanggal"
+            placeholder="isi tanggal proyek"
+            name="tanggal"
             onChange={handleChange}
           />
           <textarea
