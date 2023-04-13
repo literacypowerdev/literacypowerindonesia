@@ -51,14 +51,17 @@ const Proyek = () => {
     setShowForm(!showForm);
   }
 
-  const imageUrl = 'https://api.literacypowerid.com/images/'
-
+ 
+  
+  
 
   return (
     <Layout>
       <div className='flex gap-4'>
         <div className='w-fit'>
           {data.map((item: any, index: any) => {
+            const cover = item.image.split('"')[1]
+            const imageUrl = 'http://localhost:4500/images/' + cover           
             const justifyClass = `${item.id % 2 != 0 ? "md:flex-row" : "md:flex-row-reverse"}`;
             return (
               <div
@@ -67,7 +70,7 @@ const Proyek = () => {
               >
                 <img
                   className="w-full md:w-[250px] h-[200px] md:h-[170px] object-cover rounded-t-[10px] md:rounded-[10px]"
-                  src={`${imageUrl}${item.dokumentasi}`}
+                  src={`${imageUrl}`}
                   alt="Thumbnail"
                 />
                 <div className="h-[258px] md:h-fit flex flex-col gap-2 md:gap-0 overflow-hidden ">

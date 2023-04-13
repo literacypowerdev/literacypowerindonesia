@@ -37,7 +37,7 @@ const Buku = ({ allBuku }: any) => {
       Cookie.remove('token')
     }
   }
-  const imageUrl = 'https://api.literacypowerid.com/images/'
+  const imageUrl = 'http://localhost:4500/images/'
   return (
     <Layout>
       <div className='flex gap-2 md:gap-3'>
@@ -91,7 +91,7 @@ export const getServerSideProps = async (context: any) => {
   const allCookies = cookies(context);
   unauthPageReverse(context);
 
-  const bukuReq = await fetch('https://api.literacypowerid.com/api/buku/', {
+  const bukuReq = await fetch('http://localhost:4500/api/buku/admin', {
     headers: {
       'Authorization': 'Bearer ' + allCookies.token
     }

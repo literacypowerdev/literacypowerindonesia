@@ -10,33 +10,15 @@ export const getServerSideProps = async (context: any) => {
     const allCookies = cookies(context);
     unauthPageReverse(context);
 
-    const bukuReq = await fetch('https://api.literacypowerid.com/api/buku', {
-        headers: {
-            'Authorization': 'Bearer ' + allCookies.token
-        }
-    });
-    const buku = await bukuReq.json();
     return {
         props: {
-            allBuku: buku.data,
-            allCookies
+            
 
         }
     }
 }
 
 const Dashboard = ({ allBuku, allCookies }: any) => {
-    const loginToken = useAppSelector(state => state.login.token)
-    const kuki = Cookie.get('token')
-    // useEffect(() => {
-    //     if(kuki !== loginToken) {
-    //         Router.push('/admin/login')
-    //     } else {
-    //         console.log('sama cu')
-    //     }
-    // },[])
-
-    
     return (
         <>
             <Layout>

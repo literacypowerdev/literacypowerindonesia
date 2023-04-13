@@ -4,7 +4,6 @@ const Cookie = require('js-cookie')
 const bukuForm = () => {
 
   interface bookDataProps {
-    coverUrl: string
     judul: string
     penulis: string
     negara: string
@@ -18,7 +17,6 @@ const bukuForm = () => {
   }
 
   const [bookData, setBookData] = useState<bookDataProps>({
-    coverUrl: '',
     judul: '',
     penulis: '',
     negara: '',
@@ -30,18 +28,25 @@ const bukuForm = () => {
     ringkasan: '',
     review: '',
   })
+  const [coverFiles, setCoverFiles] = useState<string>('');
 
   const cookieToken = Cookie.get('token')
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
+    const data = new FormData();
+    
+    data.append('file', coverFiles);
+    
+    Object.entries(bookData).forEach(([key, value]) => {
+      data.append(key, value);
+    });
     try {
-      await fetch('https://api.literacypowerid.com/api/buku', {
+      await fetch('http://localhost:4500/api/buku/', {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           "Authorization": "Bearer " + cookieToken
         },
-        body: JSON.stringify(bookData)
+        body: data
       })
 
 
@@ -53,6 +58,11 @@ const bukuForm = () => {
   const handleChange = (e: any) => {
     setBookData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
+  const handleUploadImage = (e: any) => {
+    let uploaded = e.target.files[0];
+    setCoverFiles(uploaded)
+    console.log(uploaded)
+  }
 
   const inputStyles = 'py-2 rounded-md px-2'
   const textAreaStyles = 'py-2 rounded-sm px-2 h-60 w-72'
@@ -60,7 +70,7 @@ const bukuForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit} className="flex flex-col gap-5 bg-very-light-orange p-5 w-fit text-black">
-        <input className={inputStyles} type="text" placeholder='cover url' name='coverUrl' onChange={handleChange} />
+        <input className={inputStyles} type="file" placeholder='cover url' name='coverUrl' onChange={handleUploadImage} />
         <input className={inputStyles} type="text" placeholder='judul' name='judul' onChange={handleChange} />
         <input className={inputStyles} type="text" placeholder='penulis' name='penulis' onChange={handleChange} />
         <input className={inputStyles} type="text" placeholder='negara' name='negara' onChange={handleChange} />
