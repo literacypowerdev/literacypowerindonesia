@@ -7,6 +7,9 @@ import ProjectBody from "../../components/organisms/ProjectBody";
 import Reviews from "../../components/organisms/Reviews";
 
 export default function ProjectSinglePage({ proyek }: any) {
+  
+  const cover = proyek.image.split('"')
+  console.log(cover[3])
   return (
     <>
       <Head>
@@ -16,7 +19,7 @@ export default function ProjectSinglePage({ proyek }: any) {
 
       {/* Hero */}
       <div
-        style={{ backgroundImage: `url("https://api.literacypowerid.com/images/${proyek.dokumentasi}")` }}
+        style={{ backgroundImage: `url("http://localhost:4500/images/${cover[1]}")` }}
         className={`md:h-[300px] lg:h-[350px] bg-cover bg-center relative `}
       >
         <div className="absolute w-full h-full bg-main-green/[0.85] flex flex-col justify-center items-center">
@@ -34,33 +37,33 @@ export default function ProjectSinglePage({ proyek }: any) {
 
       {/* Content */}
       <div className="w-11/12 max-w-[1000px] mx-auto flex flex-col gap-8 my-5 lg:my-16">
-        {proyek.content.length == 0 ? (
+        {proyek.content?.length == 0 || undefined ? (
           ""
         ) : (
           <ProjectBody
             name={proyek.nama}
             text={proyek.content}
-            dokumentasi={proyek.dokumentasi}
+            dokumentasi={cover[1]}
           />
         )}
 
-        {proyek.dampak_sebelum.length == 0 ? (
+        {proyek.content?.length == 0 || undefined ? (
           ""
         ) : (
           <ProjectBody
             type="Sebelum"
             text={proyek.dampak_sebelum}
-            dokumentasi={proyek.dokumentasi}
+            dokumentasi={cover[3]}
           />
         )}
 
-        {proyek.dampak_sesudah.length == 0 ? (
+        {proyek.content?.length == 0 || undefined ? (
           ""
         ) : (
           <ProjectBody
             type="Sesudah"
             text={proyek.dampak_sesudah}
-            dokumentasi={proyek.dokumentasi}
+            dokumentasi={cover[5]}
           />
         )}
       </div>
@@ -82,7 +85,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async (paths: number | any) => {
-  const response = await fetch(`https://api.literacypowerid.com/api/proyek/${paths.params.id}`);
+  const response = await fetch(`http://localhost:4500/api/proyek/${paths.params.id}`);
   const data = await response.json();
 
   return {

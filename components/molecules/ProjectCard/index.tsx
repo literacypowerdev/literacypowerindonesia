@@ -12,10 +12,13 @@ export interface ProjectCardProps {
 
 export default function ProjectCard(props: ProjectCardProps) {
   const { id, thumbnail, name, location, date, content } = props;
-
+  
   const justifyClass = `${id % 2 != 0 ? "md:flex-row" : "md:flex-row-reverse"}`;
   console.log(name);
+  
+ 
   return (
+    
     <Link href={`/projects/${id}`}>
       <div
         className={`w-full max-w-[1100px] mx-auto h-[500px] md:h-[200px] bg-white shadow-lg my-5 rounded-[20px] overflow-hidden p-4 flex flex-col ${justifyClass} flex gap-3 md:gap-5 transition-all duration-150 ease-in-out group hover:bg-main-green cursor-pointer`}
@@ -23,7 +26,7 @@ export default function ProjectCard(props: ProjectCardProps) {
       >
         <img
           className="w-full md:w-[250px] h-[200px] md:h-[170px] object-cover rounded-t-[10px] md:rounded-[10px]"
-          src={`https://api.literacypowerid.com/images/${thumbnail}`}
+          src={thumbnail}
           alt="Thumbnail"
         />
         <div className="h-[260px] md:h-[180px] flex flex-col gap-2 md:gap-0 overflow-hidden">

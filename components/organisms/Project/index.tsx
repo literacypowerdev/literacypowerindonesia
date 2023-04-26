@@ -11,89 +11,12 @@ export default function Projects({ children }: any) {
     });
   };
 
-  const projectsData = [
-    [
-      {
-        id: 1,
-        thumbnail: "/images/fotoslider1.png",
-        name: "Dari Donasi untuk Literasi",
-        location: "Cikarang",
-        date: "27 November 2021",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur purus dui, varius non quam in, viverra luctus lorem. Phasellus tincidunt placerat lectus sit amet venenatis. Maecenas tempus risus ac lectus laoreet, et laoreet massa ultricies. Aliquam nec odio ac arcu auctor rutrum. Etiam nec nibh eros. Nulla enim ante, vulputate eu diam quis, aliquet feugiat diam. Nullam auctor egestas arcu, suscipit ultrices nunc porta id.",
-      },
-      {
-        id: 2,
-        thumbnail: "/images/fotoslider2.png",
-        name: "Peduli Literasi",
-        location: "Bogor",
-        date: "3 - 6 Februari 2022",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur purus dui, varius non quam in, viverra luctus lorem. Phasellus tincidunt placerat lectus sit amet venenatis. Maecenas tempus risus ac lectus laoreet, et laoreet massa ultricies. Aliquam nec odio ac arcu auctor rutrum. Etiam nec nibh eros. Nulla enim ante, vulputate eu diam quis, aliquet feugiat diam. Nullam auctor egestas arcu, suscipit ultrices nunc porta id.",
-      },
-      {
-        id: 3,
-        thumbnail: "/images/fotoslider1.png",
-        name: "Dari Donasi untuk Literasi",
-        location: "Cikarang",
-        date: "27 November 2021",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur purus dui, varius non quam in, viverra luctus lorem. Phasellus tincidunt placerat lectus sit amet venenatis. Maecenas tempus risus ac lectus laoreet, et laoreet massa ultricies. Aliquam nec odio ac arcu auctor rutrum. Etiam nec nibh eros. Nulla enim ante, vulputate eu diam quis, aliquet feugiat diam. Nullam auctor egestas arcu, suscipit ultrices nunc porta id.",
-      },
-      {
-        id: 4,
-        thumbnail: "/images/fotoslider1.png",
-        name: "Dari Donasi untuk Literasi",
-        location: "Cikarang",
-        date: "27 November 2021",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur purus dui, varius non quam in, viverra luctus lorem. Phasellus tincidunt placerat lectus sit amet venenatis. Maecenas tempus risus ac lectus laoreet, et laoreet massa ultricies. Aliquam nec odio ac arcu auctor rutrum. Etiam nec nibh eros. Nulla enim ante, vulputate eu diam quis, aliquet feugiat diam. Nullam auctor egestas arcu, suscipit ultrices nunc porta id.",
-      },
-      {
-        id: 5,
-        thumbnail: "/images/fotoslider1.png",
-        name: "Dari Donasi untuk Literasi",
-        location: "Cikarang",
-        date: "27 November 2021",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur purus dui, varius non quam in, viverra luctus lorem. Phasellus tincidunt placerat lectus sit amet venenatis. Maecenas tempus risus ac lectus laoreet, et laoreet massa ultricies. Aliquam nec odio ac arcu auctor rutrum. Etiam nec nibh eros. Nulla enim ante, vulputate eu diam quis, aliquet feugiat diam. Nullam auctor egestas arcu, suscipit ultrices nunc porta id.",
-      },
-    ],
-    [
-      {
-        id: 6,
-        thumbnail: "/images/fotoslider1.png",
-        name: "Dari Donasi untuk Literasi",
-        location: "Cikarang",
-        date: "27 November 2021",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur purus dui, varius non quam in, viverra luctus lorem. Phasellus tincidunt placerat lectus sit amet venenatis. Maecenas tempus risus ac lectus laoreet, et laoreet massa ultricies. Aliquam nec odio ac arcu auctor rutrum. Etiam nec nibh eros. Nulla enim ante, vulputate eu diam quis, aliquet feugiat diam. Nullam auctor egestas arcu, suscipit ultrices nunc porta id.",
-      },
-      {
-        id: 7,
-        thumbnail: "/images/fotoslider1.png",
-        name: "Dari Donasi untuk Literasi",
-        location: "Cikarang",
-        date: "27 November 2021",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur purus dui, varius non quam in, viverra luctus lorem. Phasellus tincidunt placerat lectus sit amet venenatis. Maecenas tempus risus ac lectus laoreet, et laoreet massa ultricies. Aliquam nec odio ac arcu auctor rutrum. Etiam nec nibh eros. Nulla enim ante, vulputate eu diam quis, aliquet feugiat diam. Nullam auctor egestas arcu, suscipit ultrices nunc porta id.",
-      },
-      {
-        id: 8,
-        thumbnail: "/images/fotoslider1.png",
-        name: "Dari Donasi untuk Literasi",
-        location: "Cikarang",
-        date: "27 November 2021",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur purus dui, varius non quam in, viverra luctus lorem. Phasellus tincidunt placerat lectus sit amet venenatis. Maecenas tempus risus ac lectus laoreet, et laoreet massa ultricies. Aliquam nec odio ac arcu auctor rutrum. Etiam nec nibh eros. Nulla enim ante, vulputate eu diam quis, aliquet feugiat diam. Nullam auctor egestas arcu, suscipit ultrices nunc porta id.",
-      },
-    ],
-  ];
   const [loading, setLoading] = useState<boolean>(true)
   const [data, setData] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const fetchData = async () => {
-    const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=proyek&pageSize=3`);
+    // const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=proyek&pageSize=3`);
+    const response = await axios.get(`http://localhost:4500/api/article/pagination?page=${pageNumber}&table=proyek&pageSize=3`);
     setData(response.data);
     setLoading(false)
 
@@ -114,22 +37,27 @@ export default function Projects({ children }: any) {
             const dateStr = item.tanggal;
             const date = new Date(dateStr);
             const dayOfMonth = date.getDate();
-            const month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(date);
-            const year = date.getFullYear();
-            const formattedDate = `${dayOfMonth} ${month} ${year}`;
+            let formattedDate = '';
+            if (!isNaN(dayOfMonth)) { // Check if dayOfMonth is a valid number
+              const month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(date);
+              const year = date.getFullYear();
+              formattedDate = `${dayOfMonth} ${month} ${year}`;
+            }
+            const cover = item.image.split('"')[3]
+            const imageUrl = 'http://localhost:4500/images/' + cover
+            console.log(imageUrl)
             return (
 
-              <><ProjectCard
-                key={item.id}
-                id={item.id}
-                thumbnail={item.dokumentasi}
-                name={item.nama}
-                location={item.lokasi}
-                date={formattedDate}
-                content={item.content} />
-
-
-
+              <>
+                <ProjectCard
+                  key={item.id}
+                  id={item.id}
+                  thumbnail={imageUrl}
+                  name={item.nama}
+                  location={item.lokasi}
+                  date={formattedDate}
+                  // date='2023-02-27T17:00:00.000Z'
+                  content={item.content} />
               </>
             );
           })
