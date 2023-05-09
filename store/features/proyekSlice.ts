@@ -7,7 +7,7 @@ const token = Cookie.get('token')
 export const postProyek = createAsyncThunk('proyek/postProyek', async (data: FormData) => {
     try {
         
-        const response = await fetch('http://localhost:4500/api/proyek/', {
+        const response = await fetch('https://api.literacypowerid.com/api/proyek/', {
             method: "POST",
             headers: {
                 'Authorization': 'Bearer ' + token
@@ -16,8 +16,7 @@ export const postProyek = createAsyncThunk('proyek/postProyek', async (data: For
             
         })
         const res = await response.json()
-        console.log(data)
-        console.log(res)
+        window.location.reload();
         
 
     } catch (err) {

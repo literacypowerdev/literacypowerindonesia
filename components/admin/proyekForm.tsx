@@ -36,7 +36,6 @@ const ProyekForm = () => {
     Object.entries(values).forEach(([key, value]) => {
       data.append(key, value);
     });
-    console.log(data);
     dispatch(postProyek(data))
   }
 
@@ -136,7 +135,7 @@ const ProyekForm = () => {
             name="dokumentasi"
             onChange={handleChange}
           />
-          <button className='bg-red-500' type='submit'>post</button>
+          <button className='bg-red-500 text-white font-semibold p-6' type='submit'>post</button>
         </form>
       </div>
     </div>

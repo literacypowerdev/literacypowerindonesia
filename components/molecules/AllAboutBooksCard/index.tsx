@@ -1,5 +1,7 @@
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
+
 
 interface bukuProps {
   id: number;
@@ -16,15 +18,23 @@ const AllAboutBooksCard = ({ id, title, content, image }: bukuProps) => {
         data-aos="fade-up"
       >
         <div className="image md:w-[512px] bg-slate-300 rounded-md">
-          <img
+          {/* <img
             className="h-full"
             src={`https://api.literacypowerid.com/images/${image}`}
             alt=""
+            
+          /> */}
+          <Image
+            src={`https://api.literacypowerid.com/images/${image}`}
+            width={50}
+            height={50}
+            quality={50}
+
           />
         </div>
         <div className="content flex flex-col gap-2 text-justify">
           <p className="font-bold text-main-orange">{title}</p>
-          <p>{`${content.slice(0, 350)}....`}</p>
+          <p>{content && `${content.slice(0, 350)}....`}</p>
           <div className="tag-container text-white flex gap-3">
             <div className="bg-main-orange px-3 py-1 rounded-md inline-block">
               tag

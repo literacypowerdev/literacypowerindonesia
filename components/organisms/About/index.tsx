@@ -17,7 +17,7 @@ export default function About() {
     misi: {
       title: "Misi",
       content:
-        "Literacy Power memberikan pengabdian secara offline ke berbagai provinsi di Indonesia. Selain itu, Literacy juga aktif berkontribusi secara online seperti memberikan informasi mengenai buku, peningkatan literasi, meupun informasi bermanfaat lain melalui instagram @literacypower.id. Dalam mencapai visi organisasi, tim Literacy Power membangun kolaborasi dengan berbagai komunitas yang memiliki kepentingan atau tujuan yang sama. Literacy berusaha menciptakan program yang memberikan dampak nyata bagi anak-anak maupun masyarakat di wilayah terpinggir.",
+        "Melakukan pengabdian secara offline di berbagai provinsi di Indonesia. Memberikan informasi mengenai buku, peningkatan literasi, maupun informasi bermanfaat lainnya melalui instagram @literacypower.id dan website. Berkolaborasi dengan berbagai komunitas yang memiliki kepentingan atau tujuan yang sama.",
     },
   };
 
@@ -31,12 +31,12 @@ export default function About() {
         />
         <AboutContent
           title={contents.visi.title}
-          content={contents.misi.content}
+          content={contents.visi.content}
         />
         <AboutContent
           title={contents.misi.title}
-          content={contents.misi.content}
         />
+        
       </div>
       <Benefit />
     </div>

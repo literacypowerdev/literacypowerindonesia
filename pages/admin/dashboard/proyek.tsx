@@ -14,7 +14,7 @@ const Proyek = () => {
 
   // fetch with useSWR =============================================
   const { mutate } = useSWRConfig();
-  const endpoint = "http://localhost:4500/api/proyek/"
+  const endpoint = "https://api.literacypowerid.com/api/proyek/"
   const fetcher = async (url: string) => {
     const response = await fetch(endpoint, {
       headers: {
@@ -61,7 +61,7 @@ const Proyek = () => {
         <div className='w-fit'>
           {data.map((item: any, index: any) => {
             const cover = item.image.split('"')[1]
-            const imageUrl = 'http://localhost:4500/images/' + cover           
+            const imageUrl = 'https://api.literacypowerid.com/images/' + cover           
             const justifyClass = `${item.id % 2 != 0 ? "md:flex-row" : "md:flex-row-reverse"}`;
             return (
               <div

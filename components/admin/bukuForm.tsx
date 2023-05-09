@@ -1,5 +1,6 @@
 import React, { SyntheticEvent, useState } from 'react'
 const Cookie = require('js-cookie')
+import axios from 'axios'
 
 const bukuForm = () => {
 
@@ -28,41 +29,40 @@ const bukuForm = () => {
     ringkasan: '',
     review: '',
   })
-  const [coverFiles, setCoverFiles] = useState<string>('');
+  const [coverFile, setCoverFile] = useState<any>();
+  const cookieToken = Cookie.get('token');
 
-  const cookieToken = Cookie.get('token')
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    const data = new FormData();
-    
-    data.append('file', coverFiles);
-    
+    const formData = new FormData();
+    formData.append('file', coverFile as Blob);
     Object.entries(bookData).forEach(([key, value]) => {
-      data.append(key, value);
+      formData.append(key, value);
+      console.log(key, value);
     });
+
     try {
-      await fetch('http://localhost:4500/api/buku/', {
-        method: "POST",
-        headers: {
-          "Authorization": "Bearer " + cookieToken
-        },
-        body: data
+      const res = await fetch('https://api.literacypowerid.com/api/buku', {
+        method: 'POST',
+        headers: {'Authorization': 'Bearer ' + cookieToken},
+        body: formData
       })
-
-
+      const response = await res.json();
+      console.log(response)
     } catch (err) {
-      console.log(err)
+      console.log('error bro', err);
     }
-    window.location.reload();
-  }
-  const handleChange = (e: any) => {
-    setBookData(prev => ({ ...prev, [e.target.name]: e.target.value }))
-  }
-  const handleUploadImage = (e: any) => {
-    let uploaded = e.target.files[0];
-    setCoverFiles(uploaded)
-    console.log(uploaded)
-  }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setBookData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleUploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files && e.target.files[0];
+    setCoverFile(file);
+    if (file) console.log('Selected file:', file.name);
+  };
 
   const inputStyles = 'py-2 rounded-md px-2'
   const textAreaStyles = 'py-2 rounded-sm px-2 h-60 w-72'

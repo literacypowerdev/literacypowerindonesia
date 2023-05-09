@@ -16,7 +16,7 @@ export default function Projects({ children }: any) {
   const [pageNumber, setPageNumber] = useState(0);
   const fetchData = async () => {
     // const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=proyek&pageSize=3`);
-    const response = await axios.get(`http://localhost:4500/api/article/pagination?page=${pageNumber}&table=proyek&pageSize=3`);
+    const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=proyek&pageSize=3`);
     setData(response.data);
     setLoading(false)
 
@@ -44,7 +44,7 @@ export default function Projects({ children }: any) {
               formattedDate = `${dayOfMonth} ${month} ${year}`;
             }
             const cover = item.image.split('"')[3]
-            const imageUrl = 'http://localhost:4500/images/' + cover
+            const imageUrl = 'https://api.literacypowerid.com/images/' + cover
             console.log(imageUrl)
             return (
 

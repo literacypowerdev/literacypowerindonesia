@@ -20,7 +20,7 @@ export default function ProjectBody(props: ProjectBodyProps) {
             className={`rounded-[10px] w-full md:w-[300px] md:h-[300px] object-cover ${
               type == "Sebelum" ? "float-left" : "float-right"
             } ${type == "Sebelum" ? "mr-4" : "ml-4"} mb-1`}
-            src={`http://localhost:4500/images/${dokumentasi}`}
+            src={`https://api.literacypowerid.com/images/${dokumentasi}`}
             alt="Project Documentation"
           />
         )}

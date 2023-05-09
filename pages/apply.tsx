@@ -11,7 +11,7 @@ export default function apply() {
     {
       title: "Donasi Buku",
       steps: [
-        "Kontak +62 821-1010-4702 (Laudza) atau DM Instagram @literacypower.id",
+        "Kontak +62 821-4272-1175 (Ellita) atau DM Instagram @literacypower.id",
         "Cek kondisi buku, perhatikan coretan dan sobekan",
         "Lampirkan informasi mengenai buku, foto buku, jumlah buku, dan tempat donatur",
         "Apabila buku sesuai, maka akan dikirimkan ke Jakarta atau lokasi pengabdian terdekat",
@@ -21,7 +21,7 @@ export default function apply() {
     {
       title: "Donasi Uang",
       steps: [
-        "Kontak +62 821-1010-4702 (Laudza) atau DM Instagram @literacypower.id",
+        "Kontak +62 821-4272-1175 (Ellita) atau DM Instagram @literacypower.id",
         "Mengirimkan donasi melalui BCA 2870072247 a/n Kireina Asyera",
         "Donasi dapat juga dikirim melalui +62 82158158152 (GoPay/OVO) ",
         "Kirimkan bukti transfer ke salah satu kontak pada poin 1 dan anggota akan mengkonfirmasi",
@@ -72,11 +72,11 @@ export default function apply() {
               kami melalui{" "}
               <a
                 className="underline text-main-green"
-                href="https://wa.me/6282110104702"
+                href="https://wa.me/6282142721175"
                 target="_blank"
                 rel="norefferer noreferrer"
               >
-                WhatsApp (Laudza)
+                WhatsApp (Ellita)
               </a>
               ”
             </p>

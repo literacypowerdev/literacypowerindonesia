@@ -19,7 +19,7 @@ export default function ProjectSinglePage({ proyek }: any) {
 
       {/* Hero */}
       <div
-        style={{ backgroundImage: `url("http://localhost:4500/images/${cover[1]}")` }}
+        style={{ backgroundImage: `url("https://api.literacypowerid.com/images/${cover[1]}")` }}
         className={`md:h-[300px] lg:h-[350px] bg-cover bg-center relative `}
       >
         <div className="absolute w-full h-full bg-main-green/[0.85] flex flex-col justify-center items-center">
@@ -85,7 +85,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async (paths: number | any) => {
-  const response = await fetch(`http://localhost:4500/api/proyek/${paths.params.id}`);
+  const response = await fetch(`https://api.literacypowerid.com/api/proyek/${paths.params.id}`);
   const data = await response.json();
 
   return {

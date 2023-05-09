@@ -37,7 +37,7 @@ const Buku = ({ allBuku }: any) => {
       Cookie.remove('token')
     }
   }
-  const imageUrl = 'http://localhost:4500/images/'
+  const imageUrl = 'https://api.literacypowerid.com/images/'
   return (
     <Layout>
       <div className='flex gap-2 md:gap-3'>
