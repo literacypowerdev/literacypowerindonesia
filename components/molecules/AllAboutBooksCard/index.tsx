@@ -18,19 +18,13 @@ const AllAboutBooksCard = ({ id, title, content, image }: bukuProps) => {
         data-aos="fade-up"
       >
         <div className="image md:w-[512px] bg-slate-300 rounded-md">
-          {/* <img
+          <img
             className="h-full"
             src={`https://api.literacypowerid.com/images/${image}`}
             alt=""
             
-          /> */}
-          <Image
-            src={`https://api.literacypowerid.com/images/${image}`}
-            width={50}
-            height={50}
-            quality={50}
-
           />
+          
         </div>
         <div className="content flex flex-col gap-2 text-justify">
           <p className="font-bold text-main-orange">{title}</p>
