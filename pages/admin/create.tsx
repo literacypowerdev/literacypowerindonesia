@@ -5,8 +5,8 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import withTokenValidation from '../../utils/tokenValidation';
 import dynamic from 'next/dynamic';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import CKeditor from '../../components/admin/ckEditor';
+
 
 
 
@@ -18,9 +18,9 @@ const Create = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [content, setContent] = useState('');
-  
- 
-   
+
+
+
 
   const handleSubmit = async (e: SyntheticEvent) => {
     const data = new FormData();
@@ -49,27 +49,9 @@ const Create = () => {
   };
 
   useEffect(() => {
-    const loadEditor = async () => {
-      const ClassicEditor = await import('@ckeditor/ckeditor5-build-classic');
-      setEditorLoaded(true);
-
-      if (typeof window !== 'undefined') {
-        const editorElement: any = document.querySelector('#editor');
-        ClassicEditor.default.create(editorElement)
-          .then((editor: any) => {
-            editor.model.document.on('change:data', () => {
-              const data = editor.getData();
-              setContent(data);
-            });
-          })
-          .catch((error: any) => {
-            console.error(error);
-          });
-      }
-    };
-
-    loadEditor();
+    setEditorLoaded(true);
   }, []);
+
   return (
     <div className="p-5">
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
@@ -87,14 +69,18 @@ const Create = () => {
         />
         <p className="text-red-600">*Wajib Upload Foto</p>
         <input type="file" onChange={(e) => setFiles(e.target.files)} />
-        <CKEditor
-          editor={ClassicEditor}
-          data={content}
-          onChange={(event, editor) => {
-            const data = editor.getData();
-            setContent(data);
-          }}
-        />
+
+        <div>
+          <CKeditor
+            value=''
+            name="description"
+            onChange={(data: any) => {
+              setContent(data);
+            }}
+            editorLoaded={editorLoaded}
+          />
+          {JSON.stringify(content)}
+        </div>
         <button className="px-3 py-2 bg-main-green text-white w-fit">Publish</button>
       </form>
     </div>
