@@ -9,16 +9,21 @@ export const getStaticPaths = async () => {
     const response = await fetch("https://api.literacypowerid.com/api/buku");
     const data = await response.json();
 
-    // Get the total number of books
-    const totalBooks = data?.data?.length || 0;
+    // Check if data contains valid book information
+    if (data?.data && Array.isArray(data.data) && data.data.length > 0) {
+      const paths = data.data.map((book: any) => ({
+        params: { id: book.id.toString() },
+      }));
 
-    // Generate the paths using the index of the length
-    const paths = Array(totalBooks)
-      .fill(null)
-      .map((_, index) => ({ params: { id: `${index + 1}` } }));
+      return {
+        paths,
+        fallback: false,
+      };
+    }
 
+    // Return empty paths if no valid book data is available
     return {
-      paths,
+      paths: [],
       fallback: false,
     };
   } catch (error) {
