@@ -21,7 +21,6 @@ export const getStaticPaths = async () => {
       };
     }
 
-    // Return empty paths if no valid book data is available
     return {
       paths: [],
       fallback: false,
