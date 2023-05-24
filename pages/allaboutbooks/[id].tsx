@@ -13,16 +13,28 @@ export const getStaticPaths = async () => {
   }
 }
 
-export const getStaticProps = async (paths: number | any) => {
-  const response = await fetch(`https://api.literacypowerid.com/api/buku/${paths.params.id}`);
-  const data = await response.json();
+export const getStaticProps = async ({ params }: any) => {
+  try {
+    const response = await fetch(`https://api.literacypowerid.com/api/buku/${params.id}`);
+    const data = await response.json();
 
-  return {
-    props: {
-      buku: data.data[0]
-    },
+    const buku = data && data.data && data.data.length > 0 ? data.data[0] : null;
+
+    return {
+      props: {
+        buku,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      props: {
+        buku: null,
+      },
+    };
   }
-}
+};
+
 
 
 const AllAboutBooksSinglePages = ({ buku }: any) => {

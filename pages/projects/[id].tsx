@@ -84,13 +84,24 @@ export const getStaticPaths = async () => {
   }
 }
 
-export const getStaticProps = async (paths: number | any) => {
-  const response = await fetch(`https://api.literacypowerid.com/api/proyek/${paths.params.id}`);
-  const data = await response.json();
+export const getStaticProps = async ({ params }: any) => {
+  try {
+    const response = await fetch(`https://api.literacypowerid.com/api/proyek/${params.id}`);
+    const data = await response.json();
 
-  return {
-    props: {
-      proyek: data.data[0]
-    },
+    const proyek = data && data.data && data.data.length > 0 ? data.data[0] : null;
+
+    return {
+      props: {
+        proyek,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      props: {
+        proyek: null,
+      },
+    };
   }
-}
+};
