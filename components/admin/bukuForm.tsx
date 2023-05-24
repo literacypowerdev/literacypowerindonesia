@@ -2,7 +2,7 @@ import React, { SyntheticEvent, useState } from 'react'
 const Cookie = require('js-cookie')
 import axios from 'axios'
 
-const bukuForm = () => {
+const BukuForm = () => {
 
   interface bookDataProps {
     judul: string
@@ -87,4 +87,4 @@ const bukuForm = () => {
   )
 }
 
-export default bukuForm
+export default BukuForm

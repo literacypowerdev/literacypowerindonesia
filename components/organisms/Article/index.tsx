@@ -1,4 +1,4 @@
-import React, {  useState, useEffect, useRef} from 'react'
+import React, {  useState, useEffect, useCallback} from 'react'
 import axios from 'axios';
 import ReactPaginate from "react-paginate";
 import { animateScroll as scroll } from 'react-scroll';
@@ -16,15 +16,15 @@ const ArticleComponent = () => {
     const [loading, setLoading] = useState<boolean>(true)
     const [data, setData] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
-    const fetchData = async () => {
-        const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=article&pageSize=3`);
-        setData(response.data);
-        setLoading(false)
-
-    };
-    useEffect(() => {
-        fetchData();
+    const fetchData = useCallback(async () => {
+      const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=buku&pageSize=3`);
+      setData(response.data);
     }, [pageNumber]);
+    
+    useEffect(() => {
+      fetchData();
+    }, [fetchData, pageNumber]);
+    
 
     console.log(data)
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import ReactPaginate from "react-paginate";
 import AllAboutBooksCard from '../../molecules/AllAboutBooksCard';
 import ProjectCard from '../../molecules/ProjectCard';
@@ -24,15 +24,16 @@ const AllAboutBook = () => {
     const query = useAppSelector((state) => state.buku.query)
     const [data, setData] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
         const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=buku&pageSize=3`);
         setData(response.data);
-    };
-
-
-    useEffect(() => {
+      }, [pageNumber])
+      
+      useEffect(() => {
         fetchData();
-    }, [pageNumber]);
+      }, [fetchData, pageNumber]);
+      
+    
 
     const filteredData = data && data.filter((item: BookData) => {
         if (query === '') {

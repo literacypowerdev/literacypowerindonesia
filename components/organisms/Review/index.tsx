@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import ReactPaginate from "react-paginate";
 import ProjectCard from "../../molecules/ProjectCard";
 import ReviewCard from "../../molecules/ReviewCard";
@@ -11,64 +11,21 @@ export default function ReviewList() {
       duration: 150,
     });
   };
-  const reviewData = [
-    [
-      {
-        id: 1,
-        name: "Adin",
-        occupation: "Mahasiswa Universitas Pendidikan Indonesia",
-        title: "Good job for the team!",
-        content:
-          "Pengalaman memorable banget bisa mengikuti volunteering bersama Literacy Power, membagikan buku donasi untuk adik-adik di pesantren Para stakeholder pun sangat antusias membantu kami. Tempatnya pun sangat nyaman dan indah, masih hijau meskipun memakan cukup waktu yang lama dari kota.",
-      },
-      {
-        id: 2,
-        name: "Adin",
-        occupation: "Mahasiswa Universitas Pendidikan Indonesia",
-        title: "Good job for the team!",
-        content:
-          "Pengalaman memorable banget bisa mengikuti volunteering bersama Literacy Power, membagikan buku donasi untuk adik-adik di pesantren Para stakeholder pun sangat antusias membantu kami. Tempatnya pun sangat nyaman dan indah, masih hijau meskipun memakan cukup waktu yang lama dari kota.",
-      },
-      {
-        id: 3,
-        name: "Adin",
-        occupation: "Mahasiswa Universitas Pendidikan Indonesia",
-        title: "Good job for the team!",
-        content:
-          "Pengalaman memorable banget bisa mengikuti volunteering bersama Literacy Power, membagikan buku donasi untuk adik-adik di pesantren Para stakeholder pun sangat antusias membantu kami. Tempatnya pun sangat nyaman dan indah, masih hijau meskipun memakan cukup waktu yang lama dari kota.",
-      },
-    ],
-    [
-      {
-        id: 4,
-        name: "Adin",
-        occupation: "Mahasiswa Universitas Pendidikan Indonesia",
-        title: "Good job for the team!",
-        content:
-          "Pengalaman memorable banget bisa mengikuti volunteering bersama Literacy Power, membagikan buku donasi untuk adik-adik di pesantren Para stakeholder pun sangat antusias membantu kami. Tempatnya pun sangat nyaman dan indah, masih hijau meskipun memakan cukup waktu yang lama dari kota.",
-      },
-      {
-        id: 5,
-        name: "Adin",
-        occupation: "Mahasiswa Universitas Pendidikan Indonesia",
-        title: "Good job for the team!",
-        content:
-          "Pengalaman memorable banget bisa mengikuti volunteering bersama Literacy Power, membagikan buku donasi untuk adik-adik di pesantren Para stakeholder pun sangat antusias membantu kami. Tempatnya pun sangat nyaman dan indah, masih hijau meskipun memakan cukup waktu yang lama dari kota.",
-      },
-    ],
-  ];
+  
 
   const [data, setData] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     const response = await axios.get(
       `https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=review&pageSize=3`
     );
     setData(response.data);
-  };
+  }, [pageNumber]);
+  
   useEffect(() => {
     fetchData();
-  }, [pageNumber]);
+  }, [fetchData, pageNumber]);
+
 
   return (
     <>

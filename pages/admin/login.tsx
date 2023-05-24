@@ -12,7 +12,7 @@ export const getServerSideProps = async (context: any) => {
   return { props: {} }
 }
 
-const login = () => {
+const Login = () => {
   const dispatch = useAppDispatch()
   const [user, setUser] = useState({
     firstName: '',
@@ -69,4 +69,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login

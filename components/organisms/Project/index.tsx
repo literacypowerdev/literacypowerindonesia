@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import ReactPaginate from "react-paginate";
 import ProjectCard from "../../molecules/ProjectCard";
 import { animateScroll as scroll } from 'react-scroll';
@@ -14,16 +14,16 @@ export default function Projects({ children }: any) {
   const [loading, setLoading] = useState<boolean>(true)
   const [data, setData] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
-  const fetchData = async () => {
-    // const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=proyek&pageSize=3`);
+  const fetchData = useCallback(async () => {
     const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=proyek&pageSize=3`);
     setData(response.data);
-    setLoading(false)
-
-  };
+    setLoading(false);
+  }, [pageNumber]);
+  
   useEffect(() => {
     fetchData();
-  }, [pageNumber]);
+  }, [fetchData, pageNumber]);
+  
 
   return (
     <>

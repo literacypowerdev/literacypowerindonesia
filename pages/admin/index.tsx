@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react'
-import Router from 'next/router'
-const Cookie = require('js-cookie')
+import React, { useEffect } from 'react';
+import Router from 'next/router';
+import Cookie from 'js-cookie';
 
-const index = () => {
+const Index = () => {
+  const allCookies = Cookie.get('token');
 
-    const allCookies = Cookie.get('token')
+  useEffect(() => {
+    if (!allCookies) {
+      Router.push('/admin/login');
+    } else if (allCookies) {
+      Router.push('/admin/dashboard');
+    }
+  }, [allCookies]); // Include allCookies in the dependency array
 
-    useEffect(() => {
-        if (!allCookies) {
-            Router.push('/admin/login')
-        } else if (allCookies) {
-            Router.push('/admin/dashboard')
-        }
-    }, [])
+  return null; // or return some JSX if needed
+};
 
-}
-
-export default index
+export default Index;
