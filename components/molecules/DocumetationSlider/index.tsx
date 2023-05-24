@@ -48,6 +48,7 @@ const DocumentationSlider = () => {
                     <div className="card-top">
                         <img
                             src={image1.src}
+                            alt=''
                         />
                         <h1>tes</h1>
                     </div>
@@ -57,6 +58,7 @@ const DocumentationSlider = () => {
                     <div className="card-top">
                         <img
                             src={image2.src}
+                            alt=''
                         />
                         <h1>tes</h1>
                     </div>
@@ -66,6 +68,7 @@ const DocumentationSlider = () => {
                     <div className="card-top">
                         <img
                             src={image1.src}
+                            alt=''
                         />
                         <h1>tes</h1>
                     </div>
@@ -75,6 +78,7 @@ const DocumentationSlider = () => {
                     <div className="card-top">
                         <img
                             src={image2.src}
+                            alt=''
                         />
                         <h1>tes</h1>
                     </div>
@@ -84,6 +88,7 @@ const DocumentationSlider = () => {
                     <div className="card-top">
                         <img
                             src={image2.src}
+                            alt=''
                         />
                         <h1>tes</h1>
                     </div>

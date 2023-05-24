@@ -13,7 +13,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 const Create = () => {
   const CookieToken = Cookie.get('token');
   const router = useRouter();
-
+  const [editorLoaded, setEditorLoaded] = useState(false);
   const [files, setFiles] = useState<any>('');
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -49,19 +49,26 @@ const Create = () => {
   };
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const editorElement: any = document.querySelector('#editor');
-      ClassicEditor.create(editorElement)
-        .then((editor) => {
-          editor.model.document.on('change:data', () => {
-            const data = editor.getData();
-            setContent(data);
+    const loadEditor = async () => {
+      const ClassicEditor = await import('@ckeditor/ckeditor5-build-classic');
+      setEditorLoaded(true);
+
+      if (typeof window !== 'undefined') {
+        const editorElement: any = document.querySelector('#editor');
+        ClassicEditor.default.create(editorElement)
+          .then((editor: any) => {
+            editor.model.document.on('change:data', () => {
+              const data = editor.getData();
+              setContent(data);
+            });
+          })
+          .catch((error: any) => {
+            console.error(error);
           });
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
+      }
+    };
+
+    loadEditor();
   }, []);
   return (
     <div className="p-5">

@@ -24,7 +24,7 @@ const ArticleSinglePage = ({ article }: any) => {
           <p className='text-main-orange font-medium lg:text-xl'>by {article.author}</p>
         </div>
         <div className="max-w-6xl md:w-[800px] lg:w-full mx-auto mb-20">
-          <img src={`https://api.literacypowerid.com/images/${article.coverUrl}`} className="w-full h-auto rounded-3xl " />
+          <img src={`https://api.literacypowerid.com/images/${article.coverUrl}`} className="w-full h-auto rounded-3xl " alt=''/>
         </div>
         <div className='max-w-[1000px] mx-auto text-justify' dangerouslySetInnerHTML={{ __html: article.content }}></div>
       </div>

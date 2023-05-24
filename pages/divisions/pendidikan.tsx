@@ -95,7 +95,7 @@ const pendidikan = () => {
                 <p className="!text-justify">{siapayangcocok}</p>
               </div>
               <div className="right">
-                <Image src={Logo} width={150} height={150} />
+                <Image src={Logo} width={150} height={150} alt="" />
               </div>
             </div>
           </div>
