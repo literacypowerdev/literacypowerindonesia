@@ -5,13 +5,31 @@ import Reviews from '../../components/organisms/Reviews'
 
 
 export const getStaticPaths = async () => {
-  return {
-    paths: new Array(200).fill(null).map((_, index) => (
-      { params: { id: `${index + 1}` } }
-    )),
-    fallback: false,
+  try {
+    const response = await fetch("https://api.literacypowerid.com/api/buku");
+    const data = await response.json();
+
+    // Get the total number of books
+    const totalBooks = data?.data?.length || 0;
+
+    // Generate the paths using the index of the length
+    const paths = Array(totalBooks)
+      .fill(null)
+      .map((_, index) => ({ params: { id: `${index + 1}` } }));
+
+    return {
+      paths,
+      fallback: false,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      paths: [],
+      fallback: false,
+    };
   }
-}
+};
+
 
 export const getStaticProps = async ({ params }: any) => {
   try {
@@ -38,6 +56,9 @@ export const getStaticProps = async ({ params }: any) => {
 
 
 const AllAboutBooksSinglePages = ({ buku }: any) => {
+  console.log(buku.judul)
+
+  
   return (
     <>
       <div>

@@ -7,7 +7,7 @@ import ProjectBody from "../../components/organisms/ProjectBody";
 import Reviews from "../../components/organisms/Reviews";
 
 export default function ProjectSinglePage({ proyek }: any) {
-  
+
   const cover = proyek.image.split('"')
   console.log(cover[3])
   return (
@@ -76,13 +76,29 @@ export default function ProjectSinglePage({ proyek }: any) {
 
 
 export const getStaticPaths = async () => {
-  return {
-    paths: new Array(200).fill(null).map((_, index) => (
-      { params: { id: `${index + 1}` } }
-    )),
-    fallback: false,
+  try {
+    const response = await fetch('https://api.literacypowerid.com/api/proyek')
+    const data = await response.json();
+
+    // Extract the proyek IDs from the data response
+    const proyekIds = data?.data?.map((proyek: any) => proyek.id);
+
+    // Generate the paths using the proyek IDs
+    const paths = proyekIds.map((id: string) => ({ params: { id: id.toString() } }));
+
+    return {
+      paths,
+      fallback: false
+    };
+  } catch (err) {
+    console.error(err);
+    return {
+      paths: [],
+      fallback: false,
+    };
   }
-}
+};
+
 
 export const getStaticProps = async ({ params }: any) => {
   try {
