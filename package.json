@@ -3,13 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev && tailwindcss -i src/index.css -o src/build.css --watch",
+    "dev": "node server.ts",
     "build": "next build",
-    "start": "next start",
-    "serveApi": "node api.js",
-    "runDB": "knex migrate:latest --knexfile ./pages/api/db/knexfile.js && knex seed:run --knexfile ./pages/api/db/knexfile.js",
-    "dbRefresh": "knex migrate:rollback --all --knexfile ./pages/api/db/knexfile.js && knex migrate:latest --knexfile ./pages/api/db/knexfile.js && knex seed:run --knexfile ./pages/api/db/knexfile.js",
-    "lint": "next lint"
+    "start": "NODE_ENV=production node server.ts"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^38.0.1",
