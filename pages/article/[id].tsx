@@ -1,19 +1,36 @@
-import React from 'react'
-import Navbar from '../../components/organisms/Navbar'
-import Image from 'next/image'
-import Footer from '../../components/organisms/Footer'
-import Review from '../reviews'
-import Reviews from '../../components/organisms/Reviews'
+import useSWR from 'swr';
+import { useRouter } from 'next/router';
+import Navbar from '../../components/organisms/Navbar';
+import Image from 'next/image';
+import Footer from '../../components/organisms/Footer';
+import Reviews from '../../components/organisms/Reviews';
 
-const ArticleSinglePage = ({ article }: any) => {
-  console.log(article)
-  const dateStr = article.createdAt;
-  const date = new Date(dateStr);
+const fetcher = async (url: string) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data.data[0];
+};
+
+const ArticleSinglePage = () => {
+  const router = useRouter();
+  const { id } = router.query;
+
+  const { data: article, error } = useSWR(`https://api.literacypowerid.com/api/article/${id}`, fetcher);
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (!article) {
+    return <div>Loading...</div>;
+  }
+
+  const date = new Date(article.createdAt);
   const dayOfMonth = date.getDate();
   const month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(date);
   const year = date.getFullYear();
   const formattedDate = `${dayOfMonth} ${month} ${year}`;
-  {/* <div dangerouslySetInnerHTML={{ __html: article.content }}></div> */ }
+
   return (
     <div>
       <Navbar active='Article' />
@@ -24,31 +41,14 @@ const ArticleSinglePage = ({ article }: any) => {
           <p className='text-main-orange font-medium lg:text-xl'>by {article.author}</p>
         </div>
         <div className="max-w-6xl md:w-[800px] lg:w-full mx-auto mb-20">
-          <img src={`https://api.literacypowerid.com/images/${article.coverUrl}`} className="w-full h-auto rounded-3xl " alt=''/>
+          <img src={`https://api.literacypowerid.com/images/${article.coverUrl}`} className="w-full h-auto rounded-3xl" alt='' />
         </div>
         <div className='max-w-[1000px] mx-auto text-justify' dangerouslySetInnerHTML={{ __html: article.content }}></div>
       </div>
       <Reviews />
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-
-
-export const getServerSideProps = async ({ query }: any) => {
-  console.log(query)
-  const res = await fetch(`https://api.literacypowerid.com/api/article/${query.id}`);
-  const result = await res.json();
-  return {
-    props: {
-      article: result.data[0]
-    }
-  }
-}
-
-
-
-
-
-export default ArticleSinglePage
+export default ArticleSinglePage;

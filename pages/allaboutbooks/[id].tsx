@@ -1,68 +1,30 @@
-import React from 'react'
-import Footer from '../../components/organisms/Footer'
-import Navbar from '../../components/organisms/Navbar'
-import Reviews from '../../components/organisms/Reviews'
+import useSWR from 'swr';
+import Navbar from '../../components/organisms/Navbar';
+import Footer from '../../components/organisms/Footer';
+import Reviews from '../../components/organisms/Reviews';
+import { useRouter } from 'next/router';
 
 
-export const getStaticPaths = async () => {
-  try {
-    const response = await fetch("https://api.literacypowerid.com/api/buku");
-    const data = await response.json();
-
-    // Check if data contains valid book information
-    if (data?.data && Array.isArray(data.data) && data.data.length > 0) {
-      const paths = data.data.map((book: any) => ({
-        params: { id: book.id.toString() },
-      }));
-
-      return {
-        paths,
-        fallback: false,
-      };
-    }
-
-    return {
-      paths: [],
-      fallback: false,
-    };
-  } catch (error) {
-    console.error(error);
-    return {
-      paths: [],
-      fallback: false,
-    };
-  }
+const fetcher = async (url: string) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data.data[0];
 };
 
+const AllAboutBooksSinglePages = () => {
+  const router = useRouter();
+  const { id } = router.query;
 
-export const getStaticProps = async ({ params }: any) => {
-  try {
-    const response = await fetch(`https://api.literacypowerid.com/api/buku/${params.id}`);
-    const data = await response.json();
-
-    const buku = data && data.data && data.data.length > 0 ? data.data[0] : null;
-
-    return {
-      props: {
-        buku,
-      },
-    };
-  } catch (error) {
-    console.error(error);
-    return {
-      props: {
-        buku: null,
-      },
-    };
+  const { data: buku, error } = useSWR(`https://api.literacypowerid.com/api/buku/${id}`, fetcher);
+  console.log(buku)
+  if (error) {
+    return <div>Error: {error.message}</div>;
   }
-};
 
+  if (!buku) {
+    return <div>Loading...</div>;
+  }
 
-
-const AllAboutBooksSinglePages = ({ buku }: any) => {
-  console.log(buku.judul)
-
-  
   return (
     <>
       <div>
@@ -74,7 +36,6 @@ const AllAboutBooksSinglePages = ({ buku }: any) => {
           </div>
           <div className='Heading-Image flex flex-col md:flex-row gap-5'>
             <div className='image'>
-
               <div className='w-[275px] h-fit bg-slate-200 rounded-lg'><img src={`https://api.literacypowerid.com/images/${buku.coverUrl}`} alt="" /></div>
             </div>
             <div className='identitas-buku flex flex-col'>
@@ -96,14 +57,9 @@ const AllAboutBooksSinglePages = ({ buku }: any) => {
             <h1>Review</h1>
           </div>
           <div className='content text-justify'>
-            <p>
-              {buku.review}
-            </p>
+            <p>{buku.review}</p>
           </div>
         </div>
-
-
-
       </div>
       <br />
       <br />
@@ -111,7 +67,7 @@ const AllAboutBooksSinglePages = ({ buku }: any) => {
       <br />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default AllAboutBooksSinglePages
+export default AllAboutBooksSinglePages;

@@ -1,15 +1,32 @@
-import { url } from "inspector";
-import Head from "next/head";
-import React from "react";
-import Footer from "../../components/organisms/Footer";
-import Navbar from "../../components/organisms/Navbar";
-import ProjectBody from "../../components/organisms/ProjectBody";
-import Reviews from "../../components/organisms/Reviews";
+import useSWR from 'swr';
+import Head from 'next/head';
+import Navbar from '../../components/organisms/Navbar';
+import ProjectBody from '../../components/organisms/ProjectBody';
+import Reviews from '../../components/organisms/Reviews';
+import Footer from '../../components/organisms/Footer';
+import { useRouter } from 'next/router';
 
-export default function ProjectSinglePage({ proyek }: any) {
+const fetchProject = async (url: string) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  const proyek = data && data.data && data.data.length > 0 ? data.data[0] : null;
+  return proyek;
+};
 
-  const cover = proyek.image.split('"')
-  console.log(cover[3])
+export default function ProjectSinglePage() {
+
+  const router = useRouter();
+  const { id } = router.query;
+
+
+  const { data: proyek } = useSWR(`https://api.literacypowerid.com/api/proyek/${id}`, fetchProject);
+
+  if (!proyek) {
+    return <div>Loading...</div>;
+  }
+
+  const cover = proyek.image.split('"');
+  console.log(proyek, 'ini dari id')
   return (
     <>
       <Head>
@@ -38,33 +55,21 @@ export default function ProjectSinglePage({ proyek }: any) {
       {/* Content */}
       <div className="w-11/12 max-w-[1000px] mx-auto flex flex-col gap-8 my-5 lg:my-16">
         {proyek.content?.length == 0 || undefined ? (
-          ""
+          ''
         ) : (
-          <ProjectBody
-            name={proyek.nama}
-            text={proyek.content}
-            dokumentasi={cover[1]}
-          />
+          <ProjectBody name={proyek.nama} text={proyek.content} dokumentasi={cover[1]} />
         )}
 
         {proyek.content?.length == 0 || undefined ? (
-          ""
+          ''
         ) : (
-          <ProjectBody
-            type="Sebelum"
-            text={proyek.dampak_sebelum}
-            dokumentasi={cover[3]}
-          />
+          <ProjectBody type="Sebelum" text={proyek.dampak_sebelum} dokumentasi={cover[3]} />
         )}
 
         {proyek.content?.length == 0 || undefined ? (
-          ""
+          ''
         ) : (
-          <ProjectBody
-            type="Sesudah"
-            text={proyek.dampak_sesudah}
-            dokumentasi={cover[5]}
-          />
+          <ProjectBody type="Sesudah" text={proyek.dampak_sesudah} dokumentasi={cover[5]} />
         )}
       </div>
 
@@ -73,51 +78,3 @@ export default function ProjectSinglePage({ proyek }: any) {
     </>
   );
 }
-
-
-export const getStaticPaths = async () => {
-  try {
-    const response = await fetch('https://api.literacypowerid.com/api/proyek')
-    const data = await response.json();
-
-    // Extract the proyek IDs from the data response
-    const proyekIds = data?.data?.map((proyek: any) => proyek.id);
-
-    // Generate the paths using the proyek IDs
-    const paths = proyekIds.map((id: string) => ({ params: { id: id.toString() } }));
-
-    return {
-      paths,
-      fallback: false
-    };
-  } catch (err) {
-    console.error(err);
-    return {
-      paths: [],
-      fallback: false,
-    };
-  }
-};
-
-
-export const getStaticProps = async ({ params }: any) => {
-  try {
-    const response = await fetch(`https://api.literacypowerid.com/api/proyek/${params.id}`);
-    const data = await response.json();
-
-    const proyek = data && data.data && data.data.length > 0 ? data.data[0] : null;
-
-    return {
-      props: {
-        proyek,
-      },
-    };
-  } catch (error) {
-    console.error(error);
-    return {
-      props: {
-        proyek: null,
-      },
-    };
-  }
-};
