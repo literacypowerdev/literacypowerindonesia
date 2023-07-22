@@ -1,19 +1,17 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import ReactPaginate from "react-paginate";
-import AllAboutBooksCard from '../../molecules/AllAboutBooksCard';
-import ProjectCard from '../../molecules/ProjectCard';
-import Link from 'next/link'
 import axios from 'axios'
 import { useAppSelector } from '../../../utils/hooks';
 import { animateScroll as scroll } from 'react-scroll';
+
+import AllAboutBooksCard from '../../molecules/AllAboutBooksCard';
 
 interface BookData {
     id: number;
     judul: string;
     ringkasan: string;
     coverUrl: string;
-}
-
+};
 
 const AllAboutBook = () => {
     const handleScrollToTop = () => {
@@ -32,9 +30,7 @@ const AllAboutBook = () => {
       useEffect(() => {
         fetchData();
       }, [fetchData, pageNumber]);
-      
     
-
     const filteredData = data && data.filter((item: BookData) => {
         if (query === '') {
             return item.judul.toLowerCase().includes(query.toLowerCase());
@@ -106,8 +102,6 @@ const AllAboutBook = () => {
             />
         </>
     )
+};
 
-
-}
-
-export default AllAboutBook
+export default AllAboutBook;

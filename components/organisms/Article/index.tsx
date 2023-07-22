@@ -4,7 +4,6 @@ import ReactPaginate from "react-paginate";
 import { animateScroll as scroll } from 'react-scroll';
 import ArticleCard from '../../molecules/ArticleCard';
 
-
 const handleScrollToTop = () => {
     scroll.scrollToTop({
       duration: 150
@@ -16,6 +15,7 @@ const ArticleComponent = () => {
     const [loading, setLoading] = useState<boolean>(true)
     const [data, setData] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
+
     const fetchData = useCallback(async () => {
       const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=article&pageSize=3`);
       setData(response.data);
@@ -25,10 +25,6 @@ const ArticleComponent = () => {
     useEffect(() => {
       fetchData();
     }, [pageNumber, fetchData]);
-    
-
-    console.log(data)
-
 
     return (
         <>
@@ -97,6 +93,6 @@ const ArticleComponent = () => {
       />
     </>
     )
-}
+};
 
-export default ArticleComponent
+export default ArticleComponent;

@@ -4,7 +4,7 @@ interface AboutContentProps {
   title: string;
   content?: string;
   emphasize?: boolean;
-}
+};
 
 export default function AboutContent(props: AboutContentProps) {
   const { title, content, emphasize } = props;

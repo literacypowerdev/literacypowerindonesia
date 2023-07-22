@@ -12,6 +12,7 @@ interface ButtonProps {
 
 export default function Button(props: ButtonProps) {
   const { text, disable, link, runOnClick, border, size, animate } = props;
+
   const style = {
     normal: "py-1",
     large: "py-2",
@@ -27,7 +28,7 @@ export default function Button(props: ButtonProps) {
     } flex justify-center items-center transition-colors duration-150 ease-in-out hover:bg-[#596E67] active:bg-[#42524C] `;
 
   //   Button as link
-  //   Bungkus componenya pake tag Link
+  //   Wrap this component with a Link tag
   if (link) {
     return (
 

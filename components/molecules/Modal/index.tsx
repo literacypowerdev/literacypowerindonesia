@@ -1,9 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 export interface modalProps {
   active?: "Kesehatan" | "Pendidikan" | "Lingkungan" | "Ekonomi";
-}
-
+};
 
 const modalData = [
    {
@@ -22,11 +21,11 @@ const modalData = [
     title: "Program Ekonomi",
     icon: ''
    },
-]
-// style
-const modalStyle = 'text-red-500'
-const hover = 'hover:text-white hover:bg-main-orange'
-// style
+];
+
+const modalStyle = 'text-red-500';
+const hover = 'hover:text-white hover:bg-main-orange';
+
 const Modal = ({ active }: modalProps) => {
   return (
     <div className={`${modalStyle}`}>
@@ -41,6 +40,6 @@ const Modal = ({ active }: modalProps) => {
       </div>
     </div>
   )
-}
+};
 
-export default Modal
+export default Modal;

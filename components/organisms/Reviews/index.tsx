@@ -1,12 +1,14 @@
 import React from "react";
-import Button from "../../atoms/Button";
+import Link from "next/link";
+import Image from "next/image";
 import Slider from "react-slick";
+import { ReviewSlider } from "./slider";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { ReviewSlider } from "./slider";
-import Image from "next/image";
 import Kutip from "/public/icon/quotes.svg";
-import Link from "next/link";
+
+import Button from "../../atoms/Button";
 
 export interface ReviewsProps {
   isReview?: boolean;

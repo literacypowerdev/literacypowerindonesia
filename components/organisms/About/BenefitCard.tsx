@@ -1,10 +1,9 @@
 import React from "react";
-import Image from "next/image";
 
 interface BenefitCardProps {
   imageUrl: string;
   text: string;
-}
+};
 
 export default function BenefitCard(props: BenefitCardProps) {
   const { imageUrl, text } = props;

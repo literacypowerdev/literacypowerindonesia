@@ -1,15 +1,10 @@
 import React from "react";
 import Image from "next/image";
-// react-slick
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { settingsSlick } from "./settings";
 import { imageList } from "./imageList";
-// react-slick
-
-
-
 
 export default function SimpleSlider() {
   const settings = settingsSlick
@@ -35,6 +30,5 @@ export default function SimpleSlider() {
 
       </Slider>
     </div>
-
   );
-}
+};

@@ -1,4 +1,5 @@
 import React from "react";
+
 import AboutContent from "./AboutContent";
 import Benefit from "./Benefit";
 
@@ -41,4 +42,4 @@ export default function About() {
       <Benefit />
     </div>
   );
-}
+};

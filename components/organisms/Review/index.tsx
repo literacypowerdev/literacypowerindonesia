@@ -1,9 +1,9 @@
-import axios from "axios";
 import React, { useEffect, useState, useCallback } from "react";
+import axios from "axios";
 import ReactPaginate from "react-paginate";
-import ProjectCard from "../../molecules/ProjectCard";
-import ReviewCard from "../../molecules/ReviewCard";
 import { animateScroll as scroll } from "react-scroll";
+
+import ReviewCard from "../../molecules/ReviewCard";
 
 export default function ReviewList() {
   const handleScrollToTop = () => {
@@ -12,7 +12,6 @@ export default function ReviewList() {
     });
   };
   
-
   const [data, setData] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const fetchData = useCallback(async () => {

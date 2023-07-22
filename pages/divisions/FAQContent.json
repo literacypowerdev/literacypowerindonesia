@@ -1,0 +1,50 @@
+[
+    {
+      "title": "Bagaimana Kamu Bisa Berdampak",
+      "details": [
+        "Membantu masyarakat lokal",
+        "Mengajar di sekolah alam",
+        "Melakukan pengajaran dengan modul buku yang dibuat Tim Literacy Power",
+        "Menjadi asisten guru",
+        "Mengajar bahasa inggris dan keterampilan lainnya",
+        "Webinar pendidikan",
+        "Membangun perpustakaan",
+        "Memberikan tutor atau mentoring, dsbnya."
+      ],
+      "name": "bagaimana"
+    },
+    {
+      "title": "Apa Saja Syarat Menjadi Relawan",
+      "details": [
+        "Relawan memiliki umur 17-30 tahun",
+        "Memiliki fisik dan mental yang sehat",
+        "Memiliki ide program untuk diimplementasikan",
+        "Dapat bekerja sama dalam tim dan bertanggung jawab terhadap tugas yang diberikan",
+        "Dapat mengikuti protokol yang ditetapkan"
+      ],
+      "name": "syarat"
+    },
+    {
+      "title": "Contoh Jadwal Relawan",
+      "details": ["Lorem ipsum dolor sit amet consectetur"],
+      "name": "jadwal"
+    },
+    {
+      "title": "Berapa Biaya Mengikuti Kegiatan Relawan?",
+      "details": ["Tergantung lokasi pengabdian."],
+      "name": "biaya"
+    },
+    {
+      "title": "Apa Saja Benefit Yang Didapat?",
+      "details": [
+        "Tempat tinggal di rumah warga",
+        "Makan (sesuai durasi kegiatan relawan, 3x/hari)",
+        "Pendampingan program per divisi",
+        "Pendampingan fasilitator",
+        "Sertifikat",
+        "Transportasi PP untuk proyek luar Jawa (menggunakan kapal)",
+        "Asuransi perjalanan selama kegiatan"
+      ],
+      "name": "benefit"
+    }
+]

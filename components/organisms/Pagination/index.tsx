@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import contoh from "./contohFile.json";
 import ReactPaginate from "react-paginate";
+
 import axios from "axios";
 
 const Pagination = () => {

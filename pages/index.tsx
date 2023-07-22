@@ -1,13 +1,14 @@
 import type { NextPage } from "next";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import AOS from "aos";
+
+import Head from "next/head";
 import About from "../components/organisms/About";
 import Footer from "../components/organisms/Footer";
 import Hero from "../components/organisms/Hero";
 import Navbar from "../components/organisms/Navbar";
 import Newsletter from "../components/organisms/Newsletter";
 import Documentation from "../components/organisms/Documentation";
-import Head from "next/head";
 
 const Home: NextPage = () => {
   useEffect(() => {

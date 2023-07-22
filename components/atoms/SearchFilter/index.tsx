@@ -10,7 +10,6 @@ const SearchFilter = () => {
         dispatch(setQuery(target.value))
     }
 
-
     return (
         <div className='container'>
             <div className='wrapper search max-w-[600px] rounded-2xl py-3 px-4 shadow-md flex text-light-orange items-center justify-start gap-2 m-auto bg-white'>

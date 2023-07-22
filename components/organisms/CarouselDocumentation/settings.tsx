@@ -1,4 +1,3 @@
-
 const SlickArrowLeft = ({ currentSlide, slideCount, style, ...props }: any) => (
     <img src="/icon/arrow-down.svg" alt="prevArrow" {...props} style=
         {{
@@ -14,7 +13,6 @@ const SlickArrowRight = ({ currentSlide, slideCount, style, ...props }: any) => 
     }}
     />
 );
-
 
 export const settingsSlick = {
     dots: true,
@@ -39,7 +37,6 @@ export const settingsSlick = {
 		};
 		return <a className="slick-dot bg-[#E08A59] rounded-full" style={style} />;
 	},
-    
       
     responsive: [
         {

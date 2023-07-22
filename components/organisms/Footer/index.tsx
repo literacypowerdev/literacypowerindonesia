@@ -1,7 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import Button from "../../atoms/Button";
 import Link from "next/link";
+
+import Button from "../../atoms/Button";
 
 export default function Footer() {
   return (
@@ -108,4 +109,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export interface AccordionProps {
   title: string;
   steps: string[];
-}
+};
 
 export default function Accordion(prop: AccordionProps) {
   const { title, steps } = prop;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+
 import Button from "../../atoms/Button";
 import SubscribeModal from "./SubscribeModal";
 
@@ -82,4 +83,4 @@ export default function Newsletter() {
       </div>
     </>
   );
-}
+};

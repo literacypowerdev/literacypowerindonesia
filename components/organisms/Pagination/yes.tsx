@@ -9,7 +9,6 @@ interface UserData {
     gender?: string;
 }
 
-
 const Yes = () => {
 
     const [dataPagination, setDataPagination] = useState<UserData[]>([])
@@ -19,7 +18,6 @@ const Yes = () => {
     useEffect(() => {
         fetchItems()
     },[])
-
 
   return (
     <div>
@@ -35,4 +33,4 @@ const Yes = () => {
   )
 }
 
-export default Yes
+export default Yes;

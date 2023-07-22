@@ -2,6 +2,7 @@ import React from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+
 import image1 from '../../../public/images/fotoslider6.png'
 import image2 from '../../../public/images/fotoslider4.png'
 import '../../../styles/Home.module.css'
@@ -98,7 +99,6 @@ const DocumentationSlider = () => {
             </Slider>
         </div>
     )
-
-
 }
+
 export default DocumentationSlider
