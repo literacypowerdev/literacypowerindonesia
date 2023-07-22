@@ -16,7 +16,7 @@ export default function Projects({ children }: any) {
   const [data, setData] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const fetchData = useCallback(async () => {
-    const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=proyek&pageSize=3`);
+    const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=proyek&pageSize=5`);
     setData(response.data);
     setLoading(false);
   }, [pageNumber]);
@@ -24,7 +24,6 @@ export default function Projects({ children }: any) {
   useEffect(() => {
     fetchData();
   }, [fetchData, pageNumber]);
-  
 
   return (
     <>

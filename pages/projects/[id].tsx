@@ -1,10 +1,12 @@
-import useSWR from 'swr';
+import React from "react";
 import Head from 'next/head';
+import useSWR from 'swr';
+import { useRouter } from 'next/router';
+
 import Navbar from '../../components/organisms/Navbar';
 import ProjectBody from '../../components/organisms/ProjectBody';
 import Reviews from '../../components/organisms/Reviews';
 import Footer from '../../components/organisms/Footer';
-import { useRouter } from 'next/router';
 
 const fetchProject = async (url: string) => {
   const response = await fetch(url);
@@ -18,7 +20,6 @@ export default function ProjectSinglePage() {
   const router = useRouter();
   const { id } = router.query;
 
-
   const { data: proyek } = useSWR(`https://api.literacypowerid.com/api/proyek/${id}`, fetchProject);
 
   if (!proyek) {
@@ -26,7 +27,9 @@ export default function ProjectSinglePage() {
   }
 
   const cover = proyek.image.split('"');
-  console.log(proyek, 'ini dari id')
+  console.log(proyek)
+  console.log(cover);
+  
   return (
     <>
       <Head>
