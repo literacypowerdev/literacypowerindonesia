@@ -1,7 +1,6 @@
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
 import Navbar from '../../components/organisms/Navbar';
-import Image from 'next/image';
 import Footer from '../../components/organisms/Footer';
 import Reviews from '../../components/organisms/Reviews';
 
@@ -40,10 +39,10 @@ const ArticleSinglePage = () => {
           <h1 className='text-2xl lg:text-5xl font-bold text-main-green'>{article.title}</h1>
           <p className='text-main-orange font-medium lg:text-xl'>by {article.author}</p>
         </div>
-        <div className="max-w-6xl md:w-[800px] lg:w-full mx-auto mb-20">
+        <div className="max-w-6xl w-6xl md:w-[800px] lg:w-full mx-auto mb-20">
           <img src={`https://api.literacypowerid.com/images/${article.coverUrl}`} className="w-full h-auto rounded-3xl" alt='' />
         </div>
-        <div className='max-w-[1000px] mx-auto text-justify' dangerouslySetInnerHTML={{ __html: article.content }}></div>
+        <div className='max-w-[1000px] mx-auto text-justify article' dangerouslySetInnerHTML={{ __html: article.content }}></div>
       </div>
       <Reviews />
       <Footer />

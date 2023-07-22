@@ -7,6 +7,18 @@
   body {
     @apply overflow-x-hidden bg-main-background;
   }
+
+  .article h2 {
+    @apply text-[2rem] text-main-orange font-bold;
+  }
+
+  .article h3 {
+    @apply text-[1.6rem] text-main-orange font-bold;
+  }
+
+  .article strong {
+    @apply text-main-orange;
+  }
 }
 
 

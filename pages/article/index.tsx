@@ -1,9 +1,15 @@
-import Head from 'next/head'
-import React from 'react'
-import ArticleComponent from '../../components/organisms/Article'
-import Navbar from '../../components/organisms/Navbar'
+import React, { useEffect } from 'react';
+import Head from 'next/head';
+import AOS from "aos";
+
+import Navbar from '../../components/organisms/Navbar';
+import ArticleComponent from '../../components/organisms/Article';
 
 const Article = () => {
+    useEffect(() => {
+        AOS.init();
+      }, []);
+
     return (
         <>
             <Head>

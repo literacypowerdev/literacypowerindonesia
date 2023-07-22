@@ -2,6 +2,7 @@ import React, {  useState, useEffect, useCallback} from 'react'
 import axios from 'axios';
 import ReactPaginate from "react-paginate";
 import { animateScroll as scroll } from 'react-scroll';
+
 import ArticleCard from '../../molecules/ArticleCard';
 
 const handleScrollToTop = () => {
@@ -17,7 +18,7 @@ const ArticleComponent = () => {
     const [pageNumber, setPageNumber] = useState(0);
 
     const fetchData = useCallback(async () => {
-      const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=article&pageSize=3`);
+      const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=article&pageSize=5`);
       setData(response.data);
       setLoading(false);
     }, [pageNumber]);
