@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/dist/client/image";
+import AOS from "aos";
 
 import AccordionParent from "../../../public/icon/accordion-parent.svg";
 import AccordionChild from "../../../public/icon/accordion-child.svg";
@@ -13,6 +14,10 @@ interface Content {
 }
 
 const LiteractFAQ = ({ title, details, name }: Content) => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+  
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -21,6 +26,7 @@ const LiteractFAQ = ({ title, details, name }: Content) => {
         <div
           onClick={() => setIsOpen(!isOpen)}
           className="w-full m-auto bg-white shadow-lg mb-2 hover:bg-main-green text-gray-600 hover:text-white transition-all duration-150 ease-in-out cursor-pointer px-5 py-2 rounded-[20px] flex justify-between"
+          data-aos="fade-up"
         >
           <div className="flex gap-2">
             <Image src={AccordionParent} width={20} height={20} alt="" />

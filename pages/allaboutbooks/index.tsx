@@ -8,7 +8,7 @@ import axios from 'axios'
 import { useAppDispatch, useAppSelector } from '../../utils/hooks'
 import { getBuku } from '../../store/features/bukuSlice'
 import ReactPaginate from 'react-paginate';
-
+import AOS from "aos";
 
 
 
@@ -20,6 +20,10 @@ const AllAboutBooks = ({ allBuku }: any) => {
     //     dispatch(getBuku());
     //     console.log(allBuku)
     // }, [])
+
+    useEffect(() => {
+        AOS.init();
+      }, []);
 
     return (
         <>

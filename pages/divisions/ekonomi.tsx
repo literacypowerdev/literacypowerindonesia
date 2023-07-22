@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import AOS from "aos";
 
 import Logo from "../../public/icon/logo.svg";
 import FAQContent from "./FAQContent.json";
@@ -13,6 +14,10 @@ import Reviews from "../../components/organisms/Reviews";
 import Footer from "../../components/organisms/Footer";
 
 const ekonomi = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   const headingContent =
     "Literacy Power memberikan ruang bagi generasi muda untuk mengimplementasikan program pendidikan sesuai keahlian yang dimiliki. Relawan akan memiliki pengalaman dalam mengajar anak-anak dan memberikan bantuan berupa edukasi maupun mentoring di daerah yang berkekurangan. Tidak hanya itu, kemampuan untuk mengembangkan karakter pribadi dan membuka perspektif baru bisa didapatkan melalui program kerelawanan ini.";
 
@@ -27,6 +32,7 @@ const ekonomi = () => {
 
         <div
           className="container m-auto heading flex flex-col-reverse md:flex-row md:w-[1300px] lg:w-10/12 px-5"
+          data-aos="fade-up"
         >
           <div className="left lg:pr-44 md:pr-24  flex flex-col gap-3">
             <h1 className="text-2xl font-bold">Program Ekonomi</h1>
