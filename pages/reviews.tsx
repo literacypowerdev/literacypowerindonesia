@@ -1,9 +1,10 @@
-import Head from "next/head";
 import React from "react";
-import Footer from "../components/organisms/Footer";
+import Head from "next/head";
+
 import Navbar from "../components/organisms/Navbar";
 import ReviewList from "../components/organisms/Review";
 import Reviews from "../components/organisms/Reviews";
+import Footer from "../components/organisms/Footer";
 
 export default function Review() {
   return (

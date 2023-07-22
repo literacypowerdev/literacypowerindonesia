@@ -16,7 +16,7 @@ export default function ReviewList() {
   const [pageNumber, setPageNumber] = useState(0);
   const fetchData = useCallback(async () => {
     const response = await axios.get(
-      `https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=review&pageSize=3`
+      `https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=review&pageSize=5`
     );
     setData(response.data);
   }, [pageNumber]);
@@ -24,7 +24,6 @@ export default function ReviewList() {
   useEffect(() => {
     fetchData();
   }, [fetchData, pageNumber]);
-
 
   return (
     <>

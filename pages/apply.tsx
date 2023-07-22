@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import React from "react";
 import Accordion from "../components/molecules/Accordion";
 import Footer from "../components/organisms/Footer";
@@ -65,7 +64,6 @@ export default function apply() {
         <div className="w-full h-full relative flex flex-col gap-10 md:gap-16 lg:gap-24 justify-center items-center">
           <div
             className="w-11/12 md:w-10/12 max-w-[700px] p-8 bg-white rounded-[20px] shadow-lg"
-            data-aos="fade-up"
           >
             <p className="font-ptserif text-base font-bold text-main-orange">
               “Bagi kalian yang ingin mengikuti program kami, silakan kontak
@@ -85,7 +83,6 @@ export default function apply() {
           <div className="w-11/12 md:w-10/12 max-w-[1200px] flex flex-col justify-center items-center gap-5 md:gap-10">
             <h1
               className="font-ptserif font-bold text-title3 text-main-green"
-              data-aos="fade-up"
             >
               Cara Donasi
             </h1>

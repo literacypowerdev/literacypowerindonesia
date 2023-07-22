@@ -11,7 +11,7 @@ export default function Accordion(prop: AccordionProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="w-full flex flex-col gap-1 " data-aos="fade-up">
+    <div className="w-full flex flex-col gap-1 ">
       <div
         onClick={() => setIsOpen(!isOpen)}
         className="w-full bg-main-orange mb-1 hover:bg-light-orange transition-all duration-150 ease-in-out cursor-pointer px-5 py-2 rounded-[20px] flex justify-between shadow-md"

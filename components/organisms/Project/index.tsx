@@ -57,7 +57,6 @@ export default function Projects({ children }: any) {
                   name={item.nama}
                   location={item.lokasi}
                   date={formattedDate}
-                  // date='2023-02-27T17:00:00.000Z'
                   content={item.content} />
               </>
             );

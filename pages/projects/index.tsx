@@ -1,9 +1,10 @@
 import React from "react";
-import Navbar from "../../components/organisms/Navbar";
 import Head from "next/head";
+
+import Navbar from "../../components/organisms/Navbar";
+import Project from "../../components/organisms/Project";
 import Reviews from "../../components/organisms/Reviews";
 import Footer from "../../components/organisms/Footer";
-import Project from "../../components/organisms/Project";
 
 export default function Projects() {
   return (
