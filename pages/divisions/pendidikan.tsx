@@ -13,7 +13,7 @@ import LiteractFAQ from "../../components/organisms/LiteracyFAQ";
 import Reviews from "../../components/organisms/Reviews";
 import Footer from "../../components/organisms/Footer";
 
-const pendidikan = () => {
+const Pendidikan = () => {
   useEffect(() => {
     AOS.init();
   }, []);
@@ -118,4 +118,4 @@ const pendidikan = () => {
   );
 };
 
-export default pendidikan;
+export default Pendidikan;

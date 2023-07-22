@@ -13,7 +13,7 @@ import LiteractFAQ from "../../components/organisms/LiteracyFAQ";
 import Reviews from "../../components/organisms/Reviews";
 import Footer from "../../components/organisms/Footer";
 
-const lingkungan = () => {
+const Lingkungan = () => {
   useEffect(() => {
     AOS.init();
   }, []);
@@ -119,4 +119,4 @@ const lingkungan = () => {
   );
 };
 
-export default lingkungan;
+export default Lingkungan;

@@ -49,10 +49,6 @@ const AllAboutBooksSinglePages = () => {
               <h1>Jumlah Halaman: {buku.halaman}</h1>
             </div>
           </div>
-          <div className='tag flex gap-2 text-white'>
-            <div className='px-4 py-1 bg-light-orange rounded-xl'>Tag</div>
-            <div className='px-4 py-1 bg-light-orange rounded-xl'>Tag</div>
-          </div>
           <div className='heading-content text-main-green'>
             <h1>Review</h1>
           </div>

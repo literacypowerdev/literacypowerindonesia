@@ -13,7 +13,7 @@ import LiteractFAQ from "../../components/organisms/LiteracyFAQ";
 import Reviews from "../../components/organisms/Reviews";
 import Footer from "../../components/organisms/Footer";
 
-const kesehatan = () => {
+const Kesehatan = () => {
   useEffect(() => {
     AOS.init();
   }, []);
@@ -119,4 +119,4 @@ const kesehatan = () => {
   );
 };
 
-export default kesehatan;
+export default Kesehatan;

@@ -7,7 +7,7 @@ import Navbar from "../components/organisms/Navbar";
 import Reviews from "../components/organisms/Reviews";
 
 
-export default function apply() {
+const Apply = () => {
   useEffect(() => {
     AOS.init();
   }, []);
@@ -107,3 +107,5 @@ export default function apply() {
     </>
   );
 }
+
+export default Apply;

@@ -1,26 +1,13 @@
-import React, { useEffect, useState, useRef } from 'react'
-import SearchFilter from '../../components/atoms/SearchFilter'
-import AllAboutBook from '../../components/organisms/AllAboutBooks'
-import Footer from '../../components/organisms/Footer'
-import Navbar from '../../components/organisms/Navbar'
-import Reviews from '../../components/organisms/Reviews'
-import axios from 'axios'
-import { useAppDispatch, useAppSelector } from '../../utils/hooks'
-import { getBuku } from '../../store/features/bukuSlice'
-import ReactPaginate from 'react-paginate';
+import React, { useEffect } from 'react'
 import AOS from "aos";
 
+import AllAboutBook from '../../components/organisms/AllAboutBooks'
+import SearchFilter from '../../components/atoms/SearchFilter'
+import Navbar from '../../components/organisms/Navbar'
+import Reviews from '../../components/organisms/Reviews'
+import Footer from '../../components/organisms/Footer'
 
-
-
-const AllAboutBooks = ({ allBuku }: any) => {
-    // const dataBuku = useAppSelector((state) => state.buku.data)
-    // const dispatch = useAppDispatch()
-    // useEffect(() => {
-    //     dispatch(getBuku());
-    //     console.log(allBuku)
-    // }, [])
-
+const AllAboutBooks = () => {
     useEffect(() => {
         AOS.init();
       }, []);
@@ -53,26 +40,8 @@ const AllAboutBooks = ({ allBuku }: any) => {
                     <Footer />
                 </div>
             </div>
-
         </>
-
     )
 }
-
-// kalau mau pake getStaticProps
-// export const getStaticProps = async () => {
-//     const bukuReq = await fetch('https://api.literacypowerid.com/api/buku', {
-//         headers: {
-//             "Content-Type": "application/json"
-//         }
-//     });
-//     const buku = await bukuReq.json();
-//     return {
-//         props: {
-//             allBuku: buku.data
-//         }
-//     }
-// }
-
 
 export default AllAboutBooks

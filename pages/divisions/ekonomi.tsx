@@ -13,7 +13,7 @@ import LiteractFAQ from "../../components/organisms/LiteracyFAQ";
 import Reviews from "../../components/organisms/Reviews";
 import Footer from "../../components/organisms/Footer";
 
-const ekonomi = () => {
+const Ekonomi = () => {
   useEffect(() => {
     AOS.init();
   }, []);
@@ -118,4 +118,4 @@ const ekonomi = () => {
   );
 };
 
-export default ekonomi;
+export default Ekonomi;

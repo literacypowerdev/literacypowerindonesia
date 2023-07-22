@@ -23,7 +23,7 @@ const AllAboutBook = () => {
     const [data, setData] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
     const fetchData = useCallback(async () => {
-        const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=buku&pageSize=3`);
+        const response = await axios.get(`https://api.literacypowerid.com/api/article/pagination?page=${pageNumber}&table=buku&pageSize=5`);
         setData(response.data);
       }, [pageNumber])
       

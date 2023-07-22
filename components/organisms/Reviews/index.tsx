@@ -28,12 +28,12 @@ const Reviews = (props: ReviewsProps) => {
   const data = ReviewSlider;
 
   const [reviewData, setReviewData] = useState([]);
-  const fetchData = useCallback(async () => {
+  const fetchData = async () => {
     const response = await axios.get(
       `https://api.literacypowerid.com/api/article/pagination?page=0&table=review&pageSize=5`
     );
     setReviewData(response.data);
-  }, []);
+  };
   useEffect(() => {
     fetchData();
   }, []);
@@ -67,10 +67,10 @@ const Reviews = (props: ReviewsProps) => {
         <div className="Slider w-full md:w-fit text-left md:text-justify p-5">
           <div className="bg-white mx-auto rounded-lg py-5 w-full max-w-[500px] md:w-[400px]">
             <Slider {...settings}>
-              {reviewData.map((review) => {
+              {reviewData.map((review: any) => {
                 return (
                   <div key={review.id} className="!flex flex-col justify-between h-[130px] px-8">
-                    <p className="font-semibold">"{review.testimoni}"</p>
+                    <p className="font-semibold">&quot;{review.testimoni}&quot;</p>
                     <div className="flex flex-col">
                       <p className="font-semibold text-orange-500 text-xl">
                         Good job for the team!
