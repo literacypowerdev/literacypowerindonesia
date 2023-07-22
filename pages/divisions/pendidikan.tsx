@@ -18,6 +18,8 @@ const Pendidikan = () => {
     AOS.init();
   }, []);
 
+  // bismillah
+
   const headingContent =
     "Literacy Power memberikan ruang bagi generasi muda untuk mengimplementasikan program pendidikan sesuai keahlian yang dimiliki. Relawan akan memiliki pengalaman dalam mengajar anak-anak dan memberikan bantuan berupa edukasi maupun mentoring di daerah yang berkekurangan. Tidak hanya itu, kemampuan untuk mengembangkan karakter pribadi dan membuka perspektif baru bisa didapatkan melalui program kerelawanan ini.";
   
