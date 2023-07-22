@@ -90,7 +90,7 @@ export default function Navbar(props: NavbarProps) {
                 </li>
               </ul>
             </li>
-            <li>
+            {/* <li>
               <Link href="/programs" passHref>
                 <a
                   className={`text-white font-ptserif ${
@@ -100,7 +100,7 @@ export default function Navbar(props: NavbarProps) {
                   Programs
                 </a>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link href="/projects" passHref>
                 <a
