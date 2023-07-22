@@ -24,7 +24,6 @@ const Ekonomi = () => {
   const siapayangcocok =
     "Literacy Power membutuhkan pribadi yang berjiwa sosial dan memiliki passion untuk membantu sesama. Selain itu, seseorang yang bisa beradaptasi, menyukai anak-anak, dan memiliki keahlian di bidang tertentu (mengajar bahasa inggris, matematika, atau keterampilan hidup, dll).";
 
-// tess
 
   return (
     <>
