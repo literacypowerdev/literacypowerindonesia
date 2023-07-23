@@ -1,30 +1,29 @@
-import React, { SyntheticEvent, useState } from 'react'
-import cookies from 'next-cookies'
-import Router from 'next/router'
-import { useAppDispatch } from '../../utils/hooks'
-import { loginSetToken } from '../../store/features/loginSlice'
-import { unauthPage } from '../../utils/unauthPage'
-const Cookie = require('js-cookie')
-
+import React, { SyntheticEvent, useState } from 'react';
+import Router from 'next/router';
+import { useAppDispatch } from '../../utils/hooks';
+import { loginSetToken } from '../../store/features/loginSlice';
+import { unauthPage } from '../../utils/unauthPage';
+const Cookie = require('js-cookie');
 
 export const getServerSideProps = async (context: any) => {
-  unauthPage(context)
-  return { props: {} }
+  unauthPage(context);
+  return { props: {} };
 }
 
 const Login = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const [user, setUser] = useState({
     firstName: '',
     lastName: '',
     password: ''
-  })
-  const [status, setStatus] = useState('idle')
+  });
+  const [status, setStatus] = useState('idle');
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogin = async (e: SyntheticEvent) => {
-    e.preventDefault()
-    console.log('submitted')
-    setStatus('loading')
+    e.preventDefault();
+    setStatus('loading');
+    
     try {
       const response = await fetch('https://api.literacypowerid.com/api/admin/login', {
         method: "POST",
@@ -32,41 +31,57 @@ const Login = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(user)
-      })
-      if (!response.ok) return setStatus('error ' + response.status)
-      const loginRes = await response.json()
-      dispatch(loginSetToken(loginRes.data.token))
-      Cookie.set('token', loginRes.data.token)
+      });
+      if (!response.ok) {
+        setErrorMessage("Incorrect username or passowrd");
+        return setStatus('error ' + response.status)
+      };
+      const loginRes = await response.json();
+      // dispatch(loginSetToken(loginRes.data.token));
+      Cookie.set('token', loginRes.data.token);
       setStatus('success');
-      Router.push('/admin/dashboard/buku')
-
-    } catch (err) {
-      console.log(err)
+      Router.push('/admin/dashboard/buku');
+    } catch (err: any) {
+      console.log(err);
     }
   }
 
   const handleChange = (e: any) => {
-    setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
-
+    setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   return (
-    <div className='w-[100vw] bg-red-50 h-[100vh] flex justify-center items-center'>
-      <div className='py-8 px-5 bg-slate-400 m-auto flex flex-col items-center justify-center gap-4'>
-        <h1>login</h1>
-        <form onSubmit={handleLogin} className='flex flex-col gap-2 w-64 m-auto '>
-          <input type="text" placeholder='firstName' name='firstName' onChange={handleChange} />
-          <input type="text" placeholder='lastName' name='lastName' onChange={handleChange} />
-          <input type="password" placeholder='password' name='password' onChange={handleChange} />
-          <div className='flex justify-end'>
-            <button type='submit' className='bg-red-300 w-20 p-1'>submit</button>
+    <section className="">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+          <a href="#" className="flex items-center mb-6">
+              <img className="w-[200px] mr-2" src="/icon/logo-2.svg" alt="logo" />
+          </a>
+          <div className="w-full bg-main-orange rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+              <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                  <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                      Admin Sign In
+                  </h1>
+                  <form onSubmit={handleLogin} className="space-y-4 md:space-y-6" action="#">
+                      <div>
+                          <label className="block mb-2 text-sm font-medium text-white">First name</label>
+                          <input type="text" name="firstName" id="firstName" onChange={handleChange} className="bg-white text-gray-900 sm:text-sm rounded-lg block w-full p-2.5" placeholder="Your first name" required />
+                      </div>
+                      <div>
+                          <label className="block mb-2 text-sm font-medium text-white">Last name</label>
+                          <input type="text" name="lastName" id="lastName" onChange={handleChange} className="bg-white text-gray-900 sm:text-sm rounded-lg block w-full p-2.5" placeholder="Your last name" required />
+                      </div>
+                      <div>
+                          <label className="block mb-2 text-sm font-medium text-white">Password</label>
+                          <input type="password" name="password" id="password" onChange={handleChange} placeholder="Your password" className="bg-white text-gray-900 sm:text-sm rounded-lg block w-full p-2.5" required />
+                      </div>
+                      {errorMessage !== "" ? <div className='w-full text-white bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center'>{ errorMessage }</div> : null}
+                      <button type="submit" className="w-full text-white bg-main-green hover:bg-[#596E67] transition-colors duration-150 ease-in-out focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
+                  </form>
+              </div>
           </div>
-          <h1>{status}</h1>
-        </form>
       </div>
-    </div>
+    </section>
+  );
+};
 
-  )
-}
-
-export default Login
+export default Login;
