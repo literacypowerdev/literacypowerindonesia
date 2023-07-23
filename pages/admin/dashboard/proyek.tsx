@@ -57,6 +57,7 @@ const Proyek = () => {
 
   return (
     <Layout>
+      <h1 className='text-main-green font-bold text-[2rem]'>Projects</h1>
       <div className='flex gap-4'>
         <div className='w-fit'>
           {data.map((item: any, index: any) => {

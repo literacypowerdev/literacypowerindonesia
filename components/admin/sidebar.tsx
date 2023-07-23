@@ -62,7 +62,7 @@ const Sidebar = () => {
                 <ul>
                 {menuItems.map((item, index) => {
                     return (
-                        <Link href={item.link}>
+                        <Link key={index} href={item.link}>
                             <li key={index} className='cursor-pointer text-white text-[1.2rem] rounded-md hover:bg-main-green py-2 px-1 font-medium flex gap-2 items-center'>
                                 {item.logo}
                                 {item.label}</li>

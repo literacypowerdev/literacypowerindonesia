@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import useSWR from 'swr'
 import axios from 'axios'
-import Layout from '../../../components/admin/layout'
-import ReviewForm from '../../../components/admin/reviewForm'
 import { useAppDispatch } from '../../../utils/hooks'
 import { deleteReq } from '../../../store/features/reviewSlice'
 import withTokenValidation from '../../../utils/tokenValidation'
 
+import ReviewForm from '../../../components/admin/reviewForm'
+import Layout from '../../../components/admin/layout'
 
 const Review = () => {
   const dispatch = useAppDispatch()
@@ -23,33 +23,41 @@ const Review = () => {
     dispatch(deleteReq(id))
   }
 
+  console.log(data);
+  
+
   return (
     <Layout>
-      <div className='flex gap-5'>
-        <div className='flex flex-col gap-5 mb-5'>
-          {data && data.map((item: any) => {
-            return (
-              <div key={item.id} className="w-full max-w-[1100px] text-center ml-5 h-fit bg-white shadow-lg  rounded-[20px] overflow-hidden p-4 pb-6 flex flex-col md:gap-2 transition-all duration-150 ease-in-out">
-                <div>
-                  <h3 className="font-ptserif font-bold text-main-blue">{item.username}</h3>
-                </div>
-                <h2 className="font-ptserif font-bold text-base text-main-orange">
-                </h2>
-                <p className="font-ptserif text-main-blue">“{item.testimoni}”</p>
-                <div className='bg-red-500 hover:bg-red-300 h-fit px-3 py-1 rounded-sm text-white self-end'>
-                  <button onClick={() => handleDelete(item.id)}>delete</button>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-        <div className='w-fit h-fit flex gap-2'>
-          <div onClick={handleAdd} className='font-bold h-fit text-white rounded-lg bg-main-green px-5 py-3 w-fit mb-2 cursor-pointer shadow-md'>
-            <button >Add</button>
+      <h1 className='text-main-green font-bold text-[2rem] mb-5'>Reviews</h1>
+      
+      <div className='w-full flex flex-row gap-8'>
+        <div className='w-3/5 flex flex-col gap-5'>
+
+            <div className='flex flex-col gap-5'>
+              {data && data.map((item: any) => {
+                return (
+                  <div key={item.id} className="w-full max-w-[1100px] h-fit bg-white border border-main-orange rounded-xl p-4 flex flex-col gap-2">
+                    <div>
+                      <h2 className="font-bold text-[1.6rem] text-main-orange">{item.title}</h2>
+                      <h3 className="font-semibold text-main-blue">{item.username}, {item.userProfession}</h3>
+                    </div>
+                    <p className="text-main-blue">“{item.testimoni}”</p>
+                    <div className='bg-red-500 hover:bg-red-600 h-fit px-6 py-2 rounded-lg text-white self-end'>
+                      <button onClick={() => handleDelete(item.id)}>Delete</button>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+
+            <div onClick={handleAdd} className='h-fit text-white rounded-lg bg-main-green hover:bg-dark-green px-5 py-3 w-fit mb-5 cursor-pointer self-end'>
+              <button >Add Review</button>
+            </div>
+            
           </div>
-          <div className='w-fit'>
-            {showForm ? (<ReviewForm />) : ''}
-          </div>
+
+        <div className='w-2/5'>
+          {showForm ? (<ReviewForm />) : ''}
         </div>
       </div>
     </Layout>
