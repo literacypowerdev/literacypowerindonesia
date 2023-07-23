@@ -23,7 +23,6 @@ const Review = () => {
     dispatch(deleteReq(id))
   }
 
-
   return (
     <Layout>
       <div className='flex gap-5'>

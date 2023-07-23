@@ -39,6 +39,9 @@ const AllAboutBook = () => {
         }
 
     });
+
+    console.log(data);
+
     return (
         <>
             <div>

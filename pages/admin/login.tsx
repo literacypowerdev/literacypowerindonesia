@@ -53,7 +53,7 @@ const Login = () => {
   return (
     <section className="">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-          <a href="#" className="flex items-center mb-6">
+          <a href="https://www.literacypowerid.com/" className="flex items-center mb-6">
               <img className="w-[200px] mr-2" src="/icon/logo-2.svg" alt="logo" />
           </a>
           <div className="w-full bg-main-orange rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
