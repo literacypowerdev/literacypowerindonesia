@@ -10,6 +10,7 @@ import Layout from '../../components/admin/layout';
 
 const Create = () => {
   const CookieToken = Cookie.get('token');
+  console.log(CookieToken)
   const router = useRouter();
   const [editorLoaded, setEditorLoaded] = useState(false);
   const [files, setFiles] = useState<any>('');
@@ -26,12 +27,14 @@ const Create = () => {
 
     try {
       e.preventDefault();
+      console.log(title)
+      console.log(author)
+      console.log(content)
       const res = await axios.post(
         'https://api.literacypowerid.com/api/article',
         data,
         {
           headers: {
-            'Content-Type': 'application/json',
             Authorization: `Bearer ${CookieToken}`,
           },
         }
@@ -41,6 +44,11 @@ const Create = () => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const handleFileChange = (e: any) => {
+    const selectedFiles = e.target.files;
+    setFiles(selectedFiles);
   };
 
   useEffect(() => {
@@ -64,7 +72,7 @@ const Create = () => {
 
           <div className='flex flex-col gap-1'>
             <label>Image</label>
-            <input className="block w-full rounded-md cursor-pointer bg-white text-main-blue py-1" type="file" placeholder='Image file' onChange={(e) => setFiles(e.target.value)} required/>
+            <input className="block w-full rounded-md cursor-pointer bg-white text-main-blue py-1" type="file" placeholder='Image file' onChange={handleFileChange} required/>
           </div>
 
           <div className='flex flex-col gap-1 text-main-blue'>
