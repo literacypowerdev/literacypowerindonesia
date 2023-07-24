@@ -18,6 +18,7 @@ const ReviewForm = () => {
     const handleSubmit = async (e: SyntheticEvent) => {
         e.preventDefault();
         await dispatch(postReview(reviewData));
+        window.location.reload();
     };
 
     const inputStyles = 'py-2 rounded-md px-2 text-main-blue';
@@ -42,7 +43,7 @@ const ReviewForm = () => {
                     <label>Review</label>
                     <textarea className="py-2 rounded-lg px-2 h-60 w-full text-main-blue" placeholder='Pengalaman memorable banget bisa mengikuti volunteering bersama Literacy Power, membagikan buku donasi untuk adik-adik di pesantren Para stakeholder pun sangat antusias membantu kami. Tempatnya pun sangat nyaman dan indah, masih hijau meskipun memakan cukup waktu yang lama dari kota.' name='testimoni' onChange={handleChange} required/>
                 </div>
-                <button type='submit' className='py-3 bg-main-green text-white rounded-lg mt-5'>Add</button>
+                <button type='submit' className='py-3 bg-main-green hover:bg-dark-green text-white rounded-lg mt-5'>Submit</button>
             </form>
         </div>
     )

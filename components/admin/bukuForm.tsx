@@ -1,6 +1,5 @@
 import React, { SyntheticEvent, useState } from 'react'
 const Cookie = require('js-cookie')
-import axios from 'axios'
 
 const BukuForm = () => {
 
@@ -46,9 +45,11 @@ const BukuForm = () => {
         method: 'POST',
         headers: {'Authorization': 'Bearer ' + cookieToken},
         body: formData
-      })
+      });
       const response = await res.json();
-      console.log(response)
+      console.log(response);
+      window.location.reload();
+
     } catch (err) {
       console.log('error bro', err);
     }
@@ -65,25 +66,58 @@ const BukuForm = () => {
   };
 
   const inputStyles = 'py-2 rounded-md px-2'
-  const textAreaStyles = 'py-2 rounded-sm px-2 h-60 w-72'
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-5 bg-very-light-orange p-5 w-fit text-black">
-        <input className={inputStyles} type="file" placeholder='cover url' name='coverUrl' onChange={handleUploadImage} />
-        <input className={inputStyles} type="text" placeholder='judul' name='judul' onChange={handleChange} />
-        <input className={inputStyles} type="text" placeholder='penulis' name='penulis' onChange={handleChange} />
-        <input className={inputStyles} type="text" placeholder='negara' name='negara' onChange={handleChange} />
-        <input className={inputStyles} type="text" placeholder='bahasa' name='bahasa' onChange={handleChange} />
-        <input className={inputStyles} type="text" placeholder='genre' name='genre' onChange={handleChange} />
-        <input className={inputStyles} type="text" placeholder='penerbit' name='penerbit' onChange={handleChange} />
-        <input className={inputStyles} type="text" placeholder='tahun' name='tahun' onChange={handleChange} />
-        <input className={inputStyles} type="text" placeholder='halaman' name='halaman' onChange={handleChange} />
-        <textarea className={textAreaStyles} placeholder='ringkasan' name='ringkasan' onChange={handleChange} />
-        <textarea className={textAreaStyles} placeholder='review' name='review' onChange={handleChange} />
-        <button type='submit' className='px-4 py-2 bg-main-orange text-white'>Add</button>
-      </form>
-    </div>
+      <div className='bg-main-orange w-full p-5 rounded-lg'>
+        <h2 className='text-[1.6rem] font-bold mb-5'>Book Form</h2>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+            <div className='flex flex-col gap-1'>
+                <label>Image</label>
+                <input className="block w-full rounded-md cursor-pointer bg-white text-main-blue py-1" type="file" placeholder='Cover Url' name='coverUrl' onChange={handleUploadImage} required/>
+            </div>
+            <div className='flex flex-col gap-1'>
+                <label>Title</label>
+                <input className={inputStyles} type="text" placeholder='How To Win Friends and Influence People' name='judul' onChange={handleChange} required/>
+            </div>
+            <div className='flex flex-col gap-1'>
+                <label>Author</label>
+                <input className={inputStyles} type="text" placeholder='Dale Carnegie' name='penulis' onChange={handleChange} required/>
+            </div>
+            <div className='flex flex-col gap-1'>
+                <label>Country</label>
+                <input className={inputStyles} type="text" placeholder='United States' name='negara' onChange={handleChange} required/>
+            </div>
+            <div className='flex flex-col gap-1'>
+                <label>Language</label>
+                <input className={inputStyles} type="text" placeholder='Inggris' name='bahasa' onChange={handleChange} required/>
+            </div>
+            <div className='flex flex-col gap-1'>
+                <label>Genre</label>
+                <input className={inputStyles} type="text" placeholder='Self development' name='genre' onChange={handleChange} required/>
+            </div>
+            <div className='flex flex-col gap-1'>
+                <label>Publisher</label>
+                <input className={inputStyles} type="text" placeholder='Simon & Schuster' name='penerbit' onChange={handleChange} required/>
+            </div>
+            <div className='flex flex-col gap-1'>
+                <label>Year</label>
+                <input className={inputStyles} type="text" placeholder='1936' name='tahun' onChange={handleChange} required/>
+            </div>
+            <div className='flex flex-col gap-1'>
+                <label>Number of pages</label>
+                <input className={inputStyles} type="text" placeholder='304' name='halaman' onChange={handleChange} required/>
+            </div>
+            <div className='flex flex-col gap-1'>
+                <label>Summary</label>
+                <textarea className="py-2 rounded-lg px-2 h-60 w-full text-main-blue" placeholder='Nasihat-nasihat Dale Carnegie yang teruji waktu telah membawa hingga tidak terhitung banyaknya orang yang berhasil mendaki tangga kesuksesan dalam kehidupan pribadi dan bisnis. Salah satu buku terlaris sepanjang masa yang menjadi landasan buku-buku laris lainnya, How to Win Friends and Influence People akan memberi Anda, 6 cara untuk membuat orang menyukai Anda, 12 cara untuk membuat orang menerima pemikiran Anda, 9 cara untuk mengubah orang tanpa membuat mereka kesal dan masih banyak lagi. Raih potensi maksimal Anda dengan buku wajib baca di abad ke-21 ini!' name='ringkasan' onChange={handleChange} required/>
+            </div>
+            <div className='flex flex-col gap-1'>
+                <label>Review</label>
+                <textarea className="py-2 rounded-lg px-2 h-60 w-full text-main-blue" placeholder='How To Win Friends and Influence People merupakan judul dari sebuah buku yang ditulis oleh Dale Carnegie. Buku ini akan menghadirkan isi tentang bagaimana cara untuk dapat meraih kesuksesan dalam berbisnis maupun kehidupan dengan cara meningkatkan kualitas diri. Buku ini memiliki pembahasan yang menarik. Pembahasan yang terbagi kedalam beberapa bab ini mampu dijelaskan dengan sangat detail dan rinci oleh buku ini. Selain itu, buku ini juga menggunakan gaya bahasa yang ringin, sehingga pembaca dapat lebih mudah untuk memahami pembahasan yang ada di buku ini. Selain sebagai media untuk meningkatkan kualitas diri, buku ini juga akan membantu Anda untuk meraih kesuksesan di dalam kehidupan maupun berbisnis. Diharapkan buku ini dapat memberikan manfaat dan ilmu wawasan yang lebih luas bagi setiap pembaca.' name='review' onChange={handleChange} required/>
+            </div>
+            <button type='submit' className='py-3 bg-main-green hover:bg-dark-green text-white rounded-lg mt-5'>Add</button>
+        </form>
+      </div>
   )
 }
 

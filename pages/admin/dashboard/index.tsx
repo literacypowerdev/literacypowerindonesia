@@ -22,9 +22,7 @@ const Dashboard = ({ allBuku, allCookies }: any) => {
     return (
         <>
             <Layout>
-                <div className='font-bold text-black text-lg'>
-                    <h1>THIS IS DASHBOARD</h1>
-                </div>
+                <h1 className='text-main-green font-bold text-[2rem] mb-5'>Dashboard</h1>
             </Layout>
         </>
     )

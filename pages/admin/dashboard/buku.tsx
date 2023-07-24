@@ -1,26 +1,22 @@
-import React, { useState } from 'react'
-import Layout from '../../../components/admin/layout'
-import { unauthPageReverse } from '../../../utils/unauthPage'
-import cookies from 'next-cookies'
-import Link from 'next/link'
-import { useAppDispatch } from '../../../utils/hooks'
-import { deleteBuku } from '../../../store/features/bukuSlice'
-const Cookie = require('js-cookie')
+import React, { useState } from 'react';
+import Link from 'next/link';
 import axios from 'axios'
-import BukuForm from '../../../components/admin/bukuForm'
-import ProyekForm from '../../../components/admin/proyekForm'
+import { unauthPageReverse } from '../../../utils/unauthPage';
+import { useAppDispatch } from '../../../utils/hooks';
+import cookies from 'next-cookies';
+const Cookie = require('js-cookie')
 
+import Layout from '../../../components/admin/layout';
+import BukuForm from '../../../components/admin/bukuForm'
 
 const Buku = ({ allBuku }: any) => {
-  const dispatch = useAppDispatch()
-  const cookieToken = Cookie.get('token')
+  const dispatch = useAppDispatch();
+  const cookieToken = Cookie.get('token');
 
-  const [showForm, setShowForm] = useState(false)
+  const [showForm, setShowForm] = useState(false);
   const handleAdd = () => {
     setShowForm(!showForm);
   }
-
-  
 
   const handleDelete = async (id: any) => {
     try {
@@ -29,63 +25,68 @@ const Buku = ({ allBuku }: any) => {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + cookieToken
         }
-        
-      })
+      });
       window.location.reload();
 
     } catch (err) {
-      Cookie.remove('token')
+      Cookie.remove('token');
     }
   }
+
   const imageUrl = 'https://api.literacypowerid.com/images/'
+  
   return (
     <Layout>
-      <div className='flex gap-2 md:gap-3'>
-        <div>
-           {allBuku.map((item: any) => {
-            const { id, judul, ringkasan, coverUrl } = item
-            return (
+      <h1 className='text-main-green font-bold text-[2rem] mb-5'>Books</h1>
 
-              <div key={id} className='container p-3 flex flex-col md:flex-row mb-5 font-ptserif gap-4 rounded-md max-w-[771px] m-auto shadow-lg bg-white hover:bg-main-green hover:text-white transition-all duration-150 ease-in-out  text-black'>
-                <Link href={`/allaboutbooks/${id}`}>
-                  <a className='image w-full md:w-[512px] bg-slate-300 rounded-md'>
-                    <img className='object-cover bg-contain' src={`${imageUrl}${coverUrl}`} alt="" />
-                  </a>
-                </Link>
+      <div className='w-full flex flex-row gap-8'>
+        <div className='w-3/5 flex flex-col gap-5'>
 
-                <div className='content flex flex-col gap-2 text-justify'>
-                  <Link href={`/allaboutbooks/${id}`}><a><p className='font-bold text-main-orange cursor-pointer'>{judul}</p></a></Link>
-                  <p>{ringkasan}</p>
-                  <div className='tag-container text-white flex gap-3'>
-                    <div className='bg-main-orange px-3 py-1 rounded-md inline-block'>
-                      tag
+          <div className='flex flex-col gap-5'>
+            
+            {allBuku.map((item: any) => {
+              const { id, judul, ringkasan, coverUrl } = item;
+              return (
+
+                <div key={id} className='w-full max-w-[1100px] h-fit bg-white border border-main-orange rounded-xl p-4 flex flex-col gap-2'>
+                  <div className='flex flex-row gap-5'>
+                    <img className='object-cover h-[200px]' src={`${imageUrl}${coverUrl}`} alt="" />
+
+                    <div className='content flex flex-col gap-2 text-justify'>
+                      <h2 className='font-bold text-[1.4rem] text-main-orange'>{judul}</h2>
+                      <p className='text-main-blue'>{ringkasan}</p>
                     </div>
-                    <div className='bg-main-orange px-3 py-1 rounded-md inline-block'>
-                      tag
+                  </div>
+
+                  <div className="flex flex-row gap-2 self-end">
+                    <Link href={`/allaboutbooks/${id}`}>
+                      <div className='bg-yellow-500 hover:bg-yellow-600 h-fit w-[90px] text-center py-2 rounded-lg text-white cursor-pointer'>
+                        <button>Visit</button>
+                      </div>
+                    </Link>
+                    <div onClick={() => handleDelete(id)} className='bg-red-500 hover:bg-red-600 h-fit w-[90px] text-center py-2 rounded-lg text-white cursor-pointer'>
+                      <button>Delete</button>
                     </div>
                   </div>
                 </div>
-                <div onClick={() => handleDelete(id)} className='bg-red-500 hover:bg-red-300 h-fit px-3 py-1 rounded-sm text-white self-end'>
-                  <button>delete</button>
-                </div>
-              </div>
+              )
+            })}
+            
+          </div>
 
-            )
-          })}
+          <div onClick={handleAdd} className='h-fit text-white rounded-lg bg-main-green hover:bg-dark-green px-5 py-3 w-fit mb-5 cursor-pointer self-end'>
+            <button>Add Book</button>
+          </div>
+
         </div>
-        <div className='w-fit h-fit flex gap-2'>
-          <div onClick={handleAdd} className='font-bold h-fit text-white rounded-lg bg-main-green px-5 py-3 w-fit mb-2 cursor-pointer shadow-md'>
-            <button >Add</button>
-          </div>
-          <div className='w-fit'>
-            {showForm ? (<BukuForm />) : ''}
-          </div>
+
+        <div className='w-2/5'>
+          {showForm ? (<BukuForm />) : ''}
         </div>
       </div>
     </Layout>
   )
 }
-
 
 export const getServerSideProps = async (context: any) => {
   const allCookies = cookies(context);
@@ -104,7 +105,5 @@ export const getServerSideProps = async (context: any) => {
   }
 }
 
-
-
-export default Buku
+export default Buku;
 

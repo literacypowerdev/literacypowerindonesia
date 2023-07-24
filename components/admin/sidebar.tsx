@@ -54,23 +54,21 @@ const Sidebar = () => {
     ]
 
     return (
-        <div className='bg-main-orange h-full p-6'>
-            <div className='min-w-[300px]'>
-                <div className='p-2 text-[1.6rem] mb-4 text-white font-bold'>
-                    <h1>Dashboard</h1>
-                </div>
-                <ul>
-                {menuItems.map((item, index) => {
-                    return (
-                        <Link key={index} href={item.link}>
-                            <li key={index} className='cursor-pointer text-white text-[1.2rem] rounded-md hover:bg-main-green py-2 px-1 font-medium flex gap-2 items-center'>
-                                {item.logo}
-                                {item.label}</li>
-                        </Link>
-                    );
-                })}
-                </ul>
+        <div className='bg-main-orange w-[300px] h-screen p-6 sticky top-0 left-0'>
+            <div className='p-2 text-[1.6rem] mb-4 text-white font-bold'>
+                <h1>Dashboard</h1>
             </div>
+            <ul>
+            {menuItems.map((item, index) => {
+                return (
+                    <Link key={index} href={item.link}>
+                        <li key={index} className='cursor-pointer text-white text-[1.2rem] rounded-md hover:bg-main-green py-2 px-1 font-medium flex gap-2 items-center'>
+                            {item.logo}
+                            {item.label}</li>
+                    </Link>
+                );
+            })}
+            </ul>
         </div>
     )
 }
