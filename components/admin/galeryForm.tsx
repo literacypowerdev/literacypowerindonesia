@@ -1,7 +1,6 @@
 import React, { SyntheticEvent, useState } from 'react'
 const Cookie = require('js-cookie')
 
-
 const GaleryForm = () => {
     const token = Cookie.get("token");
     const [image, setImage] = useState('https://fakeimg.pl/1280x720/')
@@ -32,12 +31,21 @@ const GaleryForm = () => {
     }
 
     return (
-        <div className='text-black flex flex-col gap-5'>
-            <div >
-                <img className='w-[400px]' src={image} alt="" />
+        <div className='bg-main-orange w-full p-5 rounded-lg'>
+            <h2 className='text-[1.6rem] font-bold mb-5'>Gallery Form</h2>
+            
+            <div className="flex flex-col gap-2">
+                <div>
+                    <img className='w-[400px]' src={image} alt="" />
+                </div>
+                
+                <div className='flex flex-col gap-1'>
+                    <label>Image</label>
+                    <input className="block w-full rounded-md cursor-pointer bg-white text-main-blue p-1" type="file" onChange={handleUploadImage} required/>
+                </div>
+
+                <button className='py-3 bg-main-green hover:bg-dark-green text-white rounded-lg mt-5 w-fit px-7' onClick={handleSubmit}>Submit</button>
             </div>
-            <input type="file" onChange={handleUploadImage} />
-            <button className='text-white px-4 py-2 rounded-lg bg-main-green w-fit' onClick={handleSubmit}>submit gambar</button>
         </div>
     )
 }
