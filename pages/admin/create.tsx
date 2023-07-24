@@ -4,11 +4,9 @@ const Cookie = require('js-cookie');
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import withTokenValidation from '../../utils/tokenValidation';
-import dynamic from 'next/dynamic';
+
 import CKeditor from '../../components/admin/ckEditor';
-
-
-
+import Layout from '../../components/admin/layout';
 
 const Create = () => {
   const CookieToken = Cookie.get('token');
@@ -18,9 +16,6 @@ const Create = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [content, setContent] = useState('');
-
-
-
 
   const handleSubmit = async (e: SyntheticEvent) => {
     const data = new FormData();
@@ -53,37 +48,40 @@ const Create = () => {
   }, []);
 
   return (
-    <div className="p-5">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-        <input
-          className="px-3 py-2 w-fit"
-          type="title"
-          placeholder="title"
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <input
-          className="px-3 py-2 w-fit"
-          type="author"
-          placeholder="author"
-          onChange={(e) => setAuthor(e.target.value)}
-        />
-        <p className="text-red-600">*Wajib Upload Foto</p>
-        <input type="file" onChange={(e) => setFiles(e.target.files)} />
+    <Layout>
+      <h2 className="ml-10 mt-10 text-main-green font-bold text-[2rem] mb-5">Article Form</h2>
+      <div className="m-10 p-6 rounded-lg bg-main-orange">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+          <div className='flex flex-col gap-1'>
+            <label>Title</label>
+            <input className="py-2 rounded-md px-2 text-main-blue" type="title" placeholder='Mengenal Writer’s Block yang Sering Dialami Penulis' onChange={(e) => setTitle(e.target.value)} required/>
+          </div>
 
-        <div>
-          <CKeditor
-            value=''
-            name="description"
-            onChange={(data: any) => {
-              setContent(data);
-            }}
-            editorLoaded={editorLoaded}
-          />
-          {JSON.stringify(content)}
-        </div>
-        <button className="px-3 py-2 bg-main-green text-white w-fit">Publish</button>
-      </form>
-    </div>
+          <div className='flex flex-col gap-1'>
+            <label>Author</label>
+            <input className="py-2 rounded-md px-2 text-main-blue" type="author" placeholder='Literacy Power Indonesia' onChange={(e) => setAuthor(e.target.value)} required/>
+          </div>
+
+          <div className='flex flex-col gap-1'>
+            <label>Image</label>
+            <input className="block w-full rounded-md cursor-pointer bg-white text-main-blue py-1" type="file" placeholder='Image file' onChange={(e) => setFiles(e.target.value)} required/>
+          </div>
+
+          <div className='flex flex-col gap-1 text-main-blue'>
+            <label>Content</label>
+            <CKeditor
+              value=''
+              name="description"
+              onChange={(data: any) => {
+                setContent(data);
+              }}
+              editorLoaded={editorLoaded}
+            />
+          </div>
+          <button type="submit" className='py-3 bg-main-green hover:bg-dark-green text-white rounded-lg mt-5 px-5 w-fit self-end'>Publish</button>
+        </form>
+      </div>
+    </Layout>
   );
 };
 
