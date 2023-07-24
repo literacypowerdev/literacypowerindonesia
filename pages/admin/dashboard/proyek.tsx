@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import Layout from '../../../components/admin/layout'
+import React, { useState } from 'react';
+import Layout from '../../../components/admin/layout';
 import useSWR, { useSWRConfig } from "swr";
-import ProyekForm from '../../../components/admin/proyekForm'
+import ProyekForm from '../../../components/admin/proyekForm';
 import axios from 'axios';
-const Cookie = require('js-cookie')
+const Cookie = require('js-cookie');
 import withTokenValidation from '../../../utils/tokenValidation';
-
-
 
 const Proyek = () => {
   const CookieToken = Cookie.get('token');
@@ -50,10 +48,6 @@ const Proyek = () => {
   const handleAdd = () => {
     setShowForm(!showForm);
   }
-
- 
-  
-  
 
   return (
     <Layout>

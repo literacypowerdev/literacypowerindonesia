@@ -1,7 +1,6 @@
-import axios, { AxiosResponse } from 'axios';
-import React, { useState, useEffect } from 'react'
-import { postProyek } from '../../store/features/proyekSlice'
-import { useAppDispatch, useAppSelector } from '../../utils/hooks'
+import React, { useState } from 'react';
+import { postProyek } from '../../store/features/proyekSlice';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 
 interface valuesProps {
   nama: string;
