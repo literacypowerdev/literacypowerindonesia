@@ -20,7 +20,7 @@ const Review = () => {
   const { data, error } = useSWR(url, fetcher)
   
   const handleDelete = (id: any) => {
-    dispatch(deleteReq(id))
+    dispatch(deleteReq(id));
   }
   
   return (

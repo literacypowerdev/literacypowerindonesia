@@ -33,7 +33,7 @@ const Buku = ({ allBuku }: any) => {
     }
   }
 
-  const imageUrl = 'https://api.literacypowerid.com/images/'
+  const imageUrl = 'https://api.literacypowerid.com/api/images/'
   
   return (
     <Layout>
@@ -49,7 +49,7 @@ const Buku = ({ allBuku }: any) => {
               return (
 
                 <div key={id} className='w-full max-w-[1100px] h-fit bg-white border border-main-orange rounded-xl p-4 flex flex-col gap-2'>
-                  <div className='flex flex-row gap-5'>
+                  <div className='flex flex-row gap-5 max-h-[204px] overflow-hidden'>
                     <img className='object-cover h-[200px]' src={`${imageUrl}${coverUrl}`} alt="" />
 
                     <div className='content flex flex-col gap-2 text-justify'>

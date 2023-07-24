@@ -36,7 +36,7 @@ const Galery = ({ data }: any) => {
               <div className='max-w-[400px]' key={item.id_galery}>              
                   <p className='text-red-500 break-words'>{item.filename}</p>
                 <div className='w-full h-auto'>
-                  <img src={`https://api.literacypowerid.com/images/${item.filename}`} alt="" />
+                  <img src={`https://api.literacypowerid.com/api/images/${item.filename}`} alt="" />
                 </div>
                 <div onClick={() => handleDelete(item.id_galery)} className='bg-red-500 hover:bg-red-300 h-fit w-fit px-3 py-1 rounded-sm text-white self-end'>
                   <button>delete</button>
