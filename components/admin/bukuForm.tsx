@@ -37,7 +37,6 @@ const BukuForm = () => {
     formData.append('file', coverFile as Blob);
     Object.entries(bookData).forEach(([key, value]) => {
       formData.append(key, value);
-      console.log(key, value);
     });
 
     try {
@@ -47,7 +46,7 @@ const BukuForm = () => {
         body: formData
       });
       const response = await res.json();
-      console.log(response);
+      console.log(response.message);
       window.location.reload();
 
     } catch (err) {
@@ -62,10 +61,9 @@ const BukuForm = () => {
   const handleUploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0];
     setCoverFile(file);
-    if (file) console.log('Selected file:', file.name);
   };
 
-  const inputStyles = 'py-2 rounded-md px-2'
+  const inputStyles = 'py-2 rounded-md px-2 text-main-blue'
 
   return (
       <div className='bg-main-orange w-full p-5 rounded-lg'>
@@ -115,7 +113,7 @@ const BukuForm = () => {
                 <label>Review</label>
                 <textarea className="py-2 rounded-lg px-2 h-60 w-full text-main-blue" placeholder='How To Win Friends and Influence People merupakan judul dari sebuah buku yang ditulis oleh Dale Carnegie. Buku ini akan menghadirkan isi tentang bagaimana cara untuk dapat meraih kesuksesan dalam berbisnis maupun kehidupan dengan cara meningkatkan kualitas diri. Buku ini memiliki pembahasan yang menarik. Pembahasan yang terbagi kedalam beberapa bab ini mampu dijelaskan dengan sangat detail dan rinci oleh buku ini. Selain itu, buku ini juga menggunakan gaya bahasa yang ringin, sehingga pembaca dapat lebih mudah untuk memahami pembahasan yang ada di buku ini. Selain sebagai media untuk meningkatkan kualitas diri, buku ini juga akan membantu Anda untuk meraih kesuksesan di dalam kehidupan maupun berbisnis. Diharapkan buku ini dapat memberikan manfaat dan ilmu wawasan yang lebih luas bagi setiap pembaca.' name='review' onChange={handleChange} required/>
             </div>
-            <button type='submit' className='py-3 bg-main-green hover:bg-dark-green text-white rounded-lg mt-5'>Add</button>
+            <button type='submit' className='py-3 bg-main-green hover:bg-dark-green text-white rounded-lg mt-5'>Submit</button>
         </form>
       </div>
   )
