@@ -29,14 +29,14 @@ const AllAboutBooksSinglePages = () => {
     <>
       <div>
         <Navbar active='All About Books' />
-        <div className='container w-full m-auto flex flex-col px-20 gap-5 pt-24'>
+        <div className='container w-full m-auto flex flex-col px-5 lg:px-20 gap-5 pt-24'>
           <div className='Heading'>
             <p></p>
             <h1 className='text-3xl font-bold text-main-green'>{buku.judul}</h1>
           </div>
-          <div className='Heading-Image flex flex-col md:flex-row gap-5'>
+          <div className='Heading-Image flex flex-col md:flex-row gap-5 w-full'>
             <div className='image'>
-              <div className='w-[275px] h-fit bg-slate-200 rounded-lg'><img src={`https://api.literacypowerid.com/api/images/${buku.coverUrl}`} alt="" /></div>
+              <div className='w-full lg:w-[375px] h-fit bg-slate-200 rounded-lg'><img src={`https://api.literacypowerid.com/api/images/${buku.coverUrl}`} alt="" /></div>
             </div>
             <div className='identitas-buku flex flex-col'>
               <h2 className='text-2xl font-bold text-main-orange'>Identitas Buku</h2>

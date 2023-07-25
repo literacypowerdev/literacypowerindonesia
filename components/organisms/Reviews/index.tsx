@@ -4,6 +4,7 @@ import Image from "next/image";
 import axios from "axios";
 import Slider from "react-slick";
 import { ReviewSlider } from "./slider";
+import _ from "lodash";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -70,10 +71,13 @@ const Reviews = (props: ReviewsProps) => {
               {reviewData.map((review: any) => {
                 return (
                   <div key={review.id} className="!flex flex-col justify-between h-[130px] px-8">
-                    <p className="font-semibold">&quot;{review.testimoni}&quot;</p>
+                    <p className="font-semibold">&quot;{_.truncate(review.testimoni, {
+                      length: 120,
+                      omission: "..."
+                    })}&quot;</p>
                     <div className="flex flex-col">
                       <p className="font-semibold text-orange-500 text-xl">
-                        Good job for the team!
+                        {review.title}
                       </p>
                       <div className="flex items-center justify-between">
                         <p className="font-semibold">{review.username}, {review.userProfession}</p>
