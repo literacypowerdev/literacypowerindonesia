@@ -93,6 +93,13 @@ export default function MobileMenu(props: MobileMenuProps) {
           </Link>
         </li>
         <li>
+          <Link href="/article">
+            <a className="block w-100 py-4 px-6 text-main-orange hover:text-white font-ptserif transition duration-150 ease-in-out hover:bg-light-orange">
+              Artikel
+            </a>
+          </Link>
+        </li>
+        <li>
           <Link href="/allaboutbooks">
             <a className="block w-100 py-4 px-6 text-main-orange hover:text-white font-ptserif transition duration-150 ease-in-out hover:bg-light-orange">
               All About Books
