@@ -44,7 +44,7 @@ export default function Projects({ children }: any) {
               formattedDate = `${dayOfMonth} ${month} ${year}`;
             }
             const cover = item.image.split('"')[3]
-            const imageUrl = 'https://api.literacypowerid.com/images/' + cover
+            const imageUrl = 'https://api.literacypowerid.com/api/images/' + cover
             console.log(imageUrl)
             return (
 

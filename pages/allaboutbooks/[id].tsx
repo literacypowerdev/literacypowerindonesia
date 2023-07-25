@@ -29,30 +29,37 @@ const AllAboutBooksSinglePages = () => {
     <>
       <div>
         <Navbar active='All About Books' />
-        <div className='container w-full m-auto flex flex-col px-20 gap-5 pt-24'>
+        <div className='container w-full m-auto flex flex-col px-5 lg:px-20 gap-5 pt-24'>
           <div className='Heading'>
             <p></p>
-            <h1 className='text-2xl font-bold'>{buku.judul}</h1>
+            <h1 className='text-3xl font-bold text-main-green'>{buku.judul}</h1>
           </div>
-          <div className='Heading-Image flex flex-col md:flex-row gap-5'>
+          <div className='Heading-Image flex flex-col md:flex-row gap-5 w-full'>
             <div className='image'>
-              <div className='w-[275px] h-fit bg-slate-200 rounded-lg'><img src={`https://api.literacypowerid.com/images/${buku.coverUrl}`} alt="" /></div>
+              <div className='w-full lg:w-[375px] h-fit bg-slate-200 rounded-lg'><img src={`https://api.literacypowerid.com/api/images/${buku.coverUrl}`} alt="" /></div>
             </div>
             <div className='identitas-buku flex flex-col'>
-              <h1>Judul: {buku.judul}</h1>
-              <h1>Penulis: {buku.penulis}</h1>
-              <h1>Negara: {buku.negara}</h1>
-              <h1>Bahasa: {buku.bahasa}</h1>
-              <h1>Genre: {buku.genre}</h1>
-              <h1>Penerbit: {buku.penerbit}</h1>
-              <h1>Tahun Terbit: {buku.tahun}</h1>
-              <h1>Jumlah Halaman: {buku.halaman}</h1>
+              <h2 className='text-2xl font-bold text-main-orange'>Identitas Buku</h2>
+              <h3>Judul: {buku.judul}</h3>
+              <h3>Penulis: {buku.penulis}</h3>
+              <h3>Negara: {buku.negara}</h3>
+              <h3>Bahasa: {buku.bahasa}</h3>
+              <h3>Genre: {buku.genre}</h3>
+              <h3>Penerbit: {buku.penerbit}</h3>
+              <h3>Tahun Terbit: {buku.tahun}</h3>
+              <h3>Jumlah Halaman: {buku.halaman}</h3>
             </div>
           </div>
-          <div className='heading-content text-main-green'>
-            <h1>Review</h1>
+          <div className='heading-content'>
+            <h2 className='text-2xl font-bold text-main-orange'>Ringkasan</h2>
           </div>
-          <div className='content text-justify'>
+          <div className='content text-justify mb-5'>
+            <p>{buku.ringkasan}</p>
+          </div>
+          <div className='heading-content'>
+            <h2 className='text-2xl font-bold text-main-orange'>Review</h2>
+          </div>
+          <div className='content text-justify mb-5'>
             <p>{buku.review}</p>
           </div>
         </div>

@@ -34,7 +34,7 @@ export default function ReviewList() {
               key={item.id}
               name={item.username}
               occupation={item.userProfession}
-              title="Good job for the team!"
+              title={item.title}
               content={item.testimoni}
             />
           );
