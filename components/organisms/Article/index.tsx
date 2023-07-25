@@ -42,6 +42,7 @@ const ArticleComponent = () => {
             // const month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(date);
             // const year = date.getFullYear();
             // const formattedDate = `${dayOfMonth} ${month} ${year}`;
+            
             return (
               <ArticleCard
                 key={item.id}

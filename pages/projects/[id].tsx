@@ -39,8 +39,8 @@ export default function ProjectSinglePage() {
 
       {/* Hero */}
       <div
-        style={{ backgroundImage: `url("https://api.literacypowerid.com/images/${cover[1]}")` }}
-        className={`md:h-[300px] lg:h-[350px] bg-cover bg-center relative `}
+        style={{ backgroundImage: `url("https://api.literacypowerid.com/api/images/${cover[1]}")` }}
+        className={`h-[200px]  md:h-[300px] lg:h-[350px] bg-cover bg-center relative `}
       >
         <div className="absolute w-full h-full bg-main-green/[0.85] flex flex-col justify-center items-center">
           <p className="font-ptserif font-bold text-base md:text-title3 text-light-orange">

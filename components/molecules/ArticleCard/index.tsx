@@ -21,7 +21,7 @@ const ArticleCard = (props: ArticleCardProps) => {
       >
         <img
           className="w-full md:w-[250px] h-[200px] md:h-[170px] object-cover rounded-t-[10px] md:rounded-[10px]"
-          src={`https://api.literacypowerid.com/images/${thumbnail}`}
+          src={`https://api.literacypowerid.com/api/images/${thumbnail}`}
           alt="Thumbnail"
         />
         <div className="h-[258px] md:h-[170px] flex flex-col gap-2 md:gap-0 overflow-hidden">
