@@ -1,4 +1,5 @@
 import useSWR from 'swr';
+import Head from "next/head";
 import Navbar from '../../components/organisms/Navbar';
 import Footer from '../../components/organisms/Footer';
 import Reviews from '../../components/organisms/Reviews';
@@ -27,7 +28,15 @@ const AllAboutBooksSinglePages = () => {
 
   return (
     <>
-      <div>
+        <Head>
+          <title>{buku.judul}</title>
+          <meta
+          name="description"
+          content="Project-project yang dijalankan oleh Literacy Power."
+          />
+          <link rel="icon" sizes="192x192" href="/icon/favicon.ico"></link>
+        </Head>
+        <div>
         <Navbar active='All About Books' />
         <div className='container w-full m-auto flex flex-col px-5 lg:px-20 gap-5 pt-24'>
           <div className='Heading'>

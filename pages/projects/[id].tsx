@@ -33,7 +33,12 @@ export default function ProjectSinglePage() {
   return (
     <>
       <Head>
-        <title>Literacy Power | {proyek.nama}</title>
+        <title>{proyek.nama}</title>
+        <meta
+          name="description"
+          content="Project-project yang dijalankan oleh Literacy Power."
+        />
+        <link rel="icon" sizes="192x192" href="/icon/favicon.ico"></link>
       </Head>
       <Navbar active="Projects" />
 

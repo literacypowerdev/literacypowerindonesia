@@ -6,6 +6,7 @@ import { unauthPageReverse } from '../../../utils/unauthPage';
 const Cookie = require('js-cookie')
 import Router from 'next/router'
 
+
 export const getServerSideProps = async (context: any) => {
     const allCookies = cookies(context);
     unauthPageReverse(context);

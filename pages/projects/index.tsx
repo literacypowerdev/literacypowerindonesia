@@ -15,6 +15,7 @@ export default function Projects() {
           name="description"
           content="Project-project yang dijalankan oleh Literacy Power."
         />
+        <link rel="icon" sizes="192x192" href="/icon/favicon.ico"></link>
       </Head>
       <Navbar active="Projects" />
       <div className="w-full bg-body-doodle bg-contain bg-repeat py-7 lg:pb-20">

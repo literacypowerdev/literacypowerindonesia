@@ -15,6 +15,7 @@ export default function Review() {
           name="description"
           content="Kata orang mengenai Literacy Power."
         />
+        <link rel="icon" sizes="192x192" href="/icon/favicon.ico"></link>
       </Head>
 
       <Navbar active="Reviews" />
