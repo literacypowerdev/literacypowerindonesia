@@ -6,6 +6,7 @@ import { useAppDispatch } from '../../../utils/hooks';
 import cookies from 'next-cookies';
 const Cookie = require('js-cookie')
 
+import Head from "next/head";
 import Layout from '../../../components/admin/layout';
 import BukuForm from '../../../components/admin/bukuForm'
 
@@ -36,6 +37,15 @@ const Buku = ({ allBuku }: any) => {
   const imageUrl = 'https://api.literacypowerid.com/api/images/'
   
   return (
+    <>
+    <Head>
+        <title>Admin | Books</title>
+        <meta
+          name="description"
+          content="Project-project yang dijalankan oleh Literacy Power."
+        />
+        <link rel="icon" sizes="192x192" href="/icon/favicon.ico"></link>
+      </Head>
     <Layout>
       <h1 className='text-main-green font-bold text-[2rem] mb-5'>Books</h1>
 
@@ -47,7 +57,7 @@ const Buku = ({ allBuku }: any) => {
             {allBuku.map((item: any) => {
               const { id, judul, ringkasan, coverUrl } = item;
               return (
-
+                
                 <div key={id} className='w-full max-w-[1100px] h-fit bg-white border border-main-orange rounded-xl p-4 flex flex-col gap-2'>
                   <div className='flex flex-row gap-5 max-h-[204px] overflow-hidden'>
                     <img className='object-cover h-[200px]' src={`${imageUrl}${coverUrl}`} alt="" />
@@ -85,6 +95,7 @@ const Buku = ({ allBuku }: any) => {
         </div>
       </div>
     </Layout>
+            </>
   )
 }
 

@@ -40,6 +40,7 @@ const Apply = () => {
       <Head>
         <title>Literacy Power | Apply</title>
         <meta name="description" content="Bergabung dengan kami." />
+        <link rel="icon" sizes="192x192" href="/icon/favicon.ico"></link>
       </Head>
       <Navbar />
 

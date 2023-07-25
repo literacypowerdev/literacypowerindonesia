@@ -8,6 +8,7 @@ export default function Custom404() {
     <>
       <Head>
         <title>Literacy Power | Not Found</title>
+        <link rel="icon" sizes="192x192" href="/icon/favicon.ico"></link>
       </Head>
       <div className="w-screen h-screen bg-[url('/icon/mountains.svg')] bg-contain xl:bg-cover bg-no-repeat bg-bottom flex justify-center items-center">
         <div className="flex flex-col gap-3 md:gap-4 justify-center items-center md:mb-40">

@@ -1,5 +1,7 @@
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
+
+import Head from "next/head";
 import Navbar from '../../components/organisms/Navbar';
 import Footer from '../../components/organisms/Footer';
 import Reviews from '../../components/organisms/Reviews';
@@ -32,6 +34,14 @@ const ArticleSinglePage = () => {
 
   return (
     <div>
+      <Head>
+        <title>{article.title}</title>
+        <meta
+            name="description"
+            content="Project-project yang dijalankan oleh Literacy Power."
+        />
+        <link rel="icon" sizes="192x192" href="/icon/favicon.ico"></link>
+      </Head>
       <Navbar active='Article' />
       <div className='px-3 lg:px-20 pb-16 font-ptserif'>
         <div className='Heading text-center py-16 flex flex-col gap-2 lg:text-xl'>
