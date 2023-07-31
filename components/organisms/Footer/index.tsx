@@ -23,7 +23,7 @@ export default function Footer() {
                 Literacy Power adalah organisasi yang berfokus pada pengembangan
                 literasi, kempemimpinan anak muda, dan pemberdayaan masyarakat
                 desa. Organisasi ini dikembangkan oleh mahasiswa/i dari berbagai
-                universitas di Indonesias. Kami berharap melalui berbagai proyek
+                universitas di Indonesia. Kami berharap melalui berbagai proyek
                 yang dilakukan mampu membawa perubahan kecil maupun besar bagi
                 masyarakat di Indonesia, terutama generasi muda.
               </p>
