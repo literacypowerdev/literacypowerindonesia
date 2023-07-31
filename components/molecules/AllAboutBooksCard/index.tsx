@@ -18,7 +18,7 @@ const AllAboutBooksCard = ({ id, title, content, image }: bukuProps) => {
         <div className="image md:w-[512px] bg-slate-300 rounded-md">
           <img
             className="h-full"
-            src={`https://api.literacypowerid.com/images/${image}`}
+            src={`https://api.literacypowerid.com/api/images/${image}`}
             alt=""
           />
           
