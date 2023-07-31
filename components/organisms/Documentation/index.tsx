@@ -11,18 +11,18 @@ export default function Documentation() {
     setIsResetVisible(false);
   };
 
-  useEffect(() => {
-    let screenWidth = window.innerWidth
-    console.log(screenWidth);
-    if (screenWidth > 768) {
-      gsap.registerPlugin(Draggable);
-      Draggable.create(boxRef.current, {
-        bounds: "body",
-        inertia: true,
-        onDrag: () => setIsResetVisible(true),
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   let screenWidth = window.innerWidth
+  //   console.log(screenWidth);
+  //   if (screenWidth > 768) {
+  //     gsap.registerPlugin(Draggable);
+  //     Draggable.create(boxRef.current, {
+  //       bounds: "body",
+  //       inertia: true,
+  //       onDrag: () => setIsResetVisible(true),
+  //     });
+  //   }
+  // }, []);
   
   const images = [
     "/images/fotoslider1.png",
