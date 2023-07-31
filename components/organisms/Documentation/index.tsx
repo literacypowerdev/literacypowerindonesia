@@ -38,7 +38,7 @@ export default function Documentation() {
     <>
       <div
         ref={boxRef}
-        className="w-[280px] md:w-[540px] xl:w-[800px] mx-auto -mt-[120px] md:mt-[70px] rounded-[18px] overflow-hidden shadow-xl"
+        className="w-[280px] md:w-[540px] xl:w-[800px] mx-auto -mt-[120px]  rounded-[18px] overflow-hidden shadow-xl"
       >
         {isResetVisible && (
           <div onClick={handleReset} className="absolute bottom-0">
