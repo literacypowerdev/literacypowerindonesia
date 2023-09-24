@@ -71,13 +71,13 @@ export default function MobileMenu(props: MobileMenuProps) {
             </a>
           </Link>
         </li>
-        {/* <li>
+        <li>
           <Link href="/programs">
             <a className="block w-100 py-4 px-6 text-main-orange hover:text-white font-ptserif transition duration-150 ease-in-out hover:bg-light-orange">
               Programs
             </a>
           </Link>
-        </li> */}
+        </li>
         <li>
           <Link href="/projects">
             <a className="block w-100 py-4 px-6 text-main-orange hover:text-white font-ptserif transition duration-150 ease-in-out hover:bg-light-orange">
