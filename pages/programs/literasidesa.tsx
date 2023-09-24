@@ -1,6 +1,5 @@
 import React from "react";
 import Head from 'next/head';
-import Image from 'next/image';
 
 import Navbar from '../../components/organisms/Navbar';
 import Reviews from '../../components/organisms/Reviews';
@@ -16,7 +15,7 @@ export default function ProgramLiterasiDesaPage() {
       <Navbar active="Programs" />
 
       <div className="w-11/12 max-w-[1000px] mx-auto flex flex-col gap-8 my-5 lg:my-16">
-        <div>
+        <div className="mb-16"> 
           <h1 className="font-ptserif font-bold text-title3 md:text-title2 text-center text-main-green">
             Get to Know Literasi Desa
           </h1>
