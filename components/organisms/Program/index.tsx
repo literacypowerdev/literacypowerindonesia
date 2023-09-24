@@ -10,7 +10,7 @@ export default function Projects({ children }: any) {
       link: "literasidesa",
       thumbnail: "/images/program_thumbnail_literasidesa.jpg",
       name: "Literasi Desa",
-      desription: ""
+      desription: "Literasi Desa by Literacy Power adalah program pengabdian dan pembelajaan Sekolah Binaan di Desa Terpilih. Kegiatan pengabdian dan pembelajaran akan berlangsung secara berkelanjutan dengan periode penilaian 2 Semester di setiap tahunnya."
     },
     {
       id: 1,
