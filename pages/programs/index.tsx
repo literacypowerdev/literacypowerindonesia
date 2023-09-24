@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 
 import Navbar from "../../components/organisms/Navbar";
-import Project from "../../components/organisms/Project";
+import Program from "../../components/organisms/Program";
 import Reviews from "../../components/organisms/Reviews";
 import Footer from "../../components/organisms/Footer";
 
@@ -24,7 +24,7 @@ export default function Programs() {
             OUR PROGRAMS
           </h1>
           <div>
-            {/* <Project /> */}
+            <Program />
           </div>
         </div>
       </div>
